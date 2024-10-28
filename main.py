@@ -119,16 +119,27 @@ def intro():
                                    
                                    
                                    ''')
-       
-       time.sleep(1)
-       #print("center".center(20,"-"))
-       x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
-       if x == "x":
-              start = True
-       else:
-              intro()
-       if start:
-              print("it works")
-       else:
-              print("it doesnt work :C")
+
 intro()
+time.sleep(1)
+#print("center".center(20,"-"))
+x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
+if x == "x":
+       start = True
+else:
+       intro()
+if start:
+       text_delay = 0.05
+       print('''
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+       ''')
