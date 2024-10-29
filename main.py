@@ -126,20 +126,35 @@ time.sleep(1)
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
+       text_delay = .1
+       print_with_delay('''
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                      
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                      
+       ''')
 else:
        intro()
 if start:
-       text_delay = 0.05
-       print('''
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-       ''')
+      time.sleep(2)
+      print_with_delay(Colors.GREEN + "You live in a run down apartment in one of the worst parts of town.")
+      time.sleep(1)
+      print_with_delay("You need money.")
