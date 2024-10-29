@@ -156,5 +156,12 @@ else:
 if start:
       time.sleep(2)
       print_with_delay(Colors.GREEN + "You live in a run down apartment in one of the worst parts of town.")
-      time.sleep(1)
+      time.sleep(2)
       print_with_delay("You need money.")
+      time.sleep(2)
+      print_with_delay("One day while wandering through a junk shop in search of cheap furniture, you see something shining between two pieces of junk.")
+      time.sleep(2)
+      print_with_delay("You pull it out and you discover that it's' a golden toaster.")
+      time.sleep(2)
+      print_with_delay("It looks a little strange though, because instead of cooking setting on the knob, all it says is 'Past', 'Present', and 'Future'.")
+      time.sleep(2)
