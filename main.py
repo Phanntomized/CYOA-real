@@ -159,6 +159,8 @@ else:
 if start:
        clay_statue = False
        club = False
+       
+       fall = False
 
 
        money = 10
@@ -267,6 +269,10 @@ if start:
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
              time.sleep(3)
+             fall = True
+             world1ans5 = "no"
+             world1ans4 = "no"
+             world1ans8 = "no"
              if clay_statue:
                    print_with_delay("You remember you still have the clay statue you took from the cave.")
                    time.sleep(3)
@@ -371,15 +377,19 @@ if start:
                             print_with_delay(Colors.GREEN + "You decide to try to fight the neanderthal.")
                             time.sleep(3)
                             neanderthal_health = 100
-                            world1ans8 = "no run"
+                            world1ans8 = "no"
                             neanderthal_fight()
-             print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
-             time.sleep(3)
-             print_with_delay("The neanderthals are not pleased, so they pick you up and fling you down the nearby waterfall.")
-             if world1ans5 == "shrug" or world1ans4 == "keep":
-                     if world1ans8 == "run":
-                            print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
+             else:
+                     if fall:
+                            print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
                             time.sleep(3)
-             print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
-             health -= 5
-             time.sleep(3)
+                            print_with_delay("The neanderthals are not pleased, so they pick you up and fling you down the nearby waterfall.")
+                            
+                            if world1ans5 == "shrug" or world1ans4 == "keep":
+                                   if world1ans8 == "run":
+                                          print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
+                                          time.sleep(3)
+                            else:
+                                   print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
+                                   health -= 5
+                                   time.sleep(3)
