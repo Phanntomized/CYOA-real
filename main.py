@@ -177,7 +177,13 @@ if start:
       time.sleep(2)
       print_with_delay(Colors.RED + "Come on kid, you know it's me, your toaster talking to you. And also I'm not a toaster, I'm a time travel machine. I can take you anywhere in time and you could become rich!")
       time.sleep(2)
-      ans1 = input("Accept or decline the toaster's offer? ")
+      ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? ")
 
       if ans1 == "Decline":
-            
+            time.sleep(2)
+            print_with_delay(Colors.BLUE + "I don't believe you.")
+            time.sleep(2)
+            print_with_delay(Colors.RED + "Well then let me show you...")
+            time.sleep(2)
+            print_with_delay(Colors.YELLOW + "Zroom!")
+            time.sleep(2)
