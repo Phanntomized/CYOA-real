@@ -129,7 +129,7 @@ time.sleep(1)
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
-       text_delay = .1
+       text_delay = .5
        print_with_delay('''
                                                      
                                                      
@@ -220,9 +220,9 @@ if start:
               time.sleep(3)
               print_with_delay(Colors.BLUE + "That toaster sure wasn't lying.")
               time.sleep(3)
-              print_with_delay(Colors.GREEN + "Speaking of the toaster, it's nowhere to be seen.")
+              print_with_delay("Speaking of the toaster, it's nowhere to be seen.")
               time.sleep(3)
-              print_with_delay(Colors.BLUE + "I should probably look for that toaster, so it can take me back.")
+              print_with_delay("I should probably look for that toaster, so it can take me back.")
               time.sleep(3)
               world1ans1 = input(Colors.MAGENTA + "Explore inside or explore outside? (inside/outside) ")
               time.sleep(1)
@@ -233,7 +233,7 @@ if start:
               print_with_delay(Colors.WHITE + "You find a small, clay statue.")
               clay_statue = True
               time.sleep(3)
-              print_with_delay("As you investigate the caves you realize you must be somewhere in the stone age.")
+              print_with_delay(Colors.GREEN + "As you investigate the caves you realize you must be somewhere in the stone age.")
               time.sleep(3)
        elif world1ans1 == "outside":
               print_with_delay(Colors.GREEN + "You decide to explore outside the cave.")
@@ -248,7 +248,7 @@ if start:
        if world1ans1 == "outside":
              print_with_delay("You realize that they are neanderthals and you must be somewhere in the stone age.")
              time.sleep(3)
-       print_with_delay("As they get closer, you notice they don't look too happy that your in their territory.")
+       print_with_delay("As they get closer, you notice they don't look too happy that you're in their territory.")
        time.sleep(3)
        world1ans2 = input(Colors.MAGENTA + "Run away or face the neanderthals? (run/stay) ")
        time.sleep(1)
@@ -262,9 +262,9 @@ if start:
              time.sleep(3)
              print_with_delay("The neanderthals are still chasing you.")
              time.sleep(3)
-             world1ans3 = input(Colors.MAGENTA + "Jump down the waterfall or face trhe neanderthals? (jump/stay)")
+             world1ans2 = input(Colors.MAGENTA + "Jump down the waterfall or face the neanderthals? (jump/stay) ")
              time.sleep(3)
-       if world1ans2 or world1ans3 == "stay":
+       if world1ans2 == "stay":
              print_with_delay(Colors.GREEN + "You decide to stay and face the neanderthals.")
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
@@ -285,7 +285,7 @@ if start:
                    if world1ans4 == "give":
                          print_with_delay(Colors.GREEN + "You decide to give the neanderthals the clay statue.")
                          time.sleep(3)
-                         print_with_delay("...One of them takes the statue and lokks at it, then the one holding the statue walks away.")
+                         print_with_delay("One of them takes the statue and looks at it, then walks away, satisfied.")
                          time.sleep(3)
                          print_with_delay("The other one doesn't walk away but makes it clear that they want a statue as well.")
                          time.sleep(3)
@@ -298,26 +298,27 @@ if start:
                                time.sleep(3)
                                print_with_delay("They aren't going to take it, and you get thrown off the waterfall.")
                          else:
-                            def neanderthal_fight():
+                            neanderthal_health = 100
+                            while neanderthal_health > 0:
                                    print_with_delay(Colors.GREEN + "You throw a punch at the neanderthal.")
                                    time.sleep(3)
                                    swing = random.randint(1,3)
                                    time.sleep(3)
                                    if swing == 1:
                                           print_with_delay("The blow dazes the neanderthal, but only for a second.")
-                                          neanderthal_health -= 10
-                                          neanderthal_health -= strength
+                                          neanderthal_health = neanderthal_health - 10
+                                          neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
                                           print_with_delay(f"The neadnerthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                    elif swing == 2:
                                           print_with_delay("The blow knocks the neanderthal over.")
-                                          neanderthal_health -= 20
-                                          neanderthal_health -= strength
+                                          neanderthal_health = neanderthal_health - 20
+                                          neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
                                           print_with_delay(f"The neadnerthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
-                                          neanderthal_fight()
+                                          continue
                                    else:
                                           print_with_delay("The neanderthal evades your blow.")
                                           time.sleep(3)
@@ -333,14 +334,14 @@ if start:
                                           world1ans8 = input(Colors.MAGENTA + "Stay a few more minutes to loot the neanderthal or run away? (loot/run) ")
                                           time.sleep(3)
                                           if world1ans8 == "loot":
-                                                print_with_delay(Colors.GREEN + "You take the neanderthal's club and you find a small chunk of gold.")
+                                                print_with_delay(Colors.WHITE + "You take the neanderthal's club and you find a small chunk of gold.")
                                                 club = True
-                                                strength += 10
-                                                money += 20
+                                                strength = strength + 10
+                                                money = money + 20
                                                 time.sleep(3)
-                                                print_with_delay(f"You gain {strength} strength and {money} currency.")
+                                                print_with_delay(Colors.GREEN + "You gain 10 strength and 20 currency.")
                                                 time.sleep(3)
-                                                exit()
+                                                break
                                    print_with_delay("Now its the neanderthal's turn to take a swing at you.")
                                    time.sleep(3)
                                    print_with_delay("You must predict where the neanderthal is going to swing so you can dodge it.")
@@ -350,7 +351,7 @@ if start:
                                    time.sleep(1)
                                    if world1ans6 == "left" and swing == 1:
                                           print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
-                                          health -= 20
+                                          health = health - 20
                                           time.sleep(3)
                                           print_with_delay(f"Your health is now {health}.")
                                           time.sleep(3)
@@ -359,7 +360,7 @@ if start:
                                           time.sleep(3)
                                    elif world1ans6 == "right" and swing == 2:
                                           print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
-                                          health -= 20
+                                          health = health - 20
                                           time.sleep(3)
                                           print_with_delay(f"Your health is now {health}.")
                                           time.sleep(3)
@@ -373,23 +374,25 @@ if start:
                                    else:
                                           world1ans7 = input(Colors.MAGENTA + "Continue fighting or run away? (fight/run) ")
                                           if world1ans7 == "fight":
-                                                 neanderthal_fight()
+                                                 break
+                                          else:
+                                                 world1ans8 = "run"
                             print_with_delay(Colors.GREEN + "You decide to try to fight the neanderthal.")
                             time.sleep(3)
-                            neanderthal_health = 100
                             world1ans8 = "no"
-                            neanderthal_fight()
+                            world1ans5 = "shrug"
+
              else:
                      if fall:
                             print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
                             time.sleep(3)
                             print_with_delay("The neanderthals are not pleased, so they pick you up and fling you down the nearby waterfall.")
+                            time.sleep(3)
                             
                             if world1ans5 == "shrug" or world1ans4 == "keep":
                                    if world1ans8 == "run":
                                           print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
                                           time.sleep(3)
-                            else:
-                                   print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
-                                   health -= 5
-                                   time.sleep(3)
+       print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
+       health -= 5
+       time.sleep(3)
