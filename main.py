@@ -163,5 +163,21 @@ if start:
       time.sleep(2)
       print_with_delay("You pull it out and you discover that it's' a golden toaster.")
       time.sleep(2)
-      print_with_delay("It looks a little strange though, because instead of cooking setting on the knob, all it says is 'Past', 'Present', and 'Future'.")
+      print_with_delay("It looks a little strange though, because instead of toasting settings on the knob, all it says is 'Past', 'Present', and 'Future'.")
       time.sleep(2)
+      print_with_delay(Colors.BLUE + "Interesting, I think I'll buy this as a gag gift.")
+      time.sleep(2)
+      print_with_delay(Colors.GREEN + "Later when you get home, you decide to plug in the toaster to try to toast a slice of bread.")
+      time.sleep(2)
+      print_with_delay("When you plug in the toaster and insert a pice fo bread, you hear a strange voice start talking to you inside of you head.")
+      time.sleep(2)
+      print_with_delay(Colors.RED + "Hey kid, want to earn some sweet dough?")
+      time.sleep(2)
+      print_with_delay(Colors.BLUE + "I-I'm not sure, who are you and why are you talking to me?")
+      time.sleep(2)
+      print_with_delay(Colors.RED + "Come on kid, you know it's me, your toaster talking to you. And also I'm not a toaster, I'm a time travel machine. I can take you anywhere in time and you could become rich!")
+      time.sleep(2)
+      ans1 = input("Accept or decline the toaster's offer? ")
+
+      if ans1 == "Decline":
+            
