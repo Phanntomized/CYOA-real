@@ -374,9 +374,10 @@ if start:
                                    else:
                                           world1ans7 = input(Colors.MAGENTA + "Continue fighting or run away? (fight/run) ")
                                           if world1ans7 == "fight":
-                                                 break
+                                                 continue
                                           else:
                                                  world1ans8 = "run"
+                                                 break
                             print_with_delay(Colors.GREEN + "You decide to try to fight the neanderthal.")
                             time.sleep(3)
                             world1ans8 = "no"
