@@ -159,6 +159,7 @@ else:
 if start:
        clay_statue = False
        club = False
+       gold = 0
        
        fall = False
 
@@ -206,11 +207,11 @@ if start:
               time.sleep(3)
               print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
               time.sleep(3)
-              world0ans1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
+              time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
               time.sleep(1)
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
-              if world0ans1 == "past":
+              if time1 == "past":
                     world = random.randint(1,4)
               else:
                     world = random.randint(5,6)
@@ -336,10 +337,10 @@ if start:
                                           if world1ans8 == "loot":
                                                 print_with_delay(Colors.WHITE + "You take the neanderthal's club and you find a small chunk of gold.")
                                                 club = True
+                                                gold = 5
                                                 strength = strength + 10
-                                                money = money + 20
                                                 time.sleep(3)
-                                                print_with_delay(Colors.GREEN + "You gain 10 strength and 20 currency.")
+                                                print_with_delay(Colors.GREEN + "You gain 10 strength.")
                                                 time.sleep(3)
                                                 break
                                    print_with_delay("Now its the neanderthal's turn to take a swing at you.")
@@ -399,6 +400,20 @@ if start:
        time.sleep(3)
        print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
        time.sleep(3)
-       print_with_delay(Colors.BLUE + "Can you send me back to the present now?")
+       print_with_delay(Colors.BLUE + "Why did you bring me here? I can't even make any money because it hasn't been invented yet?")
        time.sleep(3)
-       print_with_delay(Colors.RED + "")
+       print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away to a different time period.")
+       time.sleep(3)
+       time1 = input(Colors.MAGENTA + "Go to the present or the future? (present/future) ")
+       time.sleep(3)
+
+       if time1 == "present":
+             print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
+             time.delay(3)
+             while cash != "adventure":
+              cash = input(Colors.MAGENTA + "Cash out in all of your items or move on to your next adventure? (cash/adventure) ")
+              if cash == "cash":
+                    if gold > 0:
+                          gold = gold * 2
+                          money = money + gold
+                          gold = 0
