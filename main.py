@@ -397,3 +397,8 @@ if start:
        print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
        health -= 5
        time.sleep(3)
+       print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
+       time.sleep(3)
+       print_with_delay(Colors.BLUE + "Can you send me back to the present now?")
+       time.sleep(3)
+       print_with_delay(Colors.RED + "")
