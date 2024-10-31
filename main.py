@@ -171,7 +171,7 @@ if start:
        time.sleep(3)
        print_with_delay(Colors.GREEN + "You live in a run down apartment in one of the worst parts of town.")
        time.sleep(3)
-       print_with_delay(f"You have {health} health, {strength} strength, and {money} currency.")
+       print_with_delay(f"You have {health} health, {strength} strength, and {money} dollars.")
        time.sleep(3)
        print_with_delay("One day while wandering through a junk shop in search of cheap furniture, you see something shining between two pieces of junk.")
        time.sleep(3)
@@ -340,7 +340,7 @@ if start:
                                                 gold = 5
                                                 strength = strength + 10
                                                 time.sleep(3)
-                                                print_with_delay(Colors.GREEN + "You gain 10 strength.")
+                                                print_with_delay("You gain 10 strength.")
                                                 time.sleep(3)
                                                 break
                                    print_with_delay("Now its the neanderthal's turn to take a swing at you.")
@@ -405,15 +405,40 @@ if start:
        print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away to a different time period.")
        time.sleep(3)
        time1 = input(Colors.MAGENTA + "Go to the present or the future? (present/future) ")
-       time.sleep(3)
+       time.sleep(1)
 
        if time1 == "present":
              print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
              time.delay(3)
              while cash != "adventure":
-              cash = input(Colors.MAGENTA + "Cash out in all of your items or move on to your next adventure? (cash/adventure) ")
+              cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               if cash == "cash":
                     if gold > 0:
-                          gold = gold * 2
-                          money = money + gold
-                          gold = 0
+                          cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
+                          time.sleep(1)
+                          if cash == "yes":
+                            gold = gold * 2
+                            print_with_delay(Colors.WHITE + f"You gain {gold} dollars.")
+                            money = money + gold
+                            gold = 0
+                    if clay_statue:
+                          cash = input(Colors.MAGENTA + "Sell the clay statue? (yes/no) ")
+                          time.sleep(1)
+                          if cash == "yes":
+                            money = money + 50
+                            print_with_delay(Colors.WHITE + "You gain 50 dollars.")
+                            clay_statue = False
+                    if club:
+                          cash = input(Colors.MAGENTA + "Sell club? (yes/no) ")
+                          time.sleep(1)
+                          if cash == "yes":
+                                money = money + 10
+                                print_with_delay(Colors.WHITE + "You gain 10 dollars.")
+                                time.sleep(3)
+                                strength = strength - 10
+                                print_with_delay("You lose 10 strength.")
+                                time.sleep(3)
+       else:
+              print_with_delay(Colors.RED + "Alrighty kid, if your done selling all that stuff, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
+              time.sleep(3)
+              time1 = input("Go to the past or the future? (past/future) ")
