@@ -277,7 +277,7 @@ if start:
              world1ans8 = "no"
              if clay_statue:
                    print_with_delay("You remember you still have the clay statue you took from the cave.")
-                   time.sleep(3)
+                   time.sleep(3)   
                    print_with_delay(Colors.BLUE + "If I give them the statue, it may appease them...")
                    time.sleep(3)
                    print_with_delay("...But if I ever do get back to my time, I could probably sell it for a lot of money.")
@@ -305,24 +305,23 @@ if start:
                                    print_with_delay(Colors.GREEN + "You throw a punch at the neanderthal.")
                                    time.sleep(3)
                                    swing = random.randint(1,3)
-                                   time.sleep(3)
                                    if swing == 1:
-                                          print_with_delay("The blow dazes the neanderthal, but only for a second.")
+                                          print_with_delay(Colors.GREEN + "The blow dazes the neanderthal, but only for a second.")
                                           neanderthal_health = neanderthal_health - 10
                                           neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
-                                          print_with_delay(f"The neadnerthal's health is now {neanderthal_health}.")
+                                          print_with_delay(Colors.WHITE + f"The neadnerthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                    elif swing == 2:
-                                          print_with_delay("The blow knocks the neanderthal over.")
+                                          print_with_delay(Colors.GREEN + "The blow knocks the neanderthal over.")
                                           neanderthal_health = neanderthal_health - 20
                                           neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
-                                          print_with_delay(f"The neadnerthal's health is now {neanderthal_health}.")
+                                          print_with_delay(Colors.WHITE + f"The neadnerthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                           continue
                                    else:
-                                          print_with_delay("The neanderthal evades your blow.")
+                                          print_with_delay(Colors.GREEN + "The neanderthal evades your blow.")
                                           time.sleep(3)
                                    if neanderthal_health <= 0:
                                           print_with_delay("The neanderthal staggers backwards, and falls over.")
@@ -341,36 +340,37 @@ if start:
                                                 gold = 5
                                                 strength = strength + 10
                                                 time.sleep(3)
-                                                print_with_delay("You gain 10 strength.")
+                                                print_with_delay(Colors.WHITE + "You gain 10 strength.")
                                                 time.sleep(3)
                                                 break
-                                   print_with_delay("Now its the neanderthal's turn to take a swing at you.")
+                                   print_with_delay(Colors.WHITE + "Now its the neanderthal's turn to take a swing at you.")
                                    time.sleep(3)
                                    print_with_delay("You must predict where the neanderthal is going to swing so you can dodge it.")
                                    time.sleep(3)
                                    swing = random.randint(1,2)
                                    world1ans6 = input(Colors.MAGENTA + "Will the neanderthal swing left or right? (left/right) ")
                                    time.sleep(1)
-                                   if world1ans6 == "left" and swing == 1:
-                                          print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
-                                          health = health - 20
-                                          time.sleep(3)
-                                          print_with_delay(f"Your health is now {health}.")
-                                          time.sleep(3)
-                                   elif world1ans6 == "right" and swing == 1:
+                                   if world1ans6 == "right" and swing == 1:
                                           print_with_delay(Colors.GREEN + "You evade the neanderthal's attack.")
                                           time.sleep(3)
                                    elif world1ans6 == "right" and swing == 2:
                                           print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
+                                          time.sleep(3)
                                           health = health - 20
                                           time.sleep(3)
-                                          print_with_delay(f"Your health is now {health}.")
+                                          print_with_delay(Colors.WHITE + f"Your health is now {health}.")
                                           time.sleep(3)
                                    elif world1ans6 == "left" and swing == 1:
                                           print_with_delay(Colors.GREEN + "You evade the neanderthal's attack.")
                                           time.sleep(3)
+                                   elif world1ans6 == "left" and swing == 2:
+                                          print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
+                                          time.sleep(3)
+                                          health = health - 20
+                                          print_with_delay(Colors.WHITE + f"Your health is now {health}.")
+                                          time.sleep(3)
                                    if health <= 0:
-                                          print_with_delay("You died: you have perished from injuries due to a neanderthal attack.")
+                                          print_with_delay(Colors.WHITE + "You died: you have perished from injuries due to a neanderthal attack.")
                                           time.sleep(3)
                                           the_end()
                                    else:
@@ -380,10 +380,6 @@ if start:
                                           else:
                                                  world1ans8 = "run"
                                                  break
-                            print_with_delay(Colors.GREEN + "You decide to try to fight the neanderthal.")
-                            time.sleep(3)
-                            world1ans8 = "no"
-                            world1ans5 = "shrug"
 
              else:
                      if fall:
@@ -411,7 +407,7 @@ if start:
 
 if time1 == "present":
        print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
-       time.delay(3)
+       time.sleep(3)
        while cash != "adventure":
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               if cash == "cash":
@@ -444,3 +440,7 @@ if time1 == "present":
               print_with_delay(Colors.RED + "Alrighty kid, if your done selling all that stuff, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
               time1 = input("Go to the past or the future? (past/future) ")
+       if time1 == "past":
+              world = random.randint(2,4)
+       else:
+              world = random.randint(5,6)
