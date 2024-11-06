@@ -157,13 +157,7 @@ if x == "x":
 else:
        intro()
 
-def world1():
-       fall = False
-       health = 100
-       strength = 100
-       clay_statue = False 
-       gold = 0
-       club = False  
+def world1(health,strength,clay_statue,gold,club,fall):
        if world == 1:
               print_with_delay(Colors.GREEN + "You find yourself in a cave with some fresh cave paintings.")
               time.sleep(3)
@@ -380,6 +374,10 @@ if start:
        money = 10
        health = 100
        strength = 0
+       fall = False
+       clay_statue = False 
+       gold = 0
+       club = False
 
        time.sleep(3)
        print_with_delay(Colors.GREEN + "You live in a run down apartment in one of the worst parts of town.")
