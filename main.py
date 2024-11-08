@@ -157,7 +157,22 @@ if x == "x":
 else:
        intro()
 
-def world1(health,strength,clay_statue,gold,club,fall):
+money = 10
+health = 100
+strength = 0
+fall = False
+clay_statue = False 
+gold = 0
+club = False
+
+def world1():
+       global strength
+       global health
+       global money
+       global club
+       global gold
+       global fall
+       global clay_statue
        if world == 1:
               print_with_delay(Colors.GREEN + "You find yourself in a cave with some fresh cave paintings.")
               time.sleep(3)
@@ -297,6 +312,7 @@ def world1(health,strength,clay_statue,gold,club,fall):
                                    elif world1ans6 == "right" and swing == 2:
                                           print_with_delay(Colors.GREEN + "You get hit with the neanderthal's club.")
                                           time.sleep(3)
+                                          global health
                                           health = health - 20
                                           time.sleep(3)
                                           print_with_delay(Colors.WHITE + f"Your health is now {health}.")
@@ -321,6 +337,11 @@ def world1(health,strength,clay_statue,gold,club,fall):
                                           else:
                                                  world1ans8 = "run"
                                                  break
+                   if world1ans4 == "keep":
+                            print_with_delay(Colors.GREEN + "You decide to keep the statue.")
+                            time.sleep(3)
+                            print_with_delay("The neanderthals are not pleased, so they throw you off the waterfall.")
+                            time.sleep(3)
 
              else:
                      if fall:
@@ -333,7 +354,7 @@ def world1(health,strength,clay_statue,gold,club,fall):
                                    if world1ans8 == "run":
                                           print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
                                           time.sleep(3)
-       print_with_delay(Colors.GREEN + "You hit the water a little hard and lose 5 health.")
+       print_with_delay(Colors.GREEN + "You fall down the waterfall and lose 5 health.")
        health -= 5
        time.sleep(3)
        print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
@@ -342,6 +363,7 @@ def world1(health,strength,clay_statue,gold,club,fall):
        time.sleep(3)
        print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away to a different time period.")
        time.sleep(3)
+       global time1 
        time1 = input(Colors.MAGENTA + "Go to the present or the future? (present/future) ")
        time.sleep(1)
 
@@ -367,18 +389,6 @@ def world6():
        
 
 if start:
-       
-
-
-
-       money = 10
-       health = 100
-       strength = 0
-       fall = False
-       clay_statue = False 
-       gold = 0
-       club = False
-
        time.sleep(3)
        print_with_delay(Colors.GREEN + "You live in a run down apartment in one of the worst parts of town.")
        time.sleep(3)
@@ -412,7 +422,7 @@ if start:
               time.sleep(3)
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
-              world = random.randint(1)
+              world = random.randint(1,1)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -424,78 +434,70 @@ if start:
               time.sleep(3)
               if time1 == "past":
                      world = random.randint(1,4)
-                     if world == 1:
-                            world1()
-                     if world == 2:
-                            world2()
-                     if world == 3:
-                            world3()
-                     if world == 4:
-                            world4()
               else:
                      world = random.randint(5,6)
-                     if world == 5:
-                            world5()
-                     if world == 6:
-                            world6()
+       if world == 1:
+              world1()
+       if world == 2:
+              world2()
+       if world == 3:
+              world3()
+       if world == 4:
+              world4()
+       if world == 5:
+              world5()
+       if world == 6:
+              world6()
 
        if time1 == "present":
               cashed = False
               print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
               time.sleep(3)
-              while cash != "adventure":
-                     cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
-                     if cash == "cash":
-                            try:
-                                   if gold > 0:
-                                          cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
-                                          time.sleep(1)
-                                          if cash == "yes":
-                                                 gold = gold * 2
-                                                 print_with_delay(Colors.WHITE + f"You gain {gold} dollars.")
-                                                 cashed = True
-                                                 money = money + gold
-                                                 gold = 0
-                            except:
-                                   pass
-                            try:
-                                   if clay_statue:
-                                          cash = input(Colors.MAGENTA + "Sell the clay statue? (yes/no) ")
-                                          time.sleep(1)
-                                          if cash == "yes":
-                                                 money = money + 50
-                                                 print_with_delay(Colors.WHITE + "You gain 50 dollars.")
-                                                 cashed = True
-                                                 clay_statue = False
-                            except:
-                                   pass
-                            try:       
-                                   if club:
-                                          cash = input(Colors.MAGENTA + "Sell club? (yes/no) ")
-                                          time.sleep(1)
-                                          if cash == "yes":
-                                                 money = money + 10
-                                                 print_with_delay(Colors.WHITE + "You gain 10 dollars.")
-                                                 time.sleep(3)
-                                                 strength = strength - 10
-                                                 print_with_delay("You lose 10 strength.")
-                                                 cashed = True
-                                                 time.sleep(3)
-                            except:
-                                   pass
-                            if cashed == False:
-                                   print("Nothing to sell.")
-                                   cash = "adventure"
-                            else:
-                                   cashed = False
-                                   continue
+              cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
+              while cash == "cash":
+                     if gold > 0:
+                            cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
+                            time.sleep(1)
+                            if cash == "yes":
+                                   gold = gold * 2
+                                   print_with_delay(Colors.WHITE + f"You gain {gold} dollars.")
+                                   cashed = True
+                                   money = money + gold
+                                   gold = 0
+                     if clay_statue:
+                            cash = input(Colors.MAGENTA + "Sell the clay statue? (yes/no) ")
+                            time.sleep(1)
+                            if cash == "yes":
+                                   money = money + 50
+                                   print_with_delay(Colors.WHITE + "You gain 50 dollars.")
+                                   cashed = True
+                                   clay_statue = False     
+                     if club:
+                            cash = input(Colors.MAGENTA + "Sell club? (yes/no) ")
+                            time.sleep(1)
+                            if cash == "yes":
+                                   money = money + 10
+                                   print_with_delay(Colors.WHITE + "You gain 10 dollars.")
+                                   time.sleep(3)
+                                   strength = strength - 10
+                                   print_with_delay("You lose 10 strength.")
+                                   cashed = True
+                                   time.sleep(3)
+                     if cash == False:
+                            print("Nothing to sell.")
+                            cash = "adventure"
+                     else:
+                            cash = "cash"
+                            continue
               
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
               time1 = input("Go to the past or the future? (past/future) ")
               time.sleep(1)
               if time1 == "past":
-                     world = random.randint(2,4)
+                     world = random.randint(1,4)
+                     if world == 1:
+                            world1()
                      if world == 2:
                             world2()
                      if world == 3:
