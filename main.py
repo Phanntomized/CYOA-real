@@ -450,10 +450,10 @@ if start:
               world6()
 
        if time1 == "present":
-              cashed = False
               print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
               time.sleep(3)
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
+              time.sleep(1)
               while cash == "cash":
                      if gold > 0:
                             cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
@@ -470,6 +470,7 @@ if start:
                             if cash == "yes":
                                    money = money + 50
                                    print_with_delay(Colors.WHITE + "You gain 50 dollars.")
+                                   time.sleep(3)
                                    cashed = True
                                    clay_statue = False     
                      if club:
@@ -483,16 +484,11 @@ if start:
                                    print_with_delay("You lose 10 strength.")
                                    cashed = True
                                    time.sleep(3)
-                     if cash == False:
-                            print("Nothing to sell.")
-                            cash = "adventure"
-                     else:
-                            cash = "cash"
-                            continue
+                     cash = "adventure"
               
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
-              time1 = input("Go to the past or the future? (past/future) ")
+              time1 = input(Colors.GREEN + "Go to the past or the future? (past/future) ")
               time.sleep(1)
               if time1 == "past":
                      world = random.randint(1,4)
