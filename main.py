@@ -448,7 +448,6 @@ if start:
               world5()
        if world == 6:
               world6()
-
        if time1 == "present":
               print_with_delay(Colors.GREEN + "You find yourself back in your apartment. The toaster is plugged in next to you.")
               time.sleep(3)
