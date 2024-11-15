@@ -369,7 +369,149 @@ def world1():
 
 def world2():
        if world == 2:
-              pass
+              print_with_delay(Colors.GREEN + "You find yourself standing outside a fancy building.")
+              time.sleep(3)
+              print_with_delay("That toaster must have brought you here for some reason...")
+              time.sleep(3)
+              print_with_delay("When you enter you realize the building is an old timey casino.")
+              time.sleep(3)
+              print_with_delay(Colors.BLUE + "This looks fun, but first I want to finsd the toaster.")
+              time.sleep(3)
+              choice1 = True
+       while choice1:
+              world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (resaurant/game) ")
+              time.sleep(1)
+              if world2ans1 == "restaurant":
+                     print_with_delay(Colors.GREEN + "You decide to go to the restaurant.")
+                     time.sleep(3)
+                     world2ans2 = input(Colors.MAGENTA + "Go into the kitchen or search around the dining area? (kitchen/dining) ")
+                     time.sleep(1)
+                     if world2ans2 == "dining":
+                            print_with_delay(Colors.GREEN + "You decide to look around the dining area.")
+                            time.sleep(3)
+                            print_with_delay("The guests aren't happy with you for snooping around, and you get thrown out of the restaurant.")
+                            time.sleep(3)
+                            continue
+                     elif world2ans2 == "kitchen":
+                            print_with_delay("You barge into the kitchen and ask about a golden toater.")
+                            time.sleep(3)
+                            print_with_delay("All the chefs are really confused and kind of angry, so they challenge you to a cook off.")
+                            time.sleep(3)
+                            world2ans3 = input(Colors.MAGENTA + "Do you want to make bread, spaghetti, or a creme pie? (bread/spaghetti/pie) ")
+                            if world2ans3 == "bread":
+                                   print_with_delay(Colors.GREEN + "You decide to make bread.")
+                                   flour = input(Colors.MAGENTA + "What is one main ingredient in bread that starts with f? ")
+                                   time.sleep(1)
+                                   if flour == "flour":
+                                          goodbake = True
+                                   else:
+                                          goodbake = False
+                                   salt = input("What is one main ingredient in bread that starts with s? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if salt == "salt":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   yeast = input("What is one main ingrdient in bread that starts with y? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if yeast == "yeast":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   water = input("What is one main ingredient in bread that starts with w? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if water == "water":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass  
+                            if world2ans2 == "spaghetti":
+                                   noodles = input("What is one main ingredient in spaghetti that starts with n? ")
+                                   time.sleep(1)
+                                   if noodles == "noodles" or noodles == "noodle":
+                                          goodbake = True
+                                   else:
+                                          goodbake = False
+                                   tomato = input("What is one main ingredient in spaghetti that is two words and starts with t and s? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if tomato == "tomato sauce":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   meat = input("What is one main ingredient in spaghetti that starts with m? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if meat == "meat" or meat == "meatball" or meat == "meatballs":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   cheese = input("What is one main ingredient in spaghetti that starts with c? ")
+                                   time.sleep(1)
+                                   if goodbake:
+                                          if cheese == "cheese":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                            if world2ans2 == "pie":
+                                   milk = input("What is one main ingredient in creme pire that starts with m? ")
+                                   if milk == "milk":
+                                          goodbake = True
+                                   else:
+                                          goodbake = False
+                                   cream = input("What is one main ingredient in creme pie that starts with c? ")
+                                   if goodbake:
+                                          if cream == "creme" or cream == "cream" or cream == "crust":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   sugar = input("What is one main ingredient in creme pie that starts with s? ")
+                                   if goodbake:
+                                          if sugar == "sugar":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                                   eggs = input("What is one m ain ingredient in creme pie that starts with e? ")
+                                   if goodbake:
+                                          if eggs == "egg" or eggs == "eggs":
+                                                 goodbake = True
+                                          else:
+                                                 goodbake = False
+                                   else:
+                                          pass
+                            
+                            if goodbake:
+                                   print_with_delay(Colors.GREEN + "The chefs are impressed in your skills. One of them thinks they saw a golden toaster being taking into one of the game rooms by one of the gamblers.")
+                                   time.sleep(3)
+                                   world1ans1 = "game"
+                                   break
+                            else:
+                                   print_with_delay(Colors.GREEN + "The chefs are not impressed with your skills.")
+                                   time.sleep(3)
+                                   if world2ans3 == "pie":
+                                          print_with_delay("You smash the pie into the nearest chef's face and make a run for it.")
+                                   else:
+                                          print_with_delay("They throw you out of the restaurant.")
+                                          continue
+              if world2ans1 == "game":
 
 def world3():
        if world == 3:
