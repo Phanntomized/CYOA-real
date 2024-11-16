@@ -512,10 +512,9 @@ def world2():
                                           print_with_delay("They throw you out of the restaurant.")
                                           continue
               if world2ans1 == "game":
-
 def world3():
        if world == 3:
-              pass
+              print("error")
 
 def world4():
        if world == 4:
