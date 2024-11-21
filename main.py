@@ -381,7 +381,9 @@ def world2():
        while choice1:
               world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (resaurant/game) ")
               time.sleep(1)
-              if world2ans1 == "restaurant":
+              if world2ans1 == "game":
+                     break
+              elif world2ans1 == "restaurant":
                      print_with_delay(Colors.GREEN + "You decide to go to the restaurant.")
                      time.sleep(3)
                      world2ans2 = input(Colors.MAGENTA + "Go into the kitchen or search around the dining area? (kitchen/dining) ")
@@ -434,7 +436,8 @@ def world2():
                                    else:
                                           pass  
                             if world2ans2 == "spaghetti":
-                                   noodles = input("What is one main ingredient in spaghetti that starts with n? ")
+                                   print_with_delay(Colors.GREEN + "You decide to make spaghetti.")
+                                   noodles = input(Colors.MAGENTA + "What is one main ingredient in spaghetti that starts with n? ")
                                    time.sleep(1)
                                    if noodles == "noodles" or noodles == "noodle":
                                           goodbake = True
@@ -468,12 +471,15 @@ def world2():
                                    else:
                                           pass
                             if world2ans2 == "pie":
-                                   milk = input("What is one main ingredient in creme pire that starts with m? ")
+                                   print_with_delay(Colors.GREEN + "You decide to make a creme pie.")
+                                   milk = input(Colors.MAGENTA + "What is one main ingredient in creme pie that starts with m? ")
+                                   time.sleep(1)
                                    if milk == "milk":
                                           goodbake = True
                                    else:
                                           goodbake = False
                                    cream = input("What is one main ingredient in creme pie that starts with c? ")
+                                   time.sleep(1)
                                    if goodbake:
                                           if cream == "creme" or cream == "cream" or cream == "crust":
                                                  goodbake = True
@@ -482,6 +488,7 @@ def world2():
                                    else:
                                           pass
                                    sugar = input("What is one main ingredient in creme pie that starts with s? ")
+                                   time.sleep(1)
                                    if goodbake:
                                           if sugar == "sugar":
                                                  goodbake = True
@@ -490,6 +497,7 @@ def world2():
                                    else:
                                           pass
                                    eggs = input("What is one m ain ingredient in creme pie that starts with e? ")
+                                   time.sleep(1)
                                    if goodbake:
                                           if eggs == "egg" or eggs == "eggs":
                                                  goodbake = True
@@ -499,19 +507,26 @@ def world2():
                                           pass
                             
                             if goodbake:
-                                   print_with_delay(Colors.GREEN + "The chefs are impressed in your skills. One of them thinks they saw a golden toaster being taking into one of the game rooms by one of the gamblers.")
+                                   print_with_delay(Colors.GREEN + "The chefs are impressed in your skills. One of them thinks they saw a golden toaster being taken into one of the game rooms by one of the gamblers.")
                                    time.sleep(3)
-                                   world1ans1 = "game"
+                                   world2ans1 = "game"
+                                   time.sleep(3)
                                    break
                             else:
                                    print_with_delay(Colors.GREEN + "The chefs are not impressed with your skills.")
                                    time.sleep(3)
                                    if world2ans3 == "pie":
-                                          print_with_delay("You smash the pie into the nearest chef's face and make a run for it.")
+                                          print_with_delay("You smash the pie into the nearest chef's face and walk out.")
+                                          time.sleep(3)
+                                          continue
                                    else:
                                           print_with_delay("They throw you out of the restaurant.")
+                                          time.sleep(3)
                                           continue
-              if world2ans1 == "game":
+       if world2ans1 == "game":
+              print_with_delay(Colors.GREEN + "You decide to go into the game rooms.")
+              time.sleep(3)
+              
 def world3():
        if world == 3:
               print("error")
