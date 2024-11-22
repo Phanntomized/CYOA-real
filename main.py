@@ -374,6 +374,8 @@ def world2():
        global vip
        global necklace
        rooms = False
+       def blackjack():
+              pass
        if world == 2:
               print_with_delay(Colors.GREEN + "You find yourself standing outside a fancy building.")
               time.sleep(3)
@@ -591,7 +593,15 @@ def world2():
                      world2ans2 = input(Colors.MAGENTA + "Blackjack room, or roulette room? (blackjack/roulette) ")
                      time.sleep(1)
                      if world2ans2 == "blackjack":
-                            print_with_delay(Colors.GREEN + "You go into the blackjack room and ask around for a golden toaster, ")
+                            print_with_delay(Colors.GREEN + "You go into the blackjack room and confront a gambler")
+                            time.sleep(3)
+                            print_with_delay(Colors.BLUE + "Have you by chance seen a golden toaster?")
+                            time.sleep(3)
+                            print_with_delay(Colors.RED + "I might have, and I might not have, if you beat me in blackjack, I'll tell you what I know.")
+                            time.sleep(3)
+                            print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, you get kicked out.")
+                            time.sleep(3)
+                            blackjack()
               
 def world3():
        if world == 3:
