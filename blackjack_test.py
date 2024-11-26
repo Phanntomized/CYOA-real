@@ -23,9 +23,9 @@ def blackjack():
                      if num2 == 11:
                             name2 = "an ace"
 
-                     opnum = random.randint(11,11)
+                     opnum = random.randint(2,11)
                      opname = opnum
-                     opnum2 = random.randint(11,11)
+                     opnum2 = random.randint(2,11)
                      opname2 = opnum2
                      optotal = opnum + opnum2
                      if opnum == 11:
@@ -37,6 +37,10 @@ def blackjack():
                      time.sleep(3)
                      print(f"Your card's values are {name} and {name2}.")
                      time.sleep(3)
+                     if name == "an ace" and total > 21:
+                            total -= 10
+                            print(f"Your ace's value changes to 1 and your total is {total}.")
+                            time.sleep(3)
                      print(f"Your opponent has {opname} and {opname2}.")
                      time.sleep(3)
                      if opname == "an ace" and optotal > 21:
@@ -51,7 +55,6 @@ def blackjack():
                                    total += num
                                    if num == 11:
                                           name = "an ace"
-                                          ace = True
                                    else:
                                           name = False
                                    if name == "an ace":
@@ -59,7 +62,7 @@ def blackjack():
                                    else:
                                           print(f"You drew {num}")
                                    time.sleep(3)
-                                   if ace and total > 21:
+                                   if name == "an ace" and total > 21:
                                           total -= 10
                                           print(f"Your ace's value changes to 1 and your total is {total}.")
                                           time.sleep(3)
