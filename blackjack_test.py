@@ -77,6 +77,7 @@ def blackjack():
                             else:
                                    print(f"You stood with {total}.")
                                    time.sleep(3)
+                                   break
                             while opdone == False:
                                    if 11 < optotal <= 21 and optotal >= total:
                                           print(f"Your opponent has stood with {optotal}")
