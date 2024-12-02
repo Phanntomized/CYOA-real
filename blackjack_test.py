@@ -8,6 +8,7 @@ def blackjack():
               round = 1
               opdone = False
               card_num = 2
+              suspect = 0
               time.sleep(3)
               while new_game == False:
                      card_num = 2
@@ -92,22 +93,30 @@ def blackjack():
                                           else:
                                                  continue
                                    if total > 21:
-                                          print("You busted!")
-                                          time.sleep(3)
-                                          lost += 1
-                                          round_over = True            
-                                          break
+                                          if total > 21 and ace == 22:
+                                                 print("Your opponent accuses you of cheating and you get thrown out of the casino.")
+                                                 time.sleep(3)
+                                                 return "lost"
+                                          else:
+                                                 print("You busted!")
+                                                 time.sleep(3)
+                                                 lost += 1
+                                                 round_over = True            
+                                                 break
                             else:
                                    print(f"You stood with {total}.")
                                    time.sleep(3)
                                    opdone = False
+                            if ace > 11:
+                                   print("Your opponent becomes suspicious of you holding aces.")
+                                   time.sleep(3)
                             while opdone == False:
-                                   if 11 < optotal <= 21 and optotal >= total:
-                                          print(f"Your opponent has stood with {optotal}")
+                                   if 17 <= optotal <= 21 and optotal >= total:
+                                          print(f"Your opponent stood with {optotal}")
                                           time.sleep(3)
                                           opdone = True
                                           break
-                                   elif optotal <= 11 and optotal < total:
+                                   elif optotal <= 17 or optotal < total:
                                           opnum = random.randint(2,11)
                                           opcard_num += 1
                                           optotal += opnum
@@ -138,6 +147,7 @@ def blackjack():
                                           lost += 1
                                           round_over = True
                                           break
+                                   continue
                             if total <= 21 and optotal <= 21:
                                    if optotal > total:
                                           print("Your opponent has a higher value than you, so your opponent wins the round.")
@@ -152,9 +162,10 @@ def blackjack():
                                           round_over = True
                                           break
                                    else:
-                                          print("Nobody wins the round due to a tie.")
+                                          print("Your opponent wins due to a tie.")
                                           time.sleep(3)
                                           round_over = True
+                                          lost += 1
                                           break
                      if won == 3:
                             print("You beat your opponent.")
