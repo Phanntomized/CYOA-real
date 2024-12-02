@@ -7,9 +7,15 @@ def blackjack():
               lost = 0
               round = 1
               opdone = False
-              card_num = 0
+              card_num = 2
               time.sleep(3)
               while new_game == False:
+                     card_num = 2
+                     opcard_num = 2
+                     total = 0
+                     optotal = 0
+                     ace = 0
+                     opace = 0
                      print(f"Round {round}")
                      time.sleep(3)
                      round += 1
@@ -22,9 +28,10 @@ def blackjack():
                      total = num + num2
                      if num == 11:
                             name = "an ace"
+                            ace += 1
                      if num2 == 11:
                             name2 = "an ace"
-
+                            ace += 1
                      opnum = random.randint(2,11)
                      opname = opnum
                      opnum2 = random.randint(2,11)
@@ -32,34 +39,27 @@ def blackjack():
                      optotal = opnum + opnum2
                      if opnum == 11:
                             opname = "an ace"
+                            opace += 1
                      if opnum2 == 11:
                             opname2 = "an ace"
+                            opace += 1
                      optotal = opnum + opnum2
                      print("You each get dealt 2 cards.")
                      time.sleep(3)
                      print(f"Your card's values are {name} and {name2}.")
                      time.sleep(3)
-                     if name == "an ace" and total > 21:
+                     if ace > 0 and total > 21:
                             total -= 10
                             print(f"Your ace's value changes to 1 and your total is {total}.")
                             name = False
                             time.sleep(3)
-                     elif name2 == "an ace" and total > 21:
-                            total -= 10
-                            print(f"Your ace's value changes to 1 and your total is {total}.")
-                            name2 = False
-                            time.sleep(3)
                      print(f"Your opponent has {opname} and {opname2}.")
                      time.sleep(3)
-                     if opname == "an ace" and optotal > 21:
+                     if opace > 0 and optotal > 21:
                             optotal -= 10
                             print(f"Their ace's value changes to 1 and their total is {optotal}.")
+                            opace -= 1
                             opname = False
-                            time.sleep(3)
-                     elif opname2 == "an ace" and optotal > 21:
-                            optotal -= 10
-                            print(f"Their ace's value changes to 1 and their total is {optotal}.")
-                            opname2 = False
                             time.sleep(3)
                      while round_over == False:
                             hit_stand = input("Hit or stand? (hit/stand) ")
@@ -70,6 +70,7 @@ def blackjack():
                                    total += num
                                    if num == 11:
                                           name = "an ace"
+                                          ace += 1
                                    else:
                                           name = False
                                    if name == "an ace":
@@ -77,19 +78,17 @@ def blackjack():
                                    else:
                                           print(f"You drew {num}")
                                    time.sleep(3)
-                                   if name == "an ace" and total > 21:
+                                   if ace > 0 and total > 21:
                                           total -= 10
                                           print(f"Your ace's value changes to 1 and your total is {total}.")
-                                          time.sleep(3)
-                                   elif name2 == "an ace" and total > 21:
-                                          total -= 10
-                                          print(f"Your ace's value changes to 1 and your total is {total}.")
-                                          name2 = False
+                                          ace -= 1
                                           time.sleep(3)
                                    if total <= 21:
                                           if card_num == 5:
                                                  print("You win the round by holding 5 cards.")
-
+                                                 won += 1
+                                                 round_over = True
+                                                 break
                                           else:
                                                  continue
                                    if total > 21:
@@ -101,18 +100,20 @@ def blackjack():
                             else:
                                    print(f"You stood with {total}.")
                                    time.sleep(3)
-                                   opdone == False
+                                   opdone = False
                             while opdone == False:
                                    if 11 < optotal <= 21 and optotal >= total:
                                           print(f"Your opponent has stood with {optotal}")
                                           time.sleep(3)
                                           opdone = True
                                           break
-                                   elif optotal <= 11 or optotal < total:
+                                   elif optotal <= 11 and optotal < total:
                                           opnum = random.randint(2,11)
+                                          opcard_num += 1
                                           optotal += opnum
                                           if opnum == 11:
                                                  opname = "an ace"
+                                                 opace += 1
                                           else:
                                                  opname = False
                                    if opname == "an ace":
@@ -121,14 +122,10 @@ def blackjack():
                                    else:
                                           print(f"Your opponent draws {opnum}.")
                                           time.sleep(3)
-                                   if opname == "an ace" and optotal > 21:
+                                   if opace > 0 and optotal > 21:
                                           optotal -= 10
                                           print(f"Their ace's value changes to 1 and their total is {optotal}.")
-                                          time.sleep(3)
-                                   elif opname2 == "an ace" and total > 21:
-                                          total -= 10
-                                          print(f"Your ace's value changes to 1 and your total is {total}.")
-                                          opname2 = False
+                                          opace -= 1
                                           time.sleep(3)
                                    if optotal > 21:
                                           print("Your opponent has busted!")
@@ -136,30 +133,40 @@ def blackjack():
                                           won += 1
                                           round_over = True
                                           break
+                                   if opcard_num == 5:
+                                          print("Yor opponent wins the round by holding 5 cards.")
+                                          lost += 1
+                                          round_over = True
+                                          break
                             if total <= 21 and optotal <= 21:
                                    if optotal > total:
                                           print("Your opponent has a higher value than you, so your opponent wins the round.")
                                           time.sleep(3)
-                                          bust += 1
+                                          lost += 1
                                           round_over = True
                                           break
                                    elif total > optotal:
                                           print("You have a higher value than your opponent, so you win the round.")
                                           time.sleep(3)
-                                          bust += 1
+                                          won += 1
+                                          round_over = True
                                           break
                                    else:
                                           print("Nobody wins the round due to a tie.")
                                           time.sleep(3)
+                                          round_over = True
                                           break
                      if won == 3:
                             print("You beat your opponent.")
-                     if lost <= 3:
+                            new_game = True
                             time.sleep(3)
-                            continue
-                     else:
+                            break
+                     elif lost == 3:
                             print("You lost and were thrown out.")
                             time.sleep(3)
+                            new_game = True
                             return "lost"
+                     else:
+                            continue
 
 blackjack()
