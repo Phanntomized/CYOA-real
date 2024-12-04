@@ -552,11 +552,7 @@ def world2():
                             continue
 
        if world == 2:
-              print_with_delay(Colors.GREEN + "You find yourself standing outside a fancy building.")
-              time.sleep(3)
-              print_with_delay("That toaster must have brought you here for some reason...")
-              time.sleep(3)
-              print_with_delay("When you enter you realize the building is an old timey casino.")
+              print_with_delay("You're standing outside of an old casino.")
               time.sleep(3)
               print_with_delay(Colors.BLUE + "This looks fun, but first I want to finsd the toaster.")
               time.sleep(3)
@@ -565,7 +561,7 @@ def world2():
               world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (resaurant/game) ")
               time.sleep(1)
               if world2ans1 == "game":
-                     break
+                     rooms = True
               elif world2ans1 == "restaurant":
                      print_with_delay(Colors.GREEN + "You decide to go to the restaurant.")
                      time.sleep(3)
@@ -734,7 +730,7 @@ def world2():
                                           else:
                                                  goodbake = False
                                    else:
-                                          pass
+                                          world2()
                             
                             if goodbake:
                                    print_with_delay(Colors.GREEN + "The chefs are impressed in your skills. One of them saw a golden shaped toaster object being taken into one of the game rooms by a gambler.")
@@ -764,22 +760,24 @@ def world2():
               if vip:
                      print_with_delay("After all, one of the chefs said they saw a gambler carrying a golden shaped toaster object.")
               rooms = True
-              while rooms:
-                     world2ans2 = input(Colors.MAGENTA + "Blackjack room, or roulette room? (blackjack/roulette) ")
-                     time.sleep(1)
-                     if world2ans2 == "blackjack":
-                            print_with_delay(Colors.GREEN + "You go into the blackjack room and confront a gambler")
+       while rooms:
+              world2ans2 = input(Colors.MAGENTA + "Go into the blackjack room, or roulette room? (blackjack/roulette) ")
+              time.sleep(1)
+              if world2ans2 == "blackjack":
+                     print_with_delay(Colors.GREEN + "You go into the blackjack room and confront an important looking gambler")
+                     time.sleep(3)
+                     print_with_delay(Colors.BLUE + "Have you by chance seen a golden toaster?")
+                     time.sleep(3)
+                     print_with_delay(Colors.RED + "I might have, and I might not have, if you beat me in blackjack, I'll tell you what I know.")
+                     time.sleep(3)
+                     print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, you'll get kicked out or the casino.")
+                     time.sleep(3)
+                     blackjack()
+                     if blackjack() == "won":
+                            print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
                             time.sleep(3)
-                            print_with_delay(Colors.BLUE + "Have you by chance seen a golden toaster?")
-                            time.sleep(3)
-                            print_with_delay(Colors.RED + "I might have, and I might not have, if you beat me in blackjack, I'll tell you what I know.")
-                            time.sleep(3)
-                            print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, you'll get kicked out or the casino.")
-                            time.sleep(3)
-                            blackjack()
-                            if blackjack() == "won":
-                                   print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
-                                   time.sleep(3)
+                     else:
+                            continue
               
 def world3():
        if world == 3:
