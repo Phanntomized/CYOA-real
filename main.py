@@ -779,6 +779,7 @@ def world2():
                             blackjack()
                             if blackjack() == "won":
                                    print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
+                                   time.sleep(3)
               
 def world3():
        if world == 3:
