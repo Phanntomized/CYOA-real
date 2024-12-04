@@ -431,7 +431,7 @@ def world2():
                      time.sleep(3)
                      if opace > 0 and optotal > 21:
                             optotal -= 10
-                            _with_delayprint(f"Their ace's value changes to 1 and their total is {optotal}.")
+                            print_with_delay(f"Their ace's value changes to 1 and their total is {optotal}.")
                             opace -= 1
                             opname = False
                             time.sleep(3)
