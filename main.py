@@ -774,9 +774,19 @@ def world2():
                      time.sleep(3)
                      blackjack()
                      if blackjack() == "won":
+                            print_with_delay(Colors.WHITE + "The gambler gives you $50 for winning.")
+                            money += 50
+                            time.sleep(3)
                             print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
                             time.sleep(3)
+                            if vip == True:
+                                   print_with_delay("You need ")
                      else:
+                            print_with_delay(Colors.GREEN + "You lose $50 for losing.")
+                            money -= 50
+                            time.sleep(3)
+                            if money < 0:
+                                   print_with_delay(Colors.WHITE + f"You ${money} are in debt!")
                             continue
               
 def world3():
