@@ -376,6 +376,7 @@ def world2():
        global health
        global strength
        global money
+       global world
        def blackjack():
               new_game = False
               round_over = False
@@ -554,13 +555,13 @@ def world2():
                             continue
 
        if world == 2:
-              print_with_delay("You're standing outside of a casino.")
+              print_with_delay(Colors.GREEN + "You're standing outside of a casino.")
               time.sleep(3)
               print_with_delay(Colors.BLUE + "I want to find the toaster.")
               time.sleep(3)
               choice1 = True
        while choice1:
-              world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (resaurant/game) ")
+              world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (restaurant/game) ")
               time.sleep(1)
               while world2ans1 == "game":
                      world2ans2 = input(Colors.MAGENTA + "Go into the blackjack room, or roulette room? (blackjack/roulette) ")
@@ -604,167 +605,161 @@ def world2():
                      if world2ans2 == "dining":
                             print_with_delay(Colors.GREEN + "You decide to look around the dining area.")
                             time.sleep(3)
-                            jewelry = random.randint(1,3)
-                            if jewelry == 1:
-                                   jewelry = "braclet"
-                            elif jewelry == 2:
-                                   jewelry = "necklace"
-                            elif jewelry == 3:
-                                   jewelry = "ring"
-                            print_with_delay(f"You find a beautiful golden {jewelry} lying on a table. It might be useful later.")
-                            time.sleep(3)
-                            steal = input(Colors.MAGENTA + "Steal the piece of jewelry? (yes/no) ")
-                            time.sleep(1)
-                            if steal == "yes":
-                                   print_with_delay(Colors.GREEN + f"You grab the {jewelry} and stuff it into your pocket.")
-                                   necklace = True
+                            if necklace != True:
+                                   jewelry = random.randint(1,3)
+                                   if jewelry == 1:
+                                          jewelry = "braclet"
+                                   elif jewelry == 2:
+                                          jewelry = "necklace"
+                                   elif jewelry == 3:
+                                          jewelry = "ring"
+                                   print_with_delay(f"You find a beautiful golden {jewelry} lying on a table. It might be useful later.")
                                    time.sleep(3)
-                                   print_with_delay("Someone sees you steal the necklace, and comes over to confront you.")
-                                   world2ans3 = input(Colors.MAGENTA + "Attempt to start a food fight or wait for them to come to you. (food,wait) ")
+                                   steal = input(Colors.MAGENTA + "Steal the piece of jewelry? (yes/no) ")
                                    time.sleep(1)
-                                   if world2ans3 == "food":
-                                          print_with_delay(Colors.GREEN + "You succesfully start a food fight.")
+                                   if steal == "yes":
+                                          print_with_delay(Colors.GREEN + f"You grab the {jewelry} and stuff it into your pocket.")
+                                          necklace = True
                                           time.sleep(3)
-                                          print_with_delay("In the confusion, you sneak out of the restaurant.")
-                                          time.sleep(3)
-                                          break
-                                   elif world2ans3 == "wait":
-                                          print_with_delay(Colors.GREEN + "You decide to wait for the person to come over to you.")
-                                          time.sleep(3)
-                                          print_with_delay(f"The guest asks you if the {jewelry} was yours.")
-                                          time.sleep(3)
-                                          lie = input(Colors.MAGENTA + "Lie about the necklace belonging to your or tell the truth? (lie/truth) ")
+                                          print_with_delay("Someone sees you steal the necklace, and comes over to confront you.")
+                                          world2ans3 = input(Colors.MAGENTA + "Attempt to start a food fight or wait for them to come to you. (food/wait) ")
                                           time.sleep(1)
-                                          if lie == "lie":
-                                                 print_with_delay(Colors.GREEN + f"You lie about the {jewelry}.")
+                                          if world2ans3 == "food":
+                                                 print_with_delay(Colors.GREEN + "You succesfully start a food fight.")
                                                  time.sleep(3)
-                                                 print_with_delay("The person believes you and goes back to their table.")
+                                                 print_with_delay("In the confusion, you sneak out of the restaurant.")
                                                  time.sleep(3)
-                                          elif lie == "truth":
-                                                 print_with_delay(Colors.GREEN + "You tell the truth.")
+                                                 continue
+                                          elif world2ans3 == "wait":
+                                                 print_with_delay(Colors.GREEN + "You decide to wait for the person to come over to you.")
                                                  time.sleep(3)
-                                                 print_with_delay("The person thinks you are being sarcastic and goes back to their table.")
-                                          world2ans4 = input("Go into the kitchen or go back to the lobby? (kitchen/lobby) ")
-                                          if world2ans2 == "kitchen":
-                                                 world2ans2 = "kitchen"
-                                          elif world2ans2 == "lobby":
-                                                 break
+                                                 print_with_delay(f"The guest asks you if the {jewelry} was yours.")
+                                                 time.sleep(3)
+                                                 lie = input(Colors.MAGENTA + "Lie about the necklace belonging to your or tell the truth? (lie/truth) ")
+                                                 time.sleep(1)
+                                                 if lie == "lie":
+                                                        print_with_delay(Colors.GREEN + f"You lie about the {jewelry}.")
+                                                        time.sleep(3)
+                                                        print_with_delay("The person believes you and goes back to their table.")
+                                                        time.sleep(3)
+                                                 elif lie == "truth":
+                                                        print_with_delay(Colors.GREEN + "You tell the truth.")
+                                                        time.sleep(3)
+                                                        print_with_delay("The person thinks you are being sarcastic and goes back to their table.")
+                                                        time.sleep(3)
+                            else:
+                                   print_with_delay(Colors.GREEN + "You don't find anything.")
+                                   time.sleep(3)
+                            world2ans4 = input(Colors.MAGENTA + "Go into the kitchen or go back to the lobby? (kitchen/lobby) ")
+                            time.sleep(1)
+                            if world2ans2 == "lobby":
+                                   print_with_delay(Colors.GREEN + "You leave the restaurant.")
+                                   time.sleep(3)
+                                   continue
+                            elif world2ans4 == "kitchen":
+                                   world2ans2 = "kitchen"
                             elif steal == "no":
                                    print_with_delay(Colors.GREEN + f"You decide not to steal the {jewelry}.")
-                            print_with_delay("The guests aren't happy with you for snooping around, and you get thrown out of the restaurant.")
-                            time.sleep(3)
-                            continue
-                     elif world2ans2 == "kitchen":
-                            print_with_delay("You go into the kitchen and ask about a golden toater.")
+                                   time.sleep(3)
+                                   world2ans2 = "kitchen"
+                     if world2ans2 == "kitchen":
+                            print_with_delay(Colors.GREEN + "You go into the kitchen and ask about a golden toater.")
                             time.sleep(3)
                             print_with_delay("The chefs want you to prove yourself before they give you any information, so they challenge you to a cook off.")
                             time.sleep(3)
                             world2ans3 = input(Colors.MAGENTA + "Do you want to make bread, spaghetti, or a creme pie? (bread/spaghetti/pie) ")
+                            time.sleep(1)
+                            goodbake = True
                             if world2ans3 == "bread":
                                    print_with_delay(Colors.GREEN + "You decide to make bread.")
+                                   time.sleep(3)
                                    flour = input(Colors.MAGENTA + "What is one main ingredient in bread that starts with f? ")
                                    time.sleep(1)
                                    if flour == "flour":
                                           goodbake = True
                                    else:
                                           goodbake = False
-                                   salt = input("What is one main ingredient in bread that starts with s? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          salt = input("What is one main ingredient in bread that starts with s? ")
+                                          time.sleep(1)
                                           if salt == "salt":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   yeast = input("What is one main ingrdient in bread that starts with y? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          yeast = input("What is one main ingrdient in bread that starts with y? ")
+                                          time.sleep(1)
                                           if yeast == "yeast":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   water = input("What is one main ingredient in bread that starts with w? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          water = input("What is one main ingredient in bread that starts with w? ")
+                                          time.sleep(1)
                                           if water == "water" or water == "wheat":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass  
-                            if world2ans2 == "spaghetti":
+                            elif world2ans2 == "spaghetti":
                                    print_with_delay(Colors.GREEN + "You decide to make spaghetti.")
+                                   time.sleep(3)
                                    noodles = input(Colors.MAGENTA + "What is one main ingredient in spaghetti that starts with n? ")
                                    time.sleep(1)
                                    if noodles == "noodles" or noodles == "noodle":
                                           goodbake = True
                                    else:
                                           goodbake = False
-                                   tomato = input("What is one main ingredient in spaghetti that is two words and starts with t and s? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          tomato = input("What is one main ingredient in spaghetti that is two words and starts with t and s? ")
+                                          time.sleep(1)
                                           if tomato == "tomato sauce":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   meat = input("What is one main ingredient in spaghetti that starts with m? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          meat = input("What is one main ingredient in spaghetti that starts with m? ")
+                                          time.sleep(1)
                                           if meat == "meat" or meat == "meatball" or meat == "meatballs":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   cheese = input("What is one main ingredient in spaghetti that starts with c? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          cheese = input("What is one main ingredient in spaghetti that starts with c? ")
+                                          time.sleep(1)
                                           if cheese == "cheese":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                            if world2ans2 == "pie":
+                            else:
                                    print_with_delay(Colors.GREEN + "You decide to make a creme pie.")
+                                   time.sleep(3)
                                    milk = input(Colors.MAGENTA + "What is one main ingredient in creme pie that starts with m? ")
                                    time.sleep(1)
                                    if milk == "milk":
                                           goodbake = True
                                    else:
                                           goodbake = False
-                                   cream = input("What is one main ingredient in creme pie that starts with c? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          cream = input("What is one main ingredient in creme pie that starts with c? ")
+                                          time.sleep(1)
                                           if cream == "creme" or cream == "cream" or cream == "crust" or cream == "custard":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   sugar = input("What is one main ingredient in creme pie that starts with s? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          sugar = input("What is one main ingredient in creme pie that starts with s? ")
+                                          time.sleep(1)
                                           if sugar == "sugar":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          pass
-                                   eggs = input("What is one main ingredient in creme pie that starts with e? ")
-                                   time.sleep(1)
                                    if goodbake:
+                                          eggs = input("What is one main ingredient in creme pie that starts with e? ")
+                                          time.sleep(1)
                                           if eggs == "egg" or eggs == "eggs":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
-                                   else:
-                                          world2()
                             
                             if goodbake:
                                    print_with_delay(Colors.GREEN + "The chefs are impressed in your skills. One of them saw a golden shaped toaster object being taken into one of the game rooms by a gambler.")
@@ -840,7 +835,7 @@ if start:
               time.sleep(3)
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
-              world = 2 #random.randint(1,6)
+              world = 2#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
