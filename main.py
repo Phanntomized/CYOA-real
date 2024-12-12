@@ -164,6 +164,7 @@ fall = False
 clay_statue = False 
 gold = 0
 club = False
+time1 = "present"
 
 vip = False
 necklace = False
@@ -187,6 +188,8 @@ def world1():
               time.sleep(3)
               world1ans1 = input(Colors.MAGENTA + "Explore inside or explore outside? (inside/outside) ")
               time.sleep(1)
+       else:
+              return
 
        if world1ans1 == "inside":
               print_with_delay(Colors.GREEN + "You decide to explore the cave.")
@@ -269,14 +272,14 @@ def world1():
                                           neanderthal_health = neanderthal_health - 10
                                           neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
-                                          print_with_delay(Colors.WHITE + f"The neadnerthal's health is now {neanderthal_health}.")
+                                          print_with_delay(Colors.WHITE + f"The neanderthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                    elif swing == 2:
                                           print_with_delay(Colors.GREEN + "The blow knocks the neanderthal over.")
                                           neanderthal_health = neanderthal_health - 20
                                           neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
-                                          print_with_delay(Colors.WHITE + f"The neadnerthal's health is now {neanderthal_health}.")
+                                          print_with_delay(Colors.WHITE + f"The neanderthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                           continue
                                    else:
@@ -285,7 +288,7 @@ def world1():
                                    if neanderthal_health <= 0:
                                           print_with_delay("The neanderthal staggers backwards, and falls over.")
                                           time.sleep(3)
-                                          print_with_delay("It appears you have knocked them unconsious.")
+                                          print_with_delay("It appears you have knocked them unconscious.")
                                           time.sleep(3)
                                           print_with_delay("All that fighting has probably attracted some unwanted attention...")
                                           time.sleep(3)
@@ -382,20 +385,20 @@ def world2():
               round_over = False
               won = 0
               lost = 0
-              round = 1
+              game_round = 1
               opdone = False
               card_num = 2
               time.sleep(3)
-              while new_game == False:
+              while not new_game:
                      card_num = 2
                      opcard_num = 2
                      total = 0
                      optotal = 0
                      ace = 0
                      opace = 0
-                     print_with_delay(Colors.WHITE + f"Round {round}")
+                     print_with_delay(Colors.WHITE + f"Round {game_round}")
                      time.sleep(3)
-                     round += 1
+                     game_round += 1
                      round_over = False
                      opdone = False
                      num = random.randint(2,11)
@@ -438,7 +441,7 @@ def world2():
                             opace -= 1
                             opname = False
                             time.sleep(3)
-                     while round_over == False:
+                     while not round_over:
                             hit_stand = input(Colors.MAGENTA + "Hit or stand? (hit/stand) ")
                             time.sleep(1)
                             if hit_stand == "hit":
@@ -486,7 +489,7 @@ def world2():
                             if ace > 11:
                                    print_with_delay("Your opponent becomes suspicious of you holding aces.")
                                    time.sleep(3)
-                            while opdone == False:
+                            while not opdone:
                                    if 17 <= optotal <= 21 and optotal >= total:
                                           print_with_delay(f"Your opponent stood with {optotal}")
                                           time.sleep(3)
@@ -560,6 +563,8 @@ def world2():
               print_with_delay(Colors.BLUE + "I want to find the toaster.")
               time.sleep(3)
               choice1 = True
+       else:
+              return
        while choice1:
               world2ans1 = input(Colors.MAGENTA + "Go to the casino restaurant or game rooms? (restaurant/game) ")
               time.sleep(1)
@@ -584,12 +589,12 @@ def world2():
                                    time.sleep(3)
                                    print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
                                    time.sleep(3)
-                                   if vip != True:
+                                   if not vip:
                                           print_with_delay("You need a VIP pass to enter the boss gambler's room.")
                                           time.sleep(3)
                                           print_with_delay("You go off in search of a VIP pass.")
                                           time.sleep(3)
-                                          world2ans1 = "restaraunt"
+                                          world2ans1 = "restaurant"
                      else:
                             print_with_delay(Colors.GREEN + "You lose $50 for losing.")
                             money -= 50
@@ -605,10 +610,10 @@ def world2():
                      if world2ans2 == "dining":
                             print_with_delay(Colors.GREEN + "You decide to look around the dining area.")
                             time.sleep(3)
-                            if necklace != True:
+                            if not necklace:
                                    jewelry = random.randint(1,3)
                                    if jewelry == 1:
-                                          jewelry = "braclet"
+                                          jewelry = "bracelet"
                                    elif jewelry == 2:
                                           jewelry = "necklace"
                                    elif jewelry == 3:
@@ -625,7 +630,7 @@ def world2():
                                           world2ans3 = input(Colors.MAGENTA + "Attempt to start a food fight or wait for them to come to you. (food/wait) ")
                                           time.sleep(1)
                                           if world2ans3 == "food":
-                                                 print_with_delay(Colors.GREEN + "You succesfully start a food fight.")
+                                                 print_with_delay(Colors.GREEN + "You successfully start a food fight.")
                                                  time.sleep(3)
                                                  print_with_delay("In the confusion, you sneak out of the restaurant.")
                                                  time.sleep(3)
@@ -647,6 +652,10 @@ def world2():
                                                         time.sleep(3)
                                                         print_with_delay("The person thinks you are being sarcastic and goes back to their table.")
                                                         time.sleep(3)
+                                   elif steal == "no":
+                                          print_with_delay(Colors.GREEN + f"You decide not to steal the {jewelry}.")
+                                          time.sleep(3)
+                                          world2ans2 = "kitchen"
                             else:
                                    print_with_delay(Colors.GREEN + "You don't find anything.")
                                    time.sleep(3)
@@ -658,12 +667,8 @@ def world2():
                                    continue
                             elif world2ans4 == "kitchen":
                                    world2ans2 = "kitchen"
-                            elif steal == "no":
-                                   print_with_delay(Colors.GREEN + f"You decide not to steal the {jewelry}.")
-                                   time.sleep(3)
-                                   world2ans2 = "kitchen"
                      if world2ans2 == "kitchen":
-                            print_with_delay(Colors.GREEN + "You go into the kitchen and ask about a golden toater.")
+                            print_with_delay(Colors.GREEN + "You go into the kitchen and ask about a golden toaster.")
                             time.sleep(3)
                             print_with_delay("The chefs want you to prove yourself before they give you any information, so they challenge you to a cook off.")
                             time.sleep(3)
@@ -687,7 +692,7 @@ def world2():
                                           else:
                                                  goodbake = False
                                    if goodbake:
-                                          yeast = input("What is one main ingrdient in bread that starts with y? ")
+                                          yeast = input("What is one main ingredient in bread that starts with y? ")
                                           time.sleep(1)
                                           if yeast == "yeast":
                                                  goodbake = True

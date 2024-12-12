@@ -10,7 +10,7 @@ def blackjack():
               card_num = 2
               suspect = 0
               time.sleep(3)
-              while new_game == False:
+              while not new_game:
                      card_num = 2
                      opcard_num = 2
                      total = 0
@@ -62,7 +62,7 @@ def blackjack():
                             opace -= 1
                             opname = False
                             time.sleep(3)
-                     while round_over == False:
+                     while not round_over:
                             hit_stand = input("Hit or stand? (hit/stand) ")
                             time.sleep(1)
                             if hit_stand == "hit":
@@ -110,7 +110,7 @@ def blackjack():
                             if ace > 11:
                                    print("Your opponent becomes suspicious of you holding aces.")
                                    time.sleep(3)
-                            while opdone == False:
+                            while notopdone:
                                    if 17 <= optotal <= 21 and optotal >= total:
                                           print(f"Your opponent stood with {optotal}")
                                           time.sleep(3)
