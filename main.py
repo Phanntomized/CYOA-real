@@ -380,6 +380,58 @@ def world2():
        global strength
        global money
        global world
+       def roulette():
+              global money
+              global vip
+              cont = True
+              wins = 0
+              while cont:
+                     if money <= 0:
+                            print_with_delay(Colors.GREEN + f"Warning, you have ${money}!")
+                            time.sleep(3)
+                            print_with_delay("If you gain too much debt, you might get into trouble...")
+                            time.sleep(3)
+                     else:
+                            print_with_delay(Colors.WHITE + f"You have {money}.")
+                            time.sleep(3)
+                     cont = input(Colors.MAGENTA + "Play roulette? (yes/no) ")
+                     time.sleep(1)
+                     if cont != "yes":
+                            return
+                     wheel = random.randint(0,1)
+                     bet = int(input(Colors.MAGENTA + f"How much do you want to bet? (up to ${money}) "))
+                     time.sleep(1)
+                     money -= bet
+                     time.sleep(3)
+                     choice = random.randint(0,1)
+                     if choice == 0:
+                            choice = input("Bet on white or black? (white/black) ")
+                     else:
+                            choice = input("Bet on odds or evens? (odds/evens) ")
+                     time.sleep(1)
+                     if choice == "white" or choice == "odds" and wheel == 0:
+                            print_with_delay(Colors.GREEN + f"You win and earn ${bet*2}.")
+                            time.sleep(3)
+                            wins += 1
+                            money += bet*2
+                     elif choice == "black" or choice == "evens" and wheel == 1:
+                            print_with_delay(Colors.GREEN + f"You win and earn ${bet * 2}.")
+                            time.sleep(3)
+                            wins += 1
+                            money += bet*2
+                     else:
+                            print_with_delay(Colors.GREEN + "You don't win anything.")
+                            time.sleep(3)
+                            wins -= 1
+                     if wins >= 3:
+                            vip = True
+                            print_with_delay(Colors.WHITE + "You gain a VIP pass for winning 3 times in a row.")
+                            time.sleep(3)
+                            continue
+                     else:
+                            print_with_delay(f"You've won {wins} times in a row.")
+                            time.sleep(3)
+                            continue
        def blackjack():
               new_game = False
               round_over = False
@@ -595,13 +647,28 @@ def world2():
                                           print_with_delay("You go off in search of a VIP pass.")
                                           time.sleep(3)
                                           world2ans1 = "restaurant"
+                            else:
+                                   print_with_delay(Colors.GREEN + "You lose $50 for losing.")
+                                   money -= 50
+                                   time.sleep(3)
+                                   if money < 0:
+                                          print_with_delay(Colors.WHITE + f"You ${money} are in debt!")
+                                   world2()
                      else:
-                            print_with_delay(Colors.GREEN + "You lose $50 for losing.")
-                            money -= 50
+                            print_with_delay(Colors.GREEN + "You go into the roulette room.")
                             time.sleep(3)
-                            if money < 0:
-                                   print_with_delay(Colors.WHITE + f"You ${money} are in debt!")
-                            continue
+                            print_with_delay("There's no information about the golden toaster.")
+                            time.sleep(3)
+                            print_with_delay("You notice a VIP pass you could win.")
+                            time.sleep(3)
+                            print_with_delay(Colors.BLUE + "Since I'm here anyways, I could play a few rounds of roulette.")
+                            time.sleep(3)
+                            world2ans5 = input(Colors.MAGENTA + "Stay and play roulette or go look for the toaster? (stay/leave) ")
+                            time.sleep(1)
+                            if world2ans5 == "stay":
+                                   roulette()
+                            else:
+                                   continue
               if world2ans1 == "restaurant":
                      print_with_delay(Colors.GREEN + "You decide to go to the restaurant.")
                      time.sleep(3)
