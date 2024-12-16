@@ -110,7 +110,7 @@ def blackjack():
                             if ace > 11:
                                    print("Your opponent becomes suspicious of you holding aces.")
                                    time.sleep(3)
-                            while notopdone:
+                            while not opdone:
                                    if 17 <= optotal <= 21 and optotal >= total:
                                           print(f"Your opponent stood with {optotal}")
                                           time.sleep(3)
