@@ -432,7 +432,47 @@ def world2():
                             print_with_delay(f"You've won {wins} times in a row.")
                             time.sleep(3)
                             continue
+
+       def poker():
+              hand = random.randint(1, 50)
+              if hand == 1:
+                     return "royal flush"
+              else:
+                     hand = random.randint(1, 40)
+                     if hand == 1:
+                            return "straight flush"
+                     else:
+                            hand = random.randint(1, 35)
+                            if hand == 1:
+                                   return "four of a kind"
+                            else:
+                                   hand = random.randint(1, 30)
+                                   if hand == 1:
+                                          return "full house"
+                                   else:
+                                          hand = random.randint(1, 25)
+                                          if hand == 1:
+                                                 return "flush"
+                                          else:
+                                                 hand = random.randint(1, 20)
+                                                 if hand == 1:
+                                                        return "straight"
+                                                 else:
+                                                        hand = random.randint(1, 15)
+                                                        if hand == 1:
+                                                               return "three of a kind"
+                                                        else:
+                                                               hand = random.randint(1, 10)
+                                                               if hand == 1:
+                                                                      return "two of a kind"
+                                                               else:
+                                                                      hand = random.randint(1, 5)
+                                                                      if hand == 1:
+                                                                             return "pair"
+                                                                      else:
+                                                                             return "high card"
        def blackjack():
+              bj_won = False
               new_game = False
               round_over = False
               won = 0
@@ -623,7 +663,10 @@ def world2():
               while world2ans1 == "game":
                      world2ans2 = input(Colors.MAGENTA + "Go into the blackjack room, or roulette room? (blackjack/roulette) ")
                      time.sleep(1)
-                     if world2ans2 == "blackjack":
+                     if world2ans2 == "blackjack" and bj_won:
+                            print_with_delay("Nobody wants to play blackjack with you.")
+                            time.sleep(3)
+                     elif world2ans2 == "blackjack" and not bj_won:
                             print_with_delay(Colors.GREEN + "You go into the blackjack room and confront an important looking gambler")
                             time.sleep(3)
                             print_with_delay(Colors.BLUE + "Have you by chance seen a golden toaster?")
@@ -641,12 +684,70 @@ def world2():
                                    time.sleep(3)
                                    print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, and instructs you to the room he'll be in.")
                                    time.sleep(3)
+                                   bj_won = True
                                    if not vip:
                                           print_with_delay("You need a VIP pass to enter the boss gambler's room.")
                                           time.sleep(3)
                                           print_with_delay("You go off in search of a VIP pass.")
                                           time.sleep(3)
                                           world2ans1 = "restaurant"
+                                   else:
+                                          print_with_delay(Colors.GREEN + "You use your VIP pass to go onto the boss gambler's room.")
+                                          time.sleep(3)
+                                          print_with_delay("The boss gambler smirks as you enter and beckons for you to sit down.")
+                                          time.sleep(3)
+                                          print_with_delay(Colors.RED + "You gotta pay to enter kid.")
+                                          time.sleep(3)
+                                          poker_game = True
+                                          while poker_game:
+                                                 pool = 0
+                                                 world2ans6 = input(Colors.MAGENTA + "Pay $5 to start? (yes/no) ")
+                                                 time.sleep(1)
+                                                 if world2ans6 == "yes":
+                                                        money -= 5
+                                                        print_with_delay(Colors.GREEN + "You pay $5 to play.")
+                                                        time.sleep(3)
+                                                        print_with_delay("The boss matches.")
+                                                        time.sleep(3)
+                                                        pool += 10
+                                                 if money < 0:
+                                                        print_with_delay("You are in debt!")
+                                                        time.sleep(3)
+                                                        print_with_delay("The boss starts a game of poker.")
+                                                        time.sleep(3)
+                                                        hand = poker()
+                                                        print_with_delay(f"Your hand is a {hand}.")
+                                                        time.sleep(3)
+                                                        ophand = poker()
+                                                        if ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind":
+                                                               if ophand == "royal flush":
+                                                                      opraise = random.randint(20-40)
+                                                                      pool += opraise
+                                                               elif ophand == "straight flush":
+                                                                      opraise = random.randint(10 - 30)
+                                                                      pool += opraise
+                                                               else:
+                                                                      opraise = random.randint(5 - 20)
+                                                                      pool += opraise
+                                                               print_with_delay(f"The boss smirks at his hand and raises by ${opraise}.")
+                                                               time.sleep(3)
+                                                               world2ans7 = input(Colors.MAGENTA + "Match, raise, check, or fold? (match/raise/check/fold) ")
+                                                               time.sleep(1)
+                                                               if world2ans7 == "raise":
+                                                                      if money < 0:
+                                                                             print_with_delay(Colors.GREEN + "You can't raise when you are in debt, you can only match!")
+                                                                             time.sleep(3)
+                                                                             world2ans7 = input(Colors.MAGENTA + "Match or fold? ")
+                                                               if world2ans7 == "match":
+                                                                      print_with_delay(Colors.GREEN + f"You match with ${opraise}.")
+                                                                      time.sleep(3)
+                                                                      money -= opraise
+                                                                      pool += opraise
+
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You get up and leave.")
+                                                 time.sleep(3)
+                                                 break
                             else:
                                    print_with_delay(Colors.GREEN + "You lose $50 for losing.")
                                    money -= 50
