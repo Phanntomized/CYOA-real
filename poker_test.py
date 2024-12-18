@@ -1,10 +1,10 @@
 import random
 def poker():
-    hand = random.randint(1,21)
+    hand = random.randint(1,30)
     if hand == 1:
         return "royal flush"
     else:
-        hand = random.randint(1,19)
+        hand = random.randint(1,20)
         if hand == 1:
             return "straight flush"
         else:
