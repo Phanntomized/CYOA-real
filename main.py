@@ -716,9 +716,19 @@ def world2():
                                                         print_with_delay("The boss starts a game of poker.")
                                                         time.sleep(3)
                                                         hand = poker()
-                                                        print_with_delay(f"Your hand is a {hand}.")
+                                                        print_with_delay(f"Your hand type is a {hand}.")
                                                         time.sleep(3)
+                                                        world2ans8 = input(Colors.MAGENTA + "Keep hand or redraw? (keep/draw) ")
+                                                        time.sleep(1)
+                                                        if world2ans8 == "draw":
+                                                               hand = poker()
+                                                               print_with_delay(Colors.GREEN + f"Your hand type is a {hand}.")
+                                                            time.sleep(3)
                                                         ophand = poker()
+                                                        if ophand == "high card" or ophand == "pair" or ophand == "two pair":
+                                                               print_with_delay(Colors.GREEN + "The boss redraws his hand.")
+                                                               time.sleep(3)
+                                                               ophand = poker()
                                                         if ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind":
                                                                if ophand == "royal flush":
                                                                       opraise = random.randint(20-40)
@@ -731,7 +741,7 @@ def world2():
                                                                       pool += opraise
                                                                print_with_delay(f"The boss smirks at his hand and raises by ${opraise}.")
                                                                time.sleep(3)
-                                                               world2ans7 = input(Colors.MAGENTA + "Match, raise, check, or fold? (match/raise/check/fold) ")
+                                                               world2ans7 = input(Colors.MAGENTA + "Match, raise, or fold? (match/raise/fold) ")
                                                                time.sleep(1)
                                                                if world2ans7 == "raise":
                                                                       if money < 0:
@@ -743,6 +753,16 @@ def world2():
                                                                       time.sleep(3)
                                                                       money -= opraise
                                                                       pool += opraise
+                                                                      if hand !!!!!!!!!!!!!!!!!!!!!!!!
+                                                               if world2ans7 == "fold":
+                                                                      print_with_delay(Colors.GREEN + "You folded!")
+                                                                      time.sleep(3)
+                                                                      print_with_delay("The boss takes the prize pool.")
+                                                                      time.sleep(3)
+                                                                      continue
+                                                        else:
+                                                               print_with_delay("The boss retains a pokerface and checks.")
+                                                               time.sleep(3)
 
                                           else:
                                                  print_with_delay(Colors.GREEN + "You get up and leave.")
