@@ -123,7 +123,7 @@ def intro():
                                    
                                    ''')
 
-#intro()
+intro()
 time.sleep(1)
 #print("center".center(20,"-"))
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
@@ -742,12 +742,12 @@ def world2():
                      world2ans2 = input(Colors.MAGENTA + "Go into the blackjack room, or roulette room? (blackjack/roulette) ")
                      time.sleep(1)
                      print()
-                     if world2ans2 == "12345":
+                     if world2ans2 == "bj_skip_cheat":
                             necklace = True
                             jewelry = "ring"
                             vip = True
                             world2ans2 = "blackjack"
-                            bj_won = True #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            bj_won = True
                      if world2ans2 == "blackjack" and bj_won:
                             print_with_delay(Colors.GREEN + "Nobody wants to play blackjack with you.")
                             time.sleep(3)
@@ -808,6 +808,7 @@ def world2():
                                           toaster = False
                                           tie = False
                                           pool = 0
+                                          rand_rounds = random.randint(3,5)
                                           while poker_game:
                                                  if tie == False:
                                                         pool = 0
@@ -826,7 +827,7 @@ def world2():
                                                         print_with_delay(Colors.GREEN + "You bet $5.")
                                                         time.sleep(3)
                                                         pool += 5
-                                                        if won >= 0:
+                                                        if won >= rand_rounds:
                                                                print_with_delay("The boss puts the toaster in the betting pool.")
                                                                time.sleep(3)
                                                                toaster = True
