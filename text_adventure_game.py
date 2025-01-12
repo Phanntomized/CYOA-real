@@ -165,10 +165,12 @@ clay_statue = False
 gold = 0
 club = False
 time1 = "present"
+world2_meter = False
 
 vip = False
 necklace = False
-
+def prison(time_period):
+       pass !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 def world1():
        global strength
        global health
@@ -414,6 +416,7 @@ def world2():
        global strength
        global money
        global world
+       global world2_meter
        def roulette():
               global money
               global vip
@@ -722,6 +725,28 @@ def world2():
                             return "lost"
                      else:
                             continue
+       if world2_meter:
+              print_with_delay(Colors.GREEN + "You're standing outside of the casino once again. This time the toaster is beside you.")
+              time.sleep(3)
+              print()
+              world2ans0 = input(Colors.MAGENTA + "Go into the casino and earn some money or go back to the present? (casino/present) ")
+              time.sleep(1)
+              print()
+              if world2ans0 == "present":
+                     return
+              else:
+                     print_with_delay(Colors.GREEN + "You decide to go play some games.")
+                     time.sleep(3)
+                     print_with_delay(Colors.GREEN + "As you go into the building, you get spotted by some of the boss gambler's henchmen. They don't look too happy.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.RED + "Hey, you're the guy who cheated the boss out of his shiny new toaster.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.GREEN + "They catch you and put you in prison.")
+                     print()
+                     prison("past")
+                     return
 
        if world == 2:
               bj_won = False
@@ -1168,6 +1193,7 @@ def world2():
                                                  time.sleep(3)
                                                  print()
                                                  time1 = "present"
+                                                 world2_meter = True
                                                  return
                                           else:
                                                  continue
