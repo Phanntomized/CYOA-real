@@ -170,7 +170,9 @@ world2_meter = False
 vip = False
 necklace = False
 def prison(time_period):
-       pass !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       if time_period == "past":
+              pass
+       !
 def world1():
        global strength
        global health
