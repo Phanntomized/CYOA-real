@@ -1503,7 +1503,7 @@ def world5():
                                                  time.sleep(3)
                                                  continue
                                    if world5ans1 == 4:
-                                          print_with_delay(Colors.)
+                                          print_with_delay(Colors.GREEN + "")
                      else:
                             print_with_delay(Colors.GREEN + "You decide to go outside.")
                             time.sleep(3)
