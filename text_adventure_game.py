@@ -2033,7 +2033,14 @@ def world5():
 
 def world6():
        if world == 6:
-              pass
+              print_with_delay(Colors.GREEN + "You find yourself in the future.")
+              time.sleep(3)
+              print_with_delay("The toaster is nowhere to be seen.")
+              time.sleep(3)
+              print()
+              world6ans1 = input(Colors.MAGENTA + "Go search in the museum or tech store? (museum/tech) ")
+           future iphone
+
        
 
 if start:
