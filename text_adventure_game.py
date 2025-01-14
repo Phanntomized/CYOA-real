@@ -2031,8 +2031,6 @@ def world5():
                                           time.sleep(3)
                                           continue
 
-
-
 def world6():
        if world == 6:
               pass
