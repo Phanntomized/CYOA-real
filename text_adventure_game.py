@@ -122,12 +122,13 @@ def intro():
                                    
                                    ''')
 
-intro()
+#intro()
 time.sleep(1)
 #print("center".center(20,"-"))
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
+       cheat = False
        text_delay = .5
        print_with_delay('''
                                                      
@@ -153,6 +154,10 @@ if x == "x":
                                                      
                                                       
        ''')
+elif x == "z":
+       cheat = True
+       start = True
+       text_delay = 0.0
 else:
        intro()
 
@@ -171,6 +176,9 @@ known_lotto = False
 sus_lotto = 0
 rand_sus_lotto = random.randint(3,5)
 rand_bill = 0
+wanted = 0
+world5counter = 0
+lottery = 99999
 
 vip = False
 necklace = False
@@ -178,27 +186,111 @@ def prison(time_period):
        global strength
        global health
        global money
-       if time_period == "past":
-              pass
-       elif time_period == "present":
-              pass
+       global wanted
+       in_prison = True
        print_with_delay(Colors.GREEN + "Jail is very boring.")
        time.sleep(3)
        print_with_delay("As time passes, you formulate a plan.")
        time.sleep(3)
-       prisonans1 = input(Colors.MAGENTA + "Decide to be a good prisoner, or be a bad prisoner? (good/bad) ")
-       if prisonans1 == "good":
-              print_with_delay(Colors.GREEN + "You decide to be good.")
-              time.sleep(3)
-              print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
-              health += 10
-              strength += 10
-              time.sleep(3)
-              print_with_delay(Colors.GREEN + "You get let out after a month.")
-              time.sleep(3)
-              print_with_delay("You head back to your apartment.")
-              time.sleep(3)
-
+       print()
+       while in_prison:
+              prisonans1 = input(Colors.MAGENTA + "Decide to be a good prisoner, or be a bad prisoner? (good/bad) ")
+              if prisonans1 == "good":
+                     print()
+                     print_with_delay(Colors.GREEN + "You decide to be good.")
+                     time.sleep(3)
+                     if wanted > 0:
+                            if time_period == "past":
+                                   health -= wanted*2
+                                   strength -= wanted*2
+                                   print_with_delay(Colors.WHITE + f"You lose {wanted*2} strength and {wanted*2} health.")
+                                   time.sleep(3)
+                                   if health <= 0:
+                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          quit()
+                                   else:
+                                          print_with_delay(
+                                                 Colors.GREEN + f"You now have {health} health and {strength} strength.")
+                            else:
+                                   health -= wanted
+                                   strength -= wanted
+                                   print_with_delay(Colors.WHITE + f"You lose {wanted} strength and {wanted} health.")
+                                   time.sleep(3)
+                                   if health <= 0:
+                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          quit()
+                                   else:
+                                          print_with_delay(Colors.GREEN + f"You now have {health} health and {strength} strength.")
+                     else:
+                            print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
+                            health += 10
+                            strength += 10
+                            time.sleep(3)
+                     print_with_delay(Colors.GREEN + "You soon get let out.")
+                     time.sleep(3)
+                     print_with_delay("Somehow, the toaster bailed you out of jail.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${wanted*5} of your money to bail you out.")
+                     time.sleep(3)
+                     money -= wanted*5
+                     print()
+                     print_with_delay(Colors.GREEN + "You go back to your apartment.")
+                     time.sleep(3)
+                     return
+              else:
+                     print()
+                     prisonans2 = input(Colors.MAGENTA + "Attempt to escape or start a riot? (escape/riot) ")
+                     time.sleep(3)
+                     if prisonans2 == "escape":
+                            escape = random.randint(1,3)
+                            if escape == 1:
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You successfully escape jail.")
+                                   time.sleep(3)
+                                   wanted += 1
+                                   return
+                            else:
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You attempt to escape jail but get caught.")
+                                   time.sleep(3)
+                                   wanted += 1
+                                   continue
+                     else:
+                            print_with_delay(Colors.GREEN + "You decide to start a riot.")
+                            time.sleep(3)
+                            riot = random.randint(1, 5)
+                            if riot == 5:
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You successfully start a riot and escape.")
+                                   time.sleep(3)
+                                   wanted += 1
+                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot*2} health.")
+                                   health -= riot*2
+                                   if health <= 0:
+                                          print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
+                                          quit()
+                                   else:
+                                          return
+                            elif riot == 3 or riot == 4:
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You successfully start a riot, but it gets shut down.")
+                                   time.sleep(3)
+                                   wanted += 1
+                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot * 2} health.")
+                                   health -= riot * 2
+                                   if health <= 0:
+                                          print_with_delay(
+                                                 Colors.WHITE + "You died: you have perished in a prison riot")
+                                          quit()
+                                   else:
+                                          continue
+                            else:
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You attempt to start a riot, except it doesn't work.")
+                                   time.sleep(3)
+                                   wanted += 1
+                                   continue
 
 def world1():
        global strength
@@ -798,7 +890,7 @@ def world2():
                      world2ans2 = input(Colors.MAGENTA + "Go into the blackjack room, or roulette room? (blackjack/roulette) ")
                      time.sleep(1)
                      print()
-                     if world2ans2 == "bj_skip_cheat":
+                     if cheat:
                             necklace = True
                             jewelry = "ring"
                             vip = True
@@ -1481,108 +1573,154 @@ def world5():
        global health
        global strength
        global known_lotto
+       lottery = random.randint(10000, 99999)
+       !!!!!!!!!!!!!!!!!!!!!!!!!
        if world == 5:
-              print_with_delay(Colors.GREEN + "You find yourself seeming in the present.")
-              time.sleep(3)
-              print_with_delay("The toaster is nowhere to be seen.")
-              time.sleep(3)
-              world5ans1 = "inside"
-              search_apartment = 0
-              while world == 5:
-                     print()
-                     world5ans1 = input(Colors.MAGENTA + "Go outside, or search around your apartment? (outside/inside) ")
+              if world5counter > 0 or cheat:
+                     if cheat:
+                            print(lottery)
+                            known_lotto = True
+                     print_with_delay(Colors.GREEN + "You find yourself a day in the future.")
+                     time.sleep(3)
+                     print_with_delay("The toaster is right next to you.")
+                     time.sleep(3)
+                     world5ans0 = input(Colors.MAGENTA + "Go outside, or go back to the present? (outside/present) ")
                      time.sleep(1)
-                     print()
-                     if world5ans1 == "apartment":
-                            search_apartment += 1
-                            if search_apartment == 1:
-                                   print_with_delay(Colors.GREEN + "You decide to look around your apartment.")
-                                   time.sleep(3)
-                                   print_with_delay(Colors.GREEN + "As you look around you find your old computer.")
-                                   time.sleep(3)
-                                   print()
-                                   print_with_delay(Colors.BLUE + "According to the computer, I'm only a few days in the future.")
-                                   time.sleep(3)
-                                   print_with_delay("I wonder why the toaster brought me here?")
-                                   time.sleep(3)
-                                   print()
-                            elif search_apartment == 2:
-                                   print_with_delay(Colors.WHITE + "You find $20 in coins stuffed between your sofa cushions.")
-                                   time.sleep(3)
-                                   money += 20
-                            elif search_apartment == 3:
-                                   print_with_delay(Colors.GREEN + "You find the fridge.")
-                                   time.sleep(3)
-                                   print()
-                                   world5ans2 = input(Colors.MAGENTA + "Eat some food? (yes/no) ")
-                                   time.sleep(1)
-                                   print()
-                                   if world5ans2 == "yes":
-                                          food = random.randint(5,20)
-                                          health += food
-                                          print_with_delay(Colors.GREEN + f"The food tasted funky, but your health was restored by {food} and is now {health}.")
-                                          time.sleep(3)
-                                          sick = True
-                                          continue
-                                   else:
-                                          print_with_delay(Colors.BLUE + "My fridge is broken, so I'll probably get sick if I eat anything.")
-                                          time.sleep(3)
-                                          continue
-                            else:
-                                   print_with_delay(Colors.GREEN + "As you search, you start to realize your home is really dirty.")
-                                   time.sleep(3)
-                                   print()
-                                   world5ans3 = input(Colors.MAGENTA + "Clean up your home? (yes/no) ")
-                                   time.sleep(1)
-                                   print()
-                                   if world5ans3 == "yes":
-                                          print_with_delay(Colors.GREEN + "You decide to take a break and clean.")
-                                          time.sleep(3)
-                                          if strength < 10 < health:
-                                                 print()
-                                                 print_with_delay(Colors.BLUE + "Whew! I'm sore from that workout.")
-                                                 time.sleep(3)
-                                                 print()
-                                                 print_with_delay(Colors.WHITE + f"You lose 10 health and gain 3 strength, you now have {health} health and {strength} strength.")
-                                                 time.sleep(3)
-                                                 print()
-                                                 health -= 10
-                                                 strength += 10
-                                          else:
-                                                 print_with_delay(Colors.GREEN + "The apartment looks a lot nicer than it did before.")
-                                                 time.sleep(3)
-                                          print_with_delay(Colors.GREEN + "When you open a closet to clean it, the toaster falls out.")
-                                          time.sleep(3)
-                                          print()
-                                          print_with_delay(Colors.RED + "Peekaboo!")
-                                          time.sleep(3)
-                                          print()
-                                          print_with_delay(Colors.BLUE + "Why did you bring me here?")
-                                          time.sleep(3)
-                                          print()
-                                          print_with_delay(Colors.RED + "Well, to teach you a lesson for not keeping your home clean, and also something else and if you know, you know.")
-                                          time.sleep(3)
-                                          print_with_delay("Let's go back now.")
-                                          time.sleep(3)
-                                          print()
-                                          print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(3)
-                                          return
-                     else:
+                     if world5ans0 == "outside":
                             print_with_delay(Colors.GREEN + "You decide to go outside.")
                             time.sleep(3)
                             print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for the day before.")
                             time.sleep(3)
                             known_lotto = True
-                            lottery = random.randint(00000,99999)
                             print_with_delay(f"The winning ticket for today is {lottery}.")
                             time.sleep(3)
                             print()
                             print_with_delay(Colors.BLUE + "This may be handy to remember for later.")
                             time.sleep(3)
                             print()
-                            print_with_delay(Colors.GREEN + "You decide to go back inside.")
+                            print_with_delay(Colors.GREEN + "You decide to go back to the present.")
                             time.sleep(3)
+                            print_with_delay("Before you leave, your future self comes into the apartment.")
+                            time.sleep(3)
+                            print()
+                            print_with_delay(Colors.CYAN + "Hey, before you leave, I got a warning for you. Don't win the lottery too much or bad things will happen...")
+                            time.sleep(3)
+                            print()
+                            print_with_delay(Colors.YELLOW + "Zroom!")
+                            time.sleep(3)
+                            print()
+                            return
+                     else:
+                            print_with_delay(Colors.YELLOW + "Zroom!")
+                            time.sleep(3)
+                            print()
+                            return
+              else:
+                     print_with_delay(Colors.GREEN + "You find yourself seemingly in the present.")
+                     time.sleep(3)
+                     print_with_delay("The toaster is nowhere to be seen.")
+                     time.sleep(3)
+                     world5ans1 = "inside"
+                     search_apartment = 0
+                     while world == 5:
+                            print()
+                            world5ans1 = input(Colors.MAGENTA + "Go outside, or search around your apartment? (outside/inside) ")
+                            time.sleep(1)
+                            print()
+                            if world5ans1 == "inside":
+                                   search_apartment += 1
+                                   if search_apartment == 1:
+                                          print_with_delay(Colors.GREEN + "You decide to look around your apartment.")
+                                          time.sleep(3)
+                                          print_with_delay(Colors.GREEN + "As you look around you find your old computer.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.BLUE + "According to the computer, I'm a few days in the future.")
+                                          time.sleep(3)
+                                          print_with_delay("I wonder why the toaster brought me here?")
+                                          time.sleep(3)
+                                          print()
+                                   elif search_apartment == 2:
+                                          print_with_delay(Colors.WHITE + "You find $20 in coins stuffed between your sofa cushions.")
+                                          time.sleep(3)
+                                          money += 20
+                                   elif search_apartment == 3:
+                                          print_with_delay(Colors.GREEN + "You find the fridge.")
+                                          time.sleep(3)
+                                          print()
+                                          world5ans2 = input(Colors.MAGENTA + "Eat some food? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world5ans2 == "yes":
+                                                 food = random.randint(5,20)
+                                                 health += food
+                                                 print_with_delay(Colors.GREEN + f"The food tasted funky, but your health was restored by {food} and is now {health}.")
+                                                 time.sleep(3)
+                                                 sick = True
+                                                 continue
+                                          else:
+                                                 print_with_delay(Colors.BLUE + "My fridge is broken, so I'll probably get sick if I eat anything.")
+                                                 time.sleep(3)
+                                                 continue
+                                   else:
+                                          print_with_delay(Colors.GREEN + "As you search, you start to realize your home is really dirty.")
+                                          time.sleep(3)
+                                          print()
+                                          world5ans3 = input(Colors.MAGENTA + "Clean up your home? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world5ans3 == "yes":
+                                                 print_with_delay(Colors.GREEN + "You decide to take a break and clean.")
+                                                 time.sleep(3)
+                                                 if strength < 10 < health:
+                                                        print()
+                                                        print_with_delay(Colors.BLUE + "Whew! I'm sore from all that cleaning!")
+                                                        time.sleep(3)
+                                                        print()
+                                                        health -= 10
+                                                        strength += 10
+                                                        print_with_delay(Colors.WHITE + f"You lose 10 health and gain 3 strength, you now have {health} health and {strength} strength.")
+                                                        time.sleep(3)
+                                                        print()
+                                                 else:
+                                                        print_with_delay(Colors.GREEN + "The apartment looks a lot nicer than it did before.")
+                                                        time.sleep(3)
+                                                 print_with_delay(Colors.GREEN + "When you open a closet to clean it, the toaster falls out.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.RED + "Peekaboo!")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.BLUE + "Why did you bring me here?")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.RED + "Well, to teach you a lesson for not keeping your home clean, and also something else and if you know, you know.")
+                                                 time.sleep(3)
+                                                 print_with_delay("Let's go back now.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.YELLOW + "Zroom!")
+                                                 time.sleep(3)
+                                                 return
+                            else:
+                                   if not known_lotto:
+                                          print_with_delay(Colors.GREEN + "You decide to go outside.")
+                                          time.sleep(3)
+                                          print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for the day before.")
+                                          time.sleep(3)
+                                          known_lotto = True
+                                          print_with_delay(f"The winning ticket for today is {lottery}.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.BLUE + "This may be handy to remember for later.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.GREEN + "You decide to go back inside.")
+                                          time.sleep(3)
+                                   else:
+                                          print_with_delay(Colors.GREEN + "There's nothing out of the ordinary outside.")
+                                          time.sleep(3)
+                                          continue
 
 
 
@@ -1593,48 +1731,49 @@ def world6():
 
 if start:
        present = True
-       time.sleep(3)
-       print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you type a choice wrong or try to choose an option that doesn't exist, your character may act on it's own. You have been warned...")
-       time.sleep(10)
-       print()
-       print_with_delay(Colors.GREEN + "You live in a run down apartment in the suburbs.")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.WHITE + f"You have {health} health, {strength} strength, and {money} dollars.")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.GREEN + "One day while wandering through a thrift store in search of a gift for an upcoming white elephant, you see something shining in the kitchen isle.")
-       time.sleep(5)
-       print_with_delay("You go over and discover that it's a shiny golden toaster.")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.BLUE + "This looks like the perfect white elephant gift.")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.GREEN + "Later when you get home, you decide to plug in the toaster to try to toast a slice of bread.")
-       time.sleep(5)
-       print_with_delay("When you plug in the toaster and insert a piece of bread, you notice that the dials for the toaster aren't normal.")
-       time.sleep(5)
-       print_with_delay("Instead of bread toasting settings, the knob says 'past' present' and 'future'.")
-       time.sleep(5)
-       print_with_delay("You hear a strange voice start talking to you, you can't figure out where it's coming from.")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.RED + "Hey kid, want to earn some sweet dough?")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.BLUE + "I-I'm not sure, who are you and why are you talking to me?")
-       time.sleep(5)
-       print()
-       print_with_delay(Colors.RED + "Come on kid, you know it's me, your toaster talking to you. And also I'm not a toaster, I'm a time travel machine. \nI can take you anywhere in time and you could become rich!")
-       time.sleep(5)
-       print()
+       if not cheat:
+              time.sleep(3)
+              print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you type a choice wrong or try to choose an option that doesn't exist, your character may act on it's own. You have been warned...")
+              time.sleep(10)
+              print()
+              print_with_delay(Colors.GREEN + "You live in a run down apartment in the suburbs.")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.WHITE + f"You have {health} health, {strength} strength, and {money} dollars.")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.GREEN + "One day while wandering through a thrift store in search of a gift for an upcoming white elephant, you see something shining in the kitchen isle.")
+              time.sleep(5)
+              print_with_delay("You go over and discover that it's a shiny golden toaster.")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.BLUE + "This looks like the perfect white elephant gift.")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.GREEN + "Later when you get home, you decide to plug in the toaster to try to toast a slice of bread.")
+              time.sleep(5)
+              print_with_delay("When you plug in the toaster and insert a piece of bread, you notice that the dials for the toaster aren't normal.")
+              time.sleep(5)
+              print_with_delay("Instead of bread toasting settings, the knob says 'past' present' and 'future'.")
+              time.sleep(5)
+              print_with_delay("You hear a strange voice start talking to you, you can't figure out where it's coming from.")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.RED + "Hey kid, want to earn some sweet dough?")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.BLUE + "I-I'm not sure, who are you and why are you talking to me?")
+              time.sleep(5)
+              print()
+              print_with_delay(Colors.RED + "Come on kid, you know it's me, your toaster talking to you. And also I'm not a toaster, I'm a time travel machine. \nI can take you anywhere in time and you could become rich!")
+              time.sleep(5)
+              print()
        ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
        time.sleep(1)
        print()
 
        if ans1 == "decline":
-              print_with_delay(Colors.BLUE + "I must be going crazy, there's no such thing as a talking toaster, or time travel!")
+              print_with_delay(Colors.BLUE + "I must be going crazy, there's no such thing as a talking toaster, or time travel for that matter!")
               time.sleep(3)
               print()
               print_with_delay(Colors.RED + "If you don't believe me, then I guess I'll have to show you.")
@@ -1643,20 +1782,20 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
               print()
-              world = 2#random.randint(1,6)
+              world = 5#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
               print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
               time.sleep(3)
-              time1 = input(Colors.MAGENTA + "Go to the past or the future (<--- not coded yet don't go here)? (past/future) ")
+              time1 = input(Colors.MAGENTA + "Go to the past or the future (past/future) ")
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
               print()
               if time1 == "past":
-                     world = random.randint(1,4)#(1,4)
+                     world = random.randint(1,4)
               else:
                      world = random.randint(5,6)
        if world == 1:
@@ -1717,20 +1856,17 @@ if start:
                      time.sleep(3)
                      print()
                      if get_lotto == "yes":
-                            print_with_delay(Colors.GREEN + "You walk over to a nearby gas station to buy some tickets.")
+                            print_with_delay(Colors.GREEN + "You walk over to a nearby gas station to buy a ticket.")
+                            time.sleep(3)
+                            money -= 5
+                            print_with_delay(f"You spend $5 on a ticket, you now have ${money}.")
                             time.sleep(3)
                             print()
                             guess_lotto = input(Colors.MAGENTA + "What lottery number do you want? (5-digits) ")
-                            time.sleep(3)
+                            time.sleep(1)
                             print()
-                            if guess_lotto == lottery:
-                                   rand_lotto = random.randint(1,3)
-                                   if rand_lotto == 1:
-                                          rand_lotto = 1,000
-                                   elif rand_lotto == 2:
-                                          rand_lotto = 5,000
-                                   else:
-                                          rand_lotto = 10,000
+                            if lottery == guess_lotto:
+                                   rand_lotto = random.randint(100,10000)
                                    print_with_delay(Colors.WHITE + f"You won the lottery and gained ${rand_lotto}!")
                                    money += rand_lotto
                                    sus_lotto += 1
@@ -1739,8 +1875,10 @@ if start:
                                           print_with_delay(Colors.GREEN + "You've won the lottery so many times, some people become suspicious you're cheating, and you get thrown in jail.")
                                           time.sleep(3)
                                           prison("present")
-              else:
-                     sus_lotto = 0
+                            else:
+                                   print_with_delay(Colors.GREEN + "You didn't guess correctly. :(")
+                                   time.sleep(3)
+              known_lotto = False
               print()
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               time.sleep(1)
