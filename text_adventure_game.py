@@ -159,6 +159,7 @@ elif x == "z":
        start = True
        text_delay = 0.0
 else:
+       cheat = False
        intro()
 
 money = 10
@@ -174,13 +175,21 @@ sick = False
 food = 0
 known_lotto = False
 sus_lotto = 0
-rand_sus_lotto = random.randint(3,5)
 rand_bill = 0
 wanted = 0
 world5counter = 0
 lottery = 99999
 open_door = False
 anvil = False
+known_bitcoin = 0
+buy_bitcoin = 0
+jewelry = random.randint(1,3)
+if jewelry == 1:
+       jewelry = "bracelet"
+elif jewelry == 2:
+       jewelry = "necklace"
+elif jewelry == 3:
+       jewelry = "ring"
 
 vip = False
 necklace = False
@@ -233,10 +242,16 @@ def prison(time_period):
                                    else:
                                           print_with_delay(Colors.GREEN + f"You now have {health} health and {strength} strength.")
                      else:
-                            print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
-                            health += 10
-                            strength += 10
-                            time.sleep(3)
+                            if time_period == "present":
+                                   print_with_delay(Colors.WHITE + "You gain 5 strength and 15 health.")
+                                   health += 15
+                                   strength += 5
+                                   time.sleep(3)
+                            else:
+                                   print_with_delay(Colors.WHITE + "You gain 15 strength and 5 health.")
+                                   health += 5
+                                   strength += 15
+                                   time.sleep(3)
                      print_with_delay(Colors.GREEN + "You soon get let out.")
                      time.sleep(3)
                      print_with_delay("Somehow, the toaster bailed you out of jail.")
@@ -950,7 +965,7 @@ def world2():
                                           print_with_delay(Colors.WHITE + f"You ${money+money*2} are in debt!")
                                    break
                             elif blackjack() == "prison":
-                                   prison()
+                                   prison("past")
                                    return
                             else:
                                    print_with_delay(Colors.WHITE + "The gambler gives you $50 for winning.")
@@ -990,6 +1005,7 @@ def world2():
                                                  else:
                                                         tie = False
                                                  opraise = 0
+                                                 raise_pool = 0
                                                  print()
                                                  print_with_delay(Colors.WHITE + f"You have ${money}.")
                                                  time.sleep(3)
@@ -1151,6 +1167,7 @@ def world2():
                                                                              pool = 0
                                                                              continue
                                                         elif world2ans7 == "match":
+                                                               raise_pool = 0
                                                                if pool == 10:
                                                                       print_with_delay(Colors.GREEN + "You check.")
                                                                       time.sleep(3)
@@ -1160,6 +1177,7 @@ def world2():
                                                                       money -= opraise
                                                                       pool += opraise
                                                         else:
+                                                               raise_pool = 0
                                                                print_with_delay(Colors.GREEN + "You folded!")
                                                                time.sleep(3)
                                                                print_with_delay(f"The boss takes the prize pool, worth ${pool}.")
@@ -1600,7 +1618,7 @@ def world3(idol):
               inside_pyramid = True
               print_with_delay("You walk inside one of the pyramids.")
               time.sleep(3)
-              print_with_delay("There's a split in the pasage.")
+              print_with_delay("There's a split in the passage.")
               while inside_pyramid:
                      print()
                      world3ans1 = input(Colors.MAGENTA + "Go right or left? (right/left) ")
@@ -1775,9 +1793,89 @@ def world3(idol):
                                                  print()
                                                  return
 def world4():
+       global money
+       global health
+       global strength
+       global known_bitcoin
+       global buy_bitcoin
        if world == 4:
-              pass
-
+              print_with_delay(Colors.GREEN + "You yourself seemingly in the present.")
+              time.sleep(3)
+              print_with_delay("When you go to check the date on your computer, you realise it's 2010.")
+              time.sleep(3)
+              print_with_delay("You open a drawer on your computer desk and find the toaster.")
+              time.sleep(3)
+              print()
+              print_with_delay(Colors.RED + "Thanks for freeing me, now get to work.")
+              time.sleep(3)
+              print()
+              print_with_delay(Colors.BLUE + "What do you want me to get to work on?")
+              time.sleep(3)
+              print()
+              print_with_delay(Colors.RED + "It's the perfect time to buy Bitcoin!")
+              time.sleep(3)
+              print()
+              world4ans1 = input(Colors.MAGENTA + "Buy Bitcoin or go home? (buy/home) ")
+              time.sleep(1)
+              if world4ans1 == "home":
+                     print()
+                     print_with_delay(Colors.BLUE + "Please, take me back to the present. I'm not interesting in Bitcoin right now.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.RED + "Fine, but your missing out on a lot of money...")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.YELLOW + "Zroom!")
+                     time.sleep(3)
+                     print()
+                     return
+              else:
+                     buying = True
+                     while buying:
+                            if money > 0:
+                                   print()
+                                   buy_bitcoin = float(input(Colors.MAGENTA + "How many shares of Bitcoin do you want to buy? (1 share = $0.05) "))
+                                   time.sleep(3)
+                                   print()
+                                   if buy_bitcoin*.05 > money:
+                                          print_with_delay(Colors.GREEN + f"You can't buy that much Bitcoin, you don't have enough money. (max shares = {money/.05})")
+                                          time.sleep(3)
+                                   else:
+                                          print()
+                                          money -= buy_bitcoin*.05
+                                          print_with_delay(Colors.WHITE + f"You bought {buy_bitcoin} shares worth ${buy_bitcoin*.05}.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.GREEN + f"You have ${money} left.")
+                                          time.sleep(3)
+                                   print()
+                                   if buy_bitcoin > 0:
+                                          known_bitcoin += 1
+                                   world4ans2 = input(Colors.MAGENTA + "Continue buying Bitcoin? (yes/no) ")
+                                   time.sleep(3)
+                                   if world4ans2 == "yes":
+                                          print()
+                                          print_with_delay(Colors.RED + "Alright, lets go back and see how much money your bitcoin made.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.YELLOW + "Zroom!")
+                                          time.sleep(3)
+                                          print()
+                                          return
+                                   else:
+                                          continue
+                            else:
+                                   print()
+                                   print_with_delay(Colors.BLUE + "Wait, I can't buy any Bitcoin, I don't have any money.")
+                                   time.sleep(3)
+                                   print()
+                                   print_with_delay(Colors.RED + "Well, that's a shame, I guess we just have to go back to the present without any Bitcoin.")
+                                   time.sleep(3)
+                                   print()
+                                   print_with_delay(Colors.YELLOW + "Zroom!")
+                                   time.sleep(3)
+                                   print()
+                                   return
 def world5():
        global lottery
        global food
@@ -1944,7 +2042,9 @@ def world6():
 
 if start:
        present = True
-       if not cheat:
+       if cheat:
+              ans1 = "decline"
+       else:
               time.sleep(3)
               print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you type a choice wrong or try to choose an option that doesn't exist, your character may act on it's own. You have been warned...")
               time.sleep(10)
@@ -1981,9 +2081,9 @@ if start:
               print_with_delay(Colors.RED + "Come on kid, you know it's me, your toaster talking to you. And also I'm not a toaster, I'm a time travel machine. \nI can take you anywhere in time and you could become rich!")
               time.sleep(5)
               print()
-       ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
-       time.sleep(1)
-       print()
+              ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
+              time.sleep(1)
+              print()
 
        if ans1 == "decline":
               print_with_delay(Colors.BLUE + "I must be going crazy, there's no such thing as a talking toaster, or time travel for that matter!")
@@ -1995,7 +2095,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
               print()
-              world = 3#random.randint(1,6)
+              world = 4#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2026,12 +2126,38 @@ if start:
        while present:
               rand_bill = random.randint(1,5)
               amount_bill = random.randint(10,100)
+              rand_sus_lotto = random.randint(2, 5)
+              rand_coin = random.randint(2,5)
               print_with_delay(Colors.GREEN + "You're back in your apartment. The toaster is sitting on your kitchen counter.")
               time.sleep(3)
               if health < 50:
+                     print()
                      health += health/2
-                     print_with_delay(f"You gain {health*2} health. You now have {health} health.")
+                     print_with_delay(Colors.WHITE + f"You gain {health*2} health. You now have {health} health.")
                      time.sleep(3)
+              if known_bitcoin > 0:
+                     buy_bitcoin += buy_bitcoin * 96000
+                     print()
+                     if known_bitcoin > rand_coin:
+                            rand_coin = random.randint(1,3)
+                            if rand_coin == 1:
+                                   money -= buy_bitcoin/10
+                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and ${buy_bitcoin/10}. You now have ${money}.")
+                                   time.sleep(3)
+                            elif rand_coin == 2:
+                                   rand_coin = random.randint(1,10)
+                                   print_with_delay(Colors.GREEN + f"Somehow, you meddling with time caused a gigantic stock market crash! You lost ${rand_coin*buy_bitcoin}. Ypuu now have ${money}.")
+                                   time.sleep(3)
+                            else:
+                                   money += buy_bitcoin*96000
+                                   print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin*96000}. You now have ${money}.")
+                                   time.sleep(3)
+                            known_bitcoin = 0
+                     else:
+                            money += buy_bitcoin * 96000
+                            print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin * 96000}. You now have ${money}.")
+                            time.sleep(3)
+                            known_bitcoin = 0
               if sick:
                      rand_sick = random.randint(1,3)
                      if rand_sick == 1:
@@ -2045,6 +2171,7 @@ if start:
                             print_with_delay(Colors.WHITE + f"You lose {food*2} health for being sick, your health is now {health}.")
                             time.sleep(3)
               if rand_bill == 1:
+                     print()
                      print_with_delay(Colors.GREEN + f"You have to pay ${amount_bill} in bills.")
                      time.sleep(3)
                      print()
