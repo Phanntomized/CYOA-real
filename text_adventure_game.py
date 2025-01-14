@@ -179,6 +179,8 @@ rand_bill = 0
 wanted = 0
 world5counter = 0
 lottery = 99999
+open_door = False
+anvil = False
 
 vip = False
 necklace = False
@@ -568,13 +570,13 @@ def world2():
                      if cont == "no":
                             return
                      wheel = random.randint(0,1)
-                     bet = int(input(Colors.MAGENTA + f"How much do you want to bet? "))
+                     rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? "))
                      time.sleep(1)
                      print()
-                     if bet <= 0:
-                            money += bet
+                     if rbet <= 0:
+                            money += rbet
                      else:
-                            money -= bet
+                            money -= rbet
                      choice = random.randint(0,1)
                      if choice == 0:
                             choice = input("Bet on white or black? (white/black) ")
@@ -591,10 +593,10 @@ def world2():
                             time.sleep(3)
                             print()
                             wins += 1
-                            money += bet*2
+                            money += rbet*2
                      elif choice == "black" or choice == "evens" and wheel == 1:
-                            if bet < 0:
-                                   bet = bet - bet*2
+                            if rbet < 0:
+                                   rbet -= rbet*2
                             print_with_delay(Colors.GREEN + f"You win and earn ${bet * 2}.")
                             time.sleep(3)
                             wins += 1
@@ -620,40 +622,40 @@ def world2():
                             continue
 
        def poker():
-              hand = random.randint(1,18)
-              if hand == 1:
+              plhand = random.randint(1,18)
+              if plhand == 1:
                      return "royal flush"
               else:
-                     hand = random.randint(1,16)
-                     if hand == 1:
+                     plhand = random.randint(1,16)
+                     if plhand == 1:
                             return "straight flush"
                      else:
-                            hand = random.randint(1,14)
-                            if hand == 1:
+                            plhand = random.randint(1,14)
+                            if plhand == 1:
                                    return "four of a kind"
                             else:
-                                   hand = random.randint(1,12)
-                                   if hand == 1:
+                                   plhand = random.randint(1,12)
+                                   if plhand == 1:
                                           return "full house"
                                    else:
-                                          hand = random.randint(1,10)
-                                          if hand == 1:
+                                          plhand = random.randint(1,10)
+                                          if plhand == 1:
                                                  return "flush"
                                           else:
-                                                 hand = random.randint(1,8)
-                                                 if hand == 1:
+                                                 plhand = random.randint(1,8)
+                                                 if plhand == 1:
                                                         return "straight"
                                                  else:
-                                                        hand = random.randint(1,6)
-                                                        if hand == 1:
+                                                        plhand = random.randint(1,6)
+                                                        if plhand == 1:
                                                                return "three of a kind"
                                                         else:
-                                                               hand = random.randint(1,4)
-                                                               if hand == 1:
+                                                               plhand = random.randint(1,4)
+                                                               if plhand == 1:
                                                                       return "two pair"
                                                                else:
-                                                                      hand = random.randint(1,2)
-                                                                      if hand == 1:
+                                                                      plhand = random.randint(1,2)
+                                                                      if plhand == 1:
                                                                              return "pair"
                                                                       else:
                                                                              return "high card"
@@ -872,11 +874,26 @@ def world2():
                      print()
                      print_with_delay(Colors.RED + "Hey, you're the guy who cheated the boss out of his shiny new toaster.")
                      time.sleep(3)
-                     print()
-                     print_with_delay(Colors.GREEN + "They catch you and get you thrown into jail.")
-                     print()
-                     prison("past")
-                     return
+                     rand_jail = random.randint(1,2)
+                     if rand_jail == 1 and strength < 20 or health <= rand_jail*10:
+                            print()
+                            print_with_delay(Colors.GREEN + "They catch you and get you thrown into jail.")
+                            print()
+                            prison("past")
+                            return
+                     elif strength >= 20:
+                            print_with_delay(Colors.GREEN + "Because of how strong you are, you beat them up.")
+                            time.sleep(3)
+                            health -= rand_jail*10
+                            print_with_delay(f"You lose {rand_jail*10} health. Your health is now {health}.")
+                            time.sleep(3)
+                            print_with_delay("The thugs run off and take the golden toaster with them and give it back to the boss.")
+                            time.sleep(3)
+                            world = 2
+                     else:
+                            print_with_delay(Colors.GREEN + "You escape the thugs, but they steal the golden toaster and bring it back to the boss.")
+                            time.sleep(3)
+                            world = 2
 
        if world == 2:
               bj_won = False
@@ -968,7 +985,7 @@ def world2():
                                           pool = 0
                                           rand_rounds = random.randint(3,5)
                                           while poker_game:
-                                                 if tie == False:
+                                                 if not tie:
                                                         pool = 0
                                                  else:
                                                         tie = False
@@ -1070,7 +1087,7 @@ def world2():
                                                                              raise_pool = float(input(Colors.MAGENTA + f"How much do you want to raise by? (up to ${money}) "))
                                                                              time.sleep(1)
                                                                              print()
-                                                                             if raise_pool <= money and raise_pool > opraise:
+                                                                             if opraise < raise_pool <= money:
                                                                                     money -= raise_pool
                                                                                     pool += raise_pool
                                                                                     print_with_delay(Colors.GREEN + f"You raise by ${raise_pool}.")
@@ -1565,10 +1582,198 @@ def world2():
                                           time.sleep(3)
                                           continue
               
-def world3():
+def world3(idol):
+       global clay_statue
+       global strength
+       global health
+       global money
+       global open_door
+       global gold
+       global anvil
+       if cheat:
+              clay_statue = True
        if world == 3:
-              pass
-
+              print_with_delay(Colors.GREEN + "You find yourself out in the desert with some pyramids in front of you.")
+              time.sleep(3)
+              print_with_delay("The toaster is nowhere to be seen.")
+              time.sleep(3)
+              inside_pyramid = True
+              print_with_delay("You walk inside one of the pyramids.")
+              time.sleep(3)
+              print_with_delay("There's a split in the pasage.")
+              while inside_pyramid:
+                     print()
+                     world3ans1 = input(Colors.MAGENTA + "Go right or left? (right/left) ")
+                     time.sleep(1)
+                     print()
+                     if world3ans1 == "right":
+                            print_with_delay(Colors.GREEN + "You decide to go right.")
+                            time.sleep(3)
+                            if not open_door:
+                                   print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for a small clay statue.")
+                                   time.sleep(3)
+                                   if idol:
+                                          print()
+                                          world3ans2 = input(Colors.MAGENTA + "Insert the clay statue into the slot? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world3ans2 == "yes":
+                                                 open_door = True
+                                                 print_with_delay(Colors.GREEN + "You insert the statue and the sandstone block slides to the side.")
+                                                 time.sleep(3)
+                                                 gold += 200
+                                                 print()
+                                                 print_with_delay(Colors.WHITE + f"Inside the room you find 200 chunks of gold, you now have {gold} gold.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
+                                                 time.sleep(3)
+                                                 continue
+                                   elif strength > 30:
+                                          print()
+                                          world3ans2 = input(Colors.MAGENTA + "Use brute force to move the slab aside? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world3ans2 == "yes":
+                                                 open_door = True
+                                                 print_with_delay(Colors.GREEN + "You drag the rock out of the way and enter the chamber.")
+                                                 time.sleep(3)
+                                                 gold += 200
+                                                 print()
+                                                 print_with_delay(Colors.WHITE + f"Inside the room you find 200 chunks of gold, you now have {gold} gold.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
+                                                 time.sleep(3)
+                                                 continue
+                                   else:
+                                          print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for something.")
+                                          time.sleep(3)
+                                          print_with_delay("You can't get past the slab, so you go back to the beginning.")
+                                          time.sleep(3)
+                                          continue
+                            else:
+                                   print_with_delay(Colors.GREEN + "The chamber is empty.")
+                                   time.sleep(3)
+                                   continue
+                     else:
+                            print_with_delay(Colors.GREEN + "You decide to go left.")
+                            time.sleep(3)
+                            print_with_delay("You come up to another split.")
+                            time.sleep(3)
+                            print()
+                            world3ans3 = input(Colors.MAGENTA + "Go left or right? (left/right) ")
+                            time.sleep(1)
+                            print()
+                            if world3ans3 == "right":
+                                   print_with_delay(Colors.GREEN + "You decide to go right.")
+                                   time.sleep(3)
+                                   print_with_delay("You floor falls out beneath you into a bed of wooden spikes!")
+                                   time.sleep(3)
+                                   dmg = random.randint(1,30)
+                                   if health <= dmg:
+                                          print_with_delay(Colors.WHITE + "You Died: You have perished from falling into a pit of spikes.")
+                                          quit()
+                                   health -= dmg
+                                   print_with_delay(f"Luckily, the spikes are dull and you only take {dmg} damage, your health is now {health}.")
+                                   time.sleep(3)
+                                   print_with_delay("You get out of the pit and go back to the beginning of the maze.")
+                                   time.sleep(3)
+                                   continue
+                            else:
+                                   print_with_delay(Colors.GREEN + "You decide to go left.")
+                                   time.sleep(3)
+                                   print_with_delay("You come up to another split.")
+                                   time.sleep(3)
+                                   print()
+                                   world3ans4 = input(Colors.MAGENTA + "Go left or right? (left/right) ")
+                                   time.sleep(1)
+                                   print()
+                                   if world3ans4 == "right":
+                                          print_with_delay(Colors.GREEN + "You decide to go right.")
+                                          time.sleep(3)
+                                          print_with_delay("Part of the ceiling collapses on you!")
+                                          time.sleep(3)
+                                          dmg = random.randint(1, 30)
+                                          if health <= dmg:
+                                                 print_with_delay(Colors.WHITE + "You Died: You have perished from a cave in.")
+                                                 quit()
+                                          health -= dmg
+                                          print_with_delay(f"Luckily, only a bit of the ceiling collapsed and you only take {dmg} damage, your health is now {health}.")
+                                          time.sleep(3)
+                                          print_with_delay("You dig yourself out of the rubble and go back to the beginning of the maze.")
+                                          time.sleep(3)
+                                          continue
+                                   else:
+                                          print_with_delay(Colors.GREEN + "You decide to go left.")
+                                          time.sleep(3)
+                                          print_with_delay("You come up to another split.")
+                                          time.sleep(3)
+                                          print()
+                                          world3ans5 = input(Colors.MAGENTA + "Go left or right? (left/right) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world3ans5 == "left" and not anvil:
+                                                 print_with_delay(Colors.GREEN + "You decide to go left.")
+                                                 time.sleep(3)
+                                                 print_with_delay("An anvil falls from the ceiling and hits you on the head!")
+                                                 time.sleep(3)
+                                                 dmg = random.randint(1, 30)
+                                                 if health <= dmg:
+                                                        print_with_delay(Colors.WHITE + "You Died: You have perished from a falling anvil.")
+                                                        quit()
+                                                 health -= dmg
+                                                 print_with_delay(f"Luckily, the anvil was small and you only take {dmg} damage, your health is now {health}.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 strength += 20
+                                                 print_with_delay(Colors.WHITE + f"You take the anvil and gain 20 strength. You now have {strength} total strength.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
+                                                 anvil = True
+                                                 time.sleep(3)
+                                                 continue
+                                          elif world3ans5 == "left" and anvil:
+                                                 print_with_delay(Colors.GREEN + "It's a dead end, you go back to the beginning of the maze.")
+                                                 time.sleep(3)
+                                                 continue
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You decide to go right.")
+                                                 time.sleep(3)
+                                                 print_with_delay("You enter the burial chamber.")
+                                                 time.sleep(3)
+                                                 print_with_delay("A slab of sandstone slides shut behind you, blocking the exit.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 gold += 50
+                                                 print_with_delay(Colors.WHITE + f"You find 50 gold. You now have {gold} gold.")
+                                                 time.sleep(3)
+                                                 world3ans6 = "no"
+                                                 while world3ans6 == "no":
+                                                        print()
+                                                        world3ans6 = input(Colors.MAGENTA + "Open the coffin? (yes/no) ")
+                                                        time.sleep(1)
+                                                        print()
+                                                        if world3ans6 == "no":
+                                                               print_with_delay(Colors.GREEN + "There's nothing else besides the coffin.")
+                                                               time.sleep(3)
+                                                               continue
+                                                 print_with_delay(Colors.GREEN + "You decide to open the coffin.")
+                                                 time.sleep(3)
+                                                 print_with_delay("Inside the coffin is the golden toaster.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.BLUE + "Quick, lets get out of here, this place gives me the heebie jeebies.")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.RED + "As you wish...")
+                                                 time.sleep(3)
+                                                 print()
+                                                 print_with_delay(Colors.YELLOW + "Zroom!")
+                                                 time.sleep(3)
+                                                 print()
+                                                 return
 def world4():
        if world == 4:
               pass
@@ -1580,6 +1785,7 @@ def world5():
        global health
        global strength
        global known_lotto
+       global sick
        lottery = random.randint(10000, 99999)
        if world == 5:
               if world5counter > 0 or cheat:
@@ -1789,7 +1995,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
               print()
-              world = 5#random.randint(1,6)
+              world = 3#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -1810,7 +2016,7 @@ if start:
        elif world == 2:
               world2()
        elif world == 3:
-              world3()
+              world3("False")
        elif world == 4:
               world4()
        elif world == 5:
@@ -1822,6 +2028,10 @@ if start:
               amount_bill = random.randint(10,100)
               print_with_delay(Colors.GREEN + "You're back in your apartment. The toaster is sitting on your kitchen counter.")
               time.sleep(3)
+              if health < 50:
+                     health += health/2
+                     print_with_delay(f"You gain {health*2} health. You now have {health} health.")
+                     time.sleep(3)
               if sick:
                      rand_sick = random.randint(1,3)
                      if rand_sick == 1:
@@ -1831,9 +2041,9 @@ if start:
                             print()
                             if health <= food:
                                    food = health-1
+                                   health -= food
                             print_with_delay(Colors.WHITE + f"You lose {food*2} health for being sick, your health is now {health}.")
                             time.sleep(3)
-                            health -= food
               if rand_bill == 1:
                      print_with_delay(Colors.GREEN + f"You have to pay ${amount_bill} in bills.")
                      time.sleep(3)
@@ -1891,29 +2101,38 @@ if start:
               print()
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               time.sleep(1)
+              buy = 0
               while cash == "cash":
                      if gold > 0:
                             print()
                             cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
                             time.sleep(1)
+                            print()
                             if cash == "yes":
                                    gold = gold * 2
                                    print_with_delay(Colors.WHITE + f"You gain {gold} dollars.")
                                    money = money + gold
+                                   time.sleep(3)
                                    gold = 0
                             print()
+                     else:
+                            buy += 1
                      if clay_statue:
                             cash = input(Colors.MAGENTA + "Sell the clay statue? (yes/no) ")
                             time.sleep(1)
+                            print()
                             if cash == "yes":
                                    money = money + 50
                                    print_with_delay(Colors.WHITE + "You gain 50 dollars.")
                                    time.sleep(3)
                                    clay_statue = False
                             print()
+                     else:
+                            buy +=1
                      if club:
                             cash = input(Colors.MAGENTA + "Sell club? (yes/no) ")
                             time.sleep(1)
+                            print()
                             if cash == "yes":
                                    money = money + 10
                                    print_with_delay(Colors.WHITE + "You gain 10 dollars.")
@@ -1923,22 +2142,37 @@ if start:
                                    time.sleep(3)
                                    club = False
                             print()
+                     else:
+                            buy += 1
                      if necklace:
                             cash = input(Colors.MAGENTA + f"Sell antique {jewelry}? (yes/no) ")
                             time.sleep(1)
+                            print()
                             if cash == "yes":
                                    money = money + 200
                                    print_with_delay(Colors.WHITE + "You gain 200 dollars.")
                                    time.sleep(3)
                                    necklace = False
                             print()
-                     cashed = input("Done buying? (yes/no) ")
-                     time.sleep(3)
-                     if cashed == "yes":
-                            cash = "adventure"
-                            break
                      else:
-                            continue
+                            buy += 1
+                     if anvil:
+                            cash = input(Colors.MAGENTA + f"Sell ancient egyptian anvil? (yes/no) ")
+                            time.sleep(1)
+                            print()
+                            if cash == "yes":
+                                   money = money + 20
+                                   print_with_delay(Colors.WHITE + "You gain 20 dollars and lose 20 strength.")
+                                   time.sleep(3)
+                                   strength -= 20
+                                   anvil = False
+                            print()
+                     else:
+                            buy +=1
+                     if buy == 5:
+                            print_with_delay(Colors.GREEN + "Nothing to sell.")
+                     else:
+                            print_with_delay(Colors.GREEN + f"Your total money is ${money}.")
               print()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
@@ -1958,7 +2192,11 @@ if start:
                             world2()
                             continue
                      if world == 3:
-                            world3()
+                            if clay_statue:
+                                   idol = True
+                            else:
+                                   idol = False
+                            world3(idol)
                             continue
                      if world == 4:
                             world4()
