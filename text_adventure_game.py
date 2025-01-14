@@ -188,12 +188,21 @@ def prison(time_period):
        global money
        global wanted
        in_prison = True
+       money -= money/2+wanted*5
+       print_with_delay(Colors.GREEN + f"You lose ${money/2+wanted*5} for going to jail. You now have {money}.")
        print_with_delay(Colors.GREEN + "Jail is very boring.")
        time.sleep(3)
        print_with_delay("As time passes, you formulate a plan.")
        time.sleep(3)
        print()
        while in_prison:
+              if wanted < 10:
+                     print_with_delay("You've been such a bad criminal that they give you a life sentence.")
+                     time.sleep(3)
+                     print_with_delay("They lock you up, and you never see the light of day again.")
+                     time.sleep(3)
+                     print_with_delay(Colors.WHITE + "You Lose: You're stuck in jail for the rest of your days.")
+                     quit()
               prisonans1 = input(Colors.MAGENTA + "Decide to be a good prisoner, or be a bad prisoner? (good/bad) ")
               if prisonans1 == "good":
                      print()
@@ -231,9 +240,9 @@ def prison(time_period):
                      print_with_delay("Somehow, the toaster bailed you out of jail.")
                      time.sleep(3)
                      print()
-                     print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${wanted*5} of your money to bail you out.")
+                     print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${money/10+wanted*5} of your money to bail you out.")
                      time.sleep(3)
-                     money -= wanted*5
+                     money -= money/10+wanted*5
                      print()
                      print_with_delay(Colors.GREEN + "You go back to your apartment.")
                      time.sleep(3)
@@ -243,7 +252,7 @@ def prison(time_period):
                      prisonans2 = input(Colors.MAGENTA + "Attempt to escape or start a riot? (escape/riot) ")
                      time.sleep(3)
                      if prisonans2 == "escape":
-                            escape = random.randint(1,3)
+                            escape = random.randint(1,7)
                             if escape == 1:
                                    print()
                                    print_with_delay(Colors.GREEN + "You successfully escape jail.")
@@ -257,11 +266,11 @@ def prison(time_period):
                                    wanted += 1
                                    continue
                      else:
+                            print()
                             print_with_delay(Colors.GREEN + "You decide to start a riot.")
                             time.sleep(3)
                             riot = random.randint(1, 5)
                             if riot == 5:
-                                   print()
                                    print_with_delay(Colors.GREEN + "You successfully start a riot and escape.")
                                    time.sleep(3)
                                    wanted += 1
@@ -273,7 +282,6 @@ def prison(time_period):
                                    else:
                                           return
                             elif riot == 3 or riot == 4:
-                                   print()
                                    print_with_delay(Colors.GREEN + "You successfully start a riot, but it gets shut down.")
                                    time.sleep(3)
                                    wanted += 1
@@ -286,7 +294,6 @@ def prison(time_period):
                                    else:
                                           continue
                             else:
-                                   print()
                                    print_with_delay(Colors.GREEN + "You attempt to start a riot, except it doesn't work.")
                                    time.sleep(3)
                                    wanted += 1
@@ -1574,13 +1581,12 @@ def world5():
        global strength
        global known_lotto
        lottery = random.randint(10000, 99999)
-       !!!!!!!!!!!!!!!!!!!!!!!!!
        if world == 5:
               if world5counter > 0 or cheat:
                      if cheat:
                             print(lottery)
                             known_lotto = True
-                     print_with_delay(Colors.GREEN + "You find yourself a day in the future.")
+                     print_with_delay(Colors.GREEN + "You find yourself one day in the future.")
                      time.sleep(3)
                      print_with_delay("The toaster is right next to you.")
                      time.sleep(3)
@@ -1589,10 +1595,10 @@ def world5():
                      if world5ans0 == "outside":
                             print_with_delay(Colors.GREEN + "You decide to go outside.")
                             time.sleep(3)
-                            print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for the day before.")
+                            print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for yesterday.")
                             time.sleep(3)
                             known_lotto = True
-                            print_with_delay(f"The winning ticket for today is {lottery}.")
+                            print_with_delay(f"The winning ticket is {lottery}.")
                             time.sleep(3)
                             print()
                             print_with_delay(Colors.BLUE + "This may be handy to remember for later.")
@@ -1616,11 +1622,12 @@ def world5():
                             print()
                             return
               else:
+                     print()
                      print_with_delay(Colors.GREEN + "You find yourself seemingly in the present.")
                      time.sleep(3)
+                     print()
                      print_with_delay("The toaster is nowhere to be seen.")
                      time.sleep(3)
-                     world5ans1 = "inside"
                      search_apartment = 0
                      while world == 5:
                             print()
@@ -1706,10 +1713,10 @@ def world5():
                                    if not known_lotto:
                                           print_with_delay(Colors.GREEN + "You decide to go outside.")
                                           time.sleep(3)
-                                          print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for the day before.")
+                                          print_with_delay("Outside, you see a billboard displaying the winning lottery numbers for yesterday.")
                                           time.sleep(3)
                                           known_lotto = True
-                                          print_with_delay(f"The winning ticket for today is {lottery}.")
+                                          print_with_delay(f"The winning ticket is {lottery}.")
                                           time.sleep(3)
                                           print()
                                           print_with_delay(Colors.BLUE + "This may be handy to remember for later.")
@@ -1862,19 +1869,21 @@ if start:
                             print_with_delay(f"You spend $5 on a ticket, you now have ${money}.")
                             time.sleep(3)
                             print()
-                            guess_lotto = input(Colors.MAGENTA + "What lottery number do you want? (5-digits) ")
+                            guess_lotto = int(input(Colors.MAGENTA + "What lottery number do you want? (5-digits) "))
                             time.sleep(1)
                             print()
                             if lottery == guess_lotto:
                                    rand_lotto = random.randint(100,10000)
-                                   print_with_delay(Colors.WHITE + f"You won the lottery and gained ${rand_lotto}!")
                                    money += rand_lotto
+                                   print_with_delay(Colors.WHITE + f"You won the lottery and gained ${rand_lotto}! You now have ${money}.")
                                    sus_lotto += 1
                                    time.sleep(3)
                                    if sus_lotto >= rand_sus_lotto:
+                                          print()
                                           print_with_delay(Colors.GREEN + "You've won the lottery so many times, some people become suspicious you're cheating, and you get thrown in jail.")
                                           time.sleep(3)
                                           prison("present")
+                                          continue
                             else:
                                    print_with_delay(Colors.GREEN + "You didn't guess correctly. :(")
                                    time.sleep(3)
@@ -1912,6 +1921,7 @@ if start:
                                    strength = strength - 10
                                    print_with_delay("You lose 10 strength.")
                                    time.sleep(3)
+                                   club = False
                             print()
                      if necklace:
                             cash = input(Colors.MAGENTA + f"Sell antique {jewelry}? (yes/no) ")
@@ -1924,12 +1934,12 @@ if start:
                             print()
                      cashed = input("Done buying? (yes/no) ")
                      time.sleep(3)
-                     print()
-                     if cashed:
+                     if cashed == "yes":
                             cash = "adventure"
                             break
                      else:
                             continue
+              print()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
               print()
@@ -1940,7 +1950,7 @@ if start:
               time.sleep(3)
               print()
               if time1 == "past":
-                     world = random.randint(1,4)
+                     world = random.randint(1,4)#(1,4)
                      if world == 1:
                             world1()
                             continue
@@ -1954,7 +1964,7 @@ if start:
                             world4()
                             continue
               else:
-                     world = random.randint(5,6)
+                     world = 5#random.randint(5,6)
                      if world == 5:
                             world5()
                             continue
