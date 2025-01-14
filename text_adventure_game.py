@@ -328,9 +328,7 @@ def world1():
               print_with_delay(Colors.GREEN + "You find yourself in a cave with some fresh cave paintings.")
               time.sleep(3)
               print()
-              print_with_delay(Colors.BLUE +"Where did the toaster go?")
-              time.sleep(3)
-              print_with_delay("I should probably look for that toaster, so it can take me back.")
+              print_with_delay("The toaster is nowhere to be seen.")
               time.sleep(3)
               print()
               world1ans1 = input(Colors.MAGENTA + "Explore inside or explore outside? (inside/outside) ")
@@ -347,7 +345,7 @@ def world1():
               clay_statue = True
               time.sleep(3)
               print()
-              print_with_delay(Colors.GREEN + "As you investigate the caves you realize you must be somewhere in the stone age.")
+              print_with_delay(Colors.GREEN + "As you investigate the cave you realize you must be somewhere in the stone age.")
               time.sleep(3)
        elif world1ans1 == "outside":
               print_with_delay(Colors.GREEN + "You decide to explore outside the cave.")
@@ -2095,7 +2093,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(3)
               print()
-              world = 4#random.randint(1,6)
+              world = random.randint(1,5)#6
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
