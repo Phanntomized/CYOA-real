@@ -2258,8 +2258,10 @@ if start:
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
+              print()
               print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
               time.sleep(3)
+              print()
               time1 = input(Colors.MAGENTA + "Go to the past or the future (past/future) ")
               time.sleep(1)
               print()
