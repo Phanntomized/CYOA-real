@@ -2205,7 +2205,7 @@ if start:
               money = 10000000
        else:
               time.sleep(3)
-              print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you type a choice wrong or try to choose an option that doesn't exist, your character may act on it's own. You have been warned...")
+              print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you try to make your character do something it doesn't want to do, your character may act on it's own. You have been warned...")
               time.sleep(10)
               print()
               print_with_delay(Colors.GREEN + "You live in a run down apartment in the suburbs.")
