@@ -159,7 +159,7 @@ elif x == "skip":
        cheat = False
        skip = True
        start = True
-elif x == "z":
+elif x == "cheat":
        skip = False
        cheat = True
        start = True
@@ -393,6 +393,8 @@ def world1():
        global fall
        global clay_statue
        waterfall = False
+       if cheat:
+              clay_statue = 100
        water_dmg = random.randint(5, 10)
        world1ans7 = ""
        if world == 1:
