@@ -395,7 +395,6 @@ def world1():
        if world == 1:
               print_with_delay(Colors.GREEN + "You find yourself in a cave with some fresh cave paintings.")
               time.sleep(3)
-              print()
               print_with_delay("The toaster is nowhere to be seen.")
               time.sleep(3)
               print()
@@ -448,7 +447,9 @@ def world1():
              world1ans2 = input(Colors.MAGENTA + "Jump down the waterfall or face the neanderthals? (jump/stay) ")
              time.sleep(3)
              print()
-       if world1ans2 == "stay":
+       if world1ans2 == "jump":
+              waterfall = True
+       else:
              print_with_delay(Colors.GREEN + "You decide to stay and face the neanderthals.")
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
@@ -463,8 +464,7 @@ def world1():
                    print()
                    print_with_delay(Colors.BLUE + "If I give them the statue, it may appease them...")
                    time.sleep(3)
-                   print()
-                   print_with_delay("...But if I ever do get back to my time, I could probably sell it for a lot of money.")
+                   print_with_delay("...but if I ever do get back to my time, I could probably sell it for a lot of money.")
                    time.sleep(3)
                    print()
                    world1ans4 = input(Colors.MAGENTA + "Give the statue or keep it? (give/keep) ")
@@ -487,6 +487,7 @@ def world1():
                                print_with_delay(Colors.GREEN + "You shrug apologetically.")
                                time.sleep(3)
                                print_with_delay("They aren't going to take it, and you get thrown off the waterfall.")
+                               waterfall = True
                          else:
                             neanderthal_health = 100
                             while neanderthal_health > 0:
@@ -587,7 +588,7 @@ def world1():
                                           else:
                                                  world1ans8 = "run"
                                                  break
-                   if world1ans4 == "keep":
+                   else:
                             print_with_delay(Colors.GREEN + "You decide to keep the statue.")
                             time.sleep(3)
                             print_with_delay("The neanderthals are not pleased, so they throw you off the waterfall.")
@@ -604,23 +605,25 @@ def world1():
                                    if world1ans8 == "run":
                                           print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
                                           time.sleep(3)
-       print_with_delay(Colors.GREEN + "You fall down the waterfall and lose 5 health.")
-       health -= 5
-       time.sleep(3)
-       print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
-       time.sleep(3)
-       print()
-       print_with_delay(Colors.BLUE + "Why did you bring me here? I can't even make any money because it hasn't been invented yet?")
-       time.sleep(3)
-       print()
-       print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away back to the present.")
-       time.sleep(3)
-       print()
-       global time1 
-       print_with_delay(Colors.YELLOW + "Zroom!")
-       time.sleep(7)
-       print()
-       return
+                                          waterfall = True
+       if waterfall:
+              print_with_delay(Colors.GREEN + "You fall down the waterfall and lose 5 health.")
+              health -= 5
+              time.sleep(3)
+              print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
+              time.sleep(3)
+              print()
+              print_with_delay(Colors.BLUE + "Why did you bring me here? I can't even make any money because it hasn't been invented yet?")
+              time.sleep(3)
+              print()
+              print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away back to the present.")
+              time.sleep(3)
+              print()
+              global time1
+              print_with_delay(Colors.YELLOW + "Zroom!")
+              time.sleep(7)
+              print()
+              return
 
 def world2():
        global vip
@@ -1849,7 +1852,7 @@ def world3(idol):
                                                  time.sleep(3)
                                                  continue
                                           elif world3ans5 == "left" and anvil:
-                                                 print_with_delay(Colors.GREEN + "It's a dead end, you go back to the beginning of the maze.")
+                                                 print_with_delay(Colors.GREEN + "It's a dead end. You go back to the beginning of the maze.")
                                                  time.sleep(3)
                                                  continue
                                           else:
@@ -2343,7 +2346,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(7)
               print()
-              world = random.randint(1,6)
+              world = 1#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2495,7 +2498,7 @@ if start:
                                    money = money + gold
                                    time.sleep(3)
                                    gold = 0
-                            print()
+                                   print()
                      else:
                             buy += 1
                      if clay_statue:
@@ -2507,7 +2510,7 @@ if start:
                                    print_with_delay(Colors.WHITE + "You gain $50.")
                                    time.sleep(3)
                                    clay_statue = False
-                            print()
+                                   print()
                      else:
                             buy +=1
                      if iphone:
@@ -2519,7 +2522,7 @@ if start:
                                    print_with_delay(Colors.WHITE + "You gain $500.")
                                    time.sleep(3)
                                    iphone = False
-                            print()
+                                   print()
                      else:
                             buy +=1
                      if vr:
@@ -2531,7 +2534,7 @@ if start:
                                    print_with_delay(Colors.WHITE + "You gain $2000.")
                                    time.sleep(3)
                                    vr = False
-                            print()
+                                   print()
                      else:
                             buy +=1
                      if club:
@@ -2546,7 +2549,7 @@ if start:
                                    print_with_delay("You lose 10 strength.")
                                    time.sleep(3)
                                    club = False
-                            print()
+                                   print()
                      else:
                             buy += 1
                      if necklace:
@@ -2558,7 +2561,7 @@ if start:
                                    print_with_delay(Colors.WHITE + "You gain $200.")
                                    time.sleep(3)
                                    necklace = False
-                            print()
+                                   print()
                      else:
                             buy += 1
                      if anvil:
@@ -2571,7 +2574,7 @@ if start:
                                    time.sleep(3)
                                    strength -= 20
                                    anvil = False
-                            print()
+                                   print()
                      else:
                             buy +=1
                      if buy == 7:
