@@ -393,6 +393,7 @@ def world1():
        global fall
        global clay_statue
        waterfall = False
+       world1ans4 = False
        if cheat:
               clay_statue = 100
        water_dmg = random.randint(5, 10)
@@ -496,8 +497,8 @@ def world1():
                                 print()
                                 if world1ans4 == "give":
                                        clay_statue = 0
-                                       gold += 20
-                                       print_with_delay(Colors.GREEN + f"The neanderthal gives you 20 gold in exchange for the statue, then walks off. You now have {gold} gold.")
+                                       gold += 200
+                                       print_with_delay(Colors.GREEN + f"The neanderthal gives you 200 gold in exchange for the statue, then walks off. You now have {gold} gold.")
                                        time.sleep(3)
                                        print_with_delay("As you walk away, you slip and fall down a nearby waterfall")
                                        time.sleep(3)
@@ -515,6 +516,8 @@ def world1():
                                print_with_delay("They aren't going to take it, and you get thrown off the waterfall.")
                                time.sleep(3)
                                waterfall = True
+                         elif world1ans4 == "give":
+                                pass
                          else:
                             neanderthal_health = 100
                             while neanderthal_health > 0:
