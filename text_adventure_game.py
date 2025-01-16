@@ -2177,7 +2177,7 @@ def world6():
        global vr
        global robot
        if world == 6:
-              print_with_delay(Colors.GREEN + "You find yourself in the future.")
+              print_with_delay(Colors.GREEN + "You find yourself in a sci-fi futuristic city. You must have gone far into the future.")
               time.sleep(3)
               print_with_delay("The toaster is nowhere to be seen.")
               time.sleep(3)
