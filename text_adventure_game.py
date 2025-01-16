@@ -2337,11 +2337,11 @@ if start:
                             rand_coin = random.randint(1,3)
                             if rand_coin == 1:
                                    money -= buy_bitcoin/10
-                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and ${buy_bitcoin/10}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${buy_bitcoin/10}. You now have ${money}.")
                                    time.sleep(3)
                             elif rand_coin == 2:
                                    rand_coin = random.randint(1,10)
-                                   print_with_delay(Colors.GREEN + f"Somehow, you meddling with time caused a gigantic stock market crash! You lost ${rand_coin*buy_bitcoin}. Ypuu now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Somehow, you meddling with time caused a gigantic stock market crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             else:
                                    money += buy_bitcoin*96000
@@ -2367,11 +2367,12 @@ if start:
                             time.sleep(3)
               if rand_bill == 1:
                      print()
-                     print_with_delay(Colors.GREEN + f"You have to pay ${amount_bill} in bills.")
+                     print_with_delay(Colors.GREEN + f"You have ${amount_bill} in miscellaneous bills to pay.")
                      time.sleep(3)
                      print()
                      pay_bill = input(Colors.MAGENTA + "Pay the bills? (yes/no) ")
                      time.sleep(1)
+                     print()
                      if pay_bill == "no":
                             print_with_delay(Colors.GREEN + "You get sent to jail for not paying your bills.")
                             time.sleep(3)
