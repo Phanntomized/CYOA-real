@@ -283,7 +283,12 @@ def prison(time_period):
                      prisonans2 = input(Colors.MAGENTA + "Attempt to escape or start a riot? (escape/riot) ")
                      time.sleep(3)
                      if prisonans2 == "escape":
-                            escape = random.randint(1,7)
+                            if time_period == "past":
+                                   escape = random.randint(1,3)
+                            elif time_period == "present":
+                                   escape = random.randint(1, 5)
+                            else:
+                                   escape = random.randint(1, 7)
                             if escape == 1:
                                    print()
                                    print_with_delay(Colors.GREEN + "You successfully escape jail.")
@@ -300,12 +305,23 @@ def prison(time_period):
                             print()
                             print_with_delay(Colors.GREEN + "You decide to start a riot.")
                             time.sleep(3)
-                            riot = random.randint(1, 5)
+                            if time_period == "past":
+                                   riot = random.randint(1, 3)
+                            elif time_period == "present":
+                                   riot = random.randint(1, 4)
+                            else:
+                                   riot = random.randint(1, 5)
+                            if time_period == "past":
+                                   riot_damage = 5
+                            elif time_period == "present":
+                                   riot_damage = 4
+                            else:
+                                   riot_damage = 3
                             if riot == 5:
                                    print_with_delay(Colors.GREEN + "You successfully start a riot and escape.")
                                    time.sleep(3)
                                    wanted += 1
-                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot*2} health.")
+                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health.")
                                    health -= riot*2
                                    if health <= 0:
                                           print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
@@ -316,7 +332,7 @@ def prison(time_period):
                                    print_with_delay(Colors.GREEN + "You successfully start a riot, but it gets shut down.")
                                    time.sleep(3)
                                    wanted += 1
-                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot * 2} health.")
+                                   print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health.")
                                    health -= riot * 2
                                    if health <= 0:
                                           print_with_delay(
