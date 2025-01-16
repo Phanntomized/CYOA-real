@@ -1708,7 +1708,7 @@ def world3(idol):
               print_with_delay("There's a split in the passage.")
               while inside_pyramid:
                      print()
-                     world3ans1 = input(Colors.MAGENTA + "Go right or left? (right/left) ")
+                     world3ans1 = input(Colors.MAGENTA + "Go right or left? (left/right) ")
                      time.sleep(1)
                      print()
                      if world3ans1 == "right":
