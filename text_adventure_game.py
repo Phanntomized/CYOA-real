@@ -1978,7 +1978,6 @@ def world4():
                                           print_with_delay(Colors.GREEN + f"You can't buy that much Bitcoin, you don't have enough money. (max shares = {money/.05})")
                                           time.sleep(3)
                                    else:
-                                          print()
                                           money -= buy_bitcoin*.05
                                           print_with_delay(Colors.WHITE + f"You bought {buy_bitcoin} shares worth ${buy_bitcoin*.05}.")
                                           time.sleep(3)
@@ -1990,7 +1989,7 @@ def world4():
                                           known_bitcoin += 1
                                    world4ans2 = input(Colors.MAGENTA + "Continue buying Bitcoin? (yes/no) ")
                                    time.sleep(3)
-                                   if world4ans2 == "yes":
+                                   if world4ans2 == "no":
                                           print()
                                           print_with_delay(Colors.RED + "Alright, lets go back and see how much money your bitcoin made.")
                                           time.sleep(3)
@@ -2006,7 +2005,7 @@ def world4():
                                    print_with_delay(Colors.BLUE + "Wait, I can't buy any Bitcoin, I don't have any money.")
                                    time.sleep(3)
                                    print()
-                                   print_with_delay(Colors.RED + "Well, that's a shame, I guess we just have to go back to the present without any Bitcoin.")
+                                   print_with_delay(Colors.RED + "Well, that's a shame, I guess we just have to go back to the present without any more Bitcoin.")
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.YELLOW + "Zroom!")
@@ -2249,7 +2248,7 @@ def world6():
                                           print_with_delay(Colors.GREEN + "You bought everything that's for sale. You leave the store.")
                                           time.sleep(3)
                                           break
-                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $100\n2. VR Contact Lenses - $2000\n3. Robot Companion - $10,000\n4. Nothing\nWhat do you want to buy? (1/2/3) "))
+                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $5000\n2. VR Contact Lenses - $500,000\n3. Robot Companion - $50,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3) "))
                                    time.sleep(3)
                                    #print()
                                    #world6ans3 = input(Colors.MAGENTA + "Buy one of these items? (yes/no)  ")
@@ -2384,7 +2383,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(7)
               print()
-              world = 1#random.randint(1,6)
+              world = random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2556,8 +2555,8 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 500
-                                   print_with_delay(Colors.WHITE + "You gain $500.")
+                                   money = money + 10000
+                                   print_with_delay(Colors.WHITE + "You gain $10,000.")
                                    time.sleep(3)
                                    iphone = False
                                    print()
@@ -2568,8 +2567,8 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 2000
-                                   print_with_delay(Colors.WHITE + "You gain $2000.")
+                                   money = money + 1000000
+                                   print_with_delay(Colors.WHITE + "You gain $1,000,000.")
                                    time.sleep(3)
                                    vr = False
                                    print()
