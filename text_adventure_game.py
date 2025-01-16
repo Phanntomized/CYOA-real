@@ -222,6 +222,7 @@ def prison(time_period):
                      quit()
               print()
               prisonans1 = input(Colors.MAGENTA + "Decide to be a good prisoner, or be a bad prisoner? (good/bad) ")
+              time.sleep(3)
               if prisonans1 == "good":
                      print()
                      print_with_delay(Colors.GREEN + "You decide to be good.")
@@ -229,8 +230,19 @@ def prison(time_period):
                      if wanted > 0:
                             if time_period == "past":
                                    health -= wanted*2
-                                   strength -= wanted*2
-                                   print_with_delay(Colors.WHITE + f"You lose {wanted*2} strength and {wanted*2} health.")
+                                   strength += wanted
+                                   print_with_delay(Colors.WHITE + f"You gain {wanted} strength and lose {wanted*2} health.")
+                                   time.sleep(3)
+                                   if health <= 0:
+                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          quit()
+                                   else:
+                                          print_with_delay(
+                                                 Colors.GREEN + f"You now have {health} health and {strength} strength.")
+                            elif time_period == "present":
+                                   health -= wanted
+                                   strength -= wanted
+                                   print_with_delay(Colors.WHITE + f"You lose {wanted} strength and {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
                                           print_with_delay(Colors.WHITE + "You died: you have perished in prison")
@@ -239,9 +251,9 @@ def prison(time_period):
                                           print_with_delay(
                                                  Colors.GREEN + f"You now have {health} health and {strength} strength.")
                             else:
-                                   health -= wanted
+                                   health += wanted
                                    strength -= wanted
-                                   print_with_delay(Colors.WHITE + f"You lose {wanted} strength and {wanted} health.")
+                                   print_with_delay(Colors.WHITE + f"You lose {wanted*2} strength and gain {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
                                           print_with_delay(Colors.WHITE + "You died: you have perished in prison")
@@ -277,7 +289,7 @@ def prison(time_period):
                             due = money/5+wanted*5
                      print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${due} of your money to bail you out. Anyways, let's go.")
                      time.sleep(3)
-                     money -= money/10+wanted*5
+                     money -= due
                      print()
                      print_with_delay(Colors.YELLOW + "Zroom!.")
                      time.sleep(3)
@@ -327,7 +339,7 @@ def prison(time_period):
                                    time.sleep(3)
                                    wanted += 1
                                    print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health.")
-                                   health -= riot*2
+                                   health -= riot*riot_damage
                                    if health <= 0:
                                           print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
                                           quit()
@@ -338,10 +350,9 @@ def prison(time_period):
                                    time.sleep(3)
                                    wanted += 1
                                    print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health.")
-                                   health -= riot * 2
+                                   health -= riot*riot_damage
                                    if health <= 0:
-                                          print_with_delay(
-                                                 Colors.WHITE + "You died: you have perished in a prison riot")
+                                          print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
                                           quit()
                                    else:
                                           continue
