@@ -20,8 +20,15 @@ class Colors:
     WHITE = "\033[37m"
 
 def the_end():
-      print_with_delay(Colors.CYAN + "The end.")
-      quit()
+       global health
+       global strength
+       global money
+       print_with_delay(Colors.CYAN + "The end.")
+       time.sleep(3)
+       print()
+       print_with_delay(Colors.WHITE + f"Your Scores: \nMoney: ${money}\nStrength: {strength}\nFinal Score: {money+strength*100}")
+       time.sleep(3)
+       quit()
 start = False
 
 def intro():
@@ -1758,7 +1765,49 @@ def world3(idol):
                             if not open_door:
                                    print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for a small clay statue.")
                                    time.sleep(3)
-                                   if idol or clay_statue >= 1:
+                                   if robot == "charged":
+                                          print()
+                                          world3ans2 = input(Colors.MAGENTA + "Insert the companion robot into the slot? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          robot = False
+                                          if world3ans2 == "yes":
+                                                 print_with_delay(Colors.GREEN + "You insert the robot into the slot.")
+                                                 time.sleep(5)
+                                                 print_with_delay("The door slides open, revealing a glowing white portal behind it.")
+                                                 time.sleep(5)
+                                                 print_with_delay("You hear whisperings from the portal, urging you to enter.")
+                                                 time.sleep(5)
+                                                 print()
+                                                 end_game = input("Go into the portal? (yes/no) ")
+                                                 time.sleep(2)
+                                                 print()
+                                                 if end_game == "yes":
+                                                        print_with_delay(Colors.GREEN + "You step into the portal.")
+                                                        time.sleep(5)
+                                                        print_with_delay("And that's where your adventure really begins.")
+                                                        time.sleep(5)
+                                                        the_end()
+                                                 else:
+                                                        print_with_delay(Colors.GREEN + "You step away and try to go back the way you came, except the path now blocked by a slab of sandstone.")
+                                                        time.sleep(5)
+                                                        print_with_delay("The portal flickers out as the ground rumbles.")
+                                                        time.sleep(5)
+                                                        print_with_delay("Parts of the ceiling start collapsing on top of you.")
+                                                        time.sleep(5)
+                                                        print_with_delay("Soon you are buried in rubble.")
+                                                        time.sleep(5)
+                                                        print_with_delay(Colors.WHITE + "You Died: You have perished from a mysterious cave in...")
+                                                        time.sleep(5)
+                                                        print()
+                                                        print_with_delay("In 4500 years, your skeleton will be discovered in one of the pyramids and scientists will wonder how you got there...")
+                                                        time.sleep(5)
+                                                        the_end()
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
+                                                 time.sleep(3)
+                                                 continue
+                                   elif idol or clay_statue >= 1:
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Insert the clay statue into the slot? (yes/no) ")
                                           time.sleep(1)
@@ -1774,6 +1823,10 @@ def world3(idol):
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
+                                                 time.sleep(3)
+                                                 continue
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
                                                  time.sleep(3)
                                                  continue
                                    elif strength > 30:
@@ -1793,9 +1846,11 @@ def world3(idol):
                                                  print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
                                                  time.sleep(3)
                                                  continue
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
+                                                 time.sleep(3)
+                                                 continue
                                    else:
-                                          print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for something.")
-                                          time.sleep(3)
                                           print_with_delay("You can't get past the slab, so you go back to the beginning.")
                                           time.sleep(3)
                                           continue
@@ -2411,6 +2466,33 @@ if start:
               time.sleep(3)
               print_with_delay(f"You have ${money}.")
               time.sleep(3)
+              if robot:
+                     print_with_delay("The companion robot didn't come with batteries.")
+                     time.sleep(3)
+                     print_with_delay("Luckily, you can go out and buy a pack of batteries for the robot.")
+                     time.sleep(3)
+                     print()
+                     buy_batteries = input(Colors.MAGENTA + "Buy batteries for $5? (yes/no) ")
+                     time.sleep(1)
+                     print()
+                     if buy_batteries == "yes":
+                            money -= 5
+                            print_with_delay(Colors.GREEN + "You buy a pack of batteries for $5. You now have ${money}.")
+                            time.sleep(3)
+                            print_with_delay("You insert the batteries into the back of the robot.")
+                            time.sleep(3)
+                            print_with_delay("Nothing happens.")
+                            time.sleep(3)
+                            print()
+                            print_with_delay(Colors.BLUE + "Dang it! These batteries must not be compatible with this future robot.")
+                            time.sleep(3)
+                            print()
+                            print_with_delay(Colors.GREEN + "You tuck the robot away for later.")
+                            time.sleep(3)
+                            robot = "charged"
+                     else:
+                            print_with_delay(Colors.GREEN + "You decide to wait to buy batteries.")
+                            time.sleep(3)
               if health < 50:
                      print()
                      health += health/2
