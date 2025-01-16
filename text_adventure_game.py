@@ -671,6 +671,7 @@ def world2():
        global money
        global world
        global world2_meter
+       global time1
        def roulette():
               global money
               global vip
@@ -2250,18 +2251,6 @@ def world6():
                                           break
                                    world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $5000\n2. VR Contact Lenses - $500,000\n3. Robot Companion - $50,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3) "))
                                    time.sleep(3)
-                                   #print()
-                                   #world6ans3 = input(Colors.MAGENTA + "Buy one of these items? (yes/no)  ")
-                                   #time.sleep(1)
-                                   print()
-                                   #if world6ans3 == "yes":
-                                          #world6ans4 = int(input("What number item do you want to buy? (1/2/3) "))
-                                          #time.sleep(1)
-                                          #print()
-                                   #else:
-                                          #print_with_delay(Colors.GREEN + "You leave the shop.")
-                                          #time.sleep(3)
-                                          #break
                                    if world6ans3 == 1:
                                           if money >= 100:
                                                  if iphone:
