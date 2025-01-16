@@ -1743,6 +1743,7 @@ def world3(idol):
        global open_door
        global gold
        global anvil
+       global robot
        if cheat:
               clay_statue = 1
        if world == 3:
@@ -1763,15 +1764,15 @@ def world3(idol):
                             print_with_delay(Colors.GREEN + "You decide to go right.")
                             time.sleep(3)
                             if not open_door:
-                                   print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for a small clay statue.")
+                                   print_with_delay(Colors.GREEN + "There's a big slab of sandstone blocking the path with an indent for a small clay statue.")
                                    time.sleep(3)
                                    if robot == "charged":
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Insert the companion robot into the slot? (yes/no) ")
                                           time.sleep(1)
-                                          print()
                                           robot = False
                                           if world3ans2 == "yes":
+                                                 print()
                                                  print_with_delay(Colors.GREEN + "You insert the robot into the slot.")
                                                  time.sleep(5)
                                                  print_with_delay("The door slides open, revealing a glowing white portal behind it.")
@@ -1803,16 +1804,12 @@ def world3(idol):
                                                         print_with_delay("In 4500 years, your skeleton will be discovered in one of the pyramids and scientists will wonder how you got there...")
                                                         time.sleep(5)
                                                         the_end()
-                                          else:
-                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
-                                                 time.sleep(3)
-                                                 continue
-                                   elif idol or clay_statue >= 1:
+                                   if clay_statue >= 1:# or idol:
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Insert the clay statue into the slot? (yes/no) ")
                                           time.sleep(1)
-                                          print()
                                           if world3ans2 == "yes":
+                                                 print()
                                                  open_door = True
                                                  clay_statue -= 1
                                                  print_with_delay(Colors.GREEN + "You insert the statue and the sandstone block slides to the side.")
@@ -1825,16 +1822,12 @@ def world3(idol):
                                                  print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
                                                  time.sleep(3)
                                                  continue
-                                          else:
-                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
-                                                 time.sleep(3)
-                                                 continue
-                                   elif strength > 30:
+                                   if strength > 30:
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Use brute force to move the slab aside? (yes/no) ")
                                           time.sleep(1)
-                                          print()
                                           if world3ans2 == "yes":
+                                                 print()
                                                  open_door = True
                                                  print_with_delay(Colors.GREEN + "You drag the rock out of the way and enter the chamber.")
                                                  time.sleep(3)
@@ -1846,14 +1839,10 @@ def world3(idol):
                                                  print_with_delay(Colors.GREEN + "You go back to the beginning of the maze.")
                                                  time.sleep(3)
                                                  continue
-                                          else:
-                                                 print_with_delay(Colors.GREEN + "You go back to the beginning.")
-                                                 time.sleep(3)
-                                                 continue
-                                   else:
-                                          print_with_delay("You can't get past the slab, so you go back to the beginning.")
-                                          time.sleep(3)
-                                          continue
+                                   print()
+                                   print_with_delay(Colors.GREEN + "You can't figure out how to get past, so you go back to the beginning of the maze.")
+                                   time.sleep(3)
+                                   continue
                             else:
                                    print_with_delay(Colors.GREEN + "The chamber is empty.")
                                    time.sleep(3)
@@ -2372,6 +2361,7 @@ if start:
        if cheat:
               ans1 = "decline"
               money = 10000000
+              robot = "charged"
        elif skip:
               ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
               time.sleep(1)
@@ -2427,7 +2417,7 @@ if start:
               print_with_delay(Colors.YELLOW + "Zroom!")
               time.sleep(7)
               print()
-              world = random.randint(1,6)
+              world = 3#random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
