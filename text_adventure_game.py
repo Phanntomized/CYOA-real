@@ -2345,12 +2345,12 @@ if start:
                                    time.sleep(3)
                             else:
                                    money += buy_bitcoin
-                                   print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             known_bitcoin = 1
                      else:
                             money += buy_bitcoin
-                            print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
+                            print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
                             time.sleep(3)
                             known_bitcoin = 0
               if sick:
