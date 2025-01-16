@@ -2331,7 +2331,7 @@ if start:
                      print_with_delay(Colors.WHITE + f"You gain {health*2} health. You now have {health} health.")
                      time.sleep(3)
               if known_bitcoin > 0:
-                     buy_bitcoin += buy_bitcoin * 96000
+                     buy_bitcoin = buy_bitcoin * 96000
                      print()
                      if known_bitcoin > rand_coin:
                             rand_coin = random.randint(1,3)
@@ -2341,16 +2341,16 @@ if start:
                                    time.sleep(3)
                             elif rand_coin == 2:
                                    rand_coin = random.randint(1,10)
-                                   print_with_delay(Colors.GREEN + f"Somehow, you meddling with time caused a gigantic stock market crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             else:
-                                   money += buy_bitcoin*96000
-                                   print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin*96000}. You now have ${money}.")
+                                   money += buy_bitcoin
+                                   print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
-                            known_bitcoin = 0
+                            known_bitcoin = 1
                      else:
-                            money += buy_bitcoin * 96000
-                            print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin * 96000}. You now have ${money}.")
+                            money += buy_bitcoin
+                            print_with_delay(Colors.WHITE + f"Your bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
                             time.sleep(3)
                             known_bitcoin = 0
               if sick:
