@@ -249,13 +249,18 @@ def prison(time_period):
                                    else:
                                           print_with_delay(Colors.GREEN + f"You now have {health} health and {strength} strength.")
                      else:
-                            if time_period == "present":
-                                   print_with_delay(Colors.WHITE + "You gain 5 strength and 15 health.")
+                            if time_period == "past":
+                                   print_with_delay(Colors.WHITE + "You gain 15 strength and 5 health.")
+                                   health += 15
+                                   strength += 5
+                                   time.sleep(3)
+                            elif time_period == "present":
+                                   print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
                                    health += 15
                                    strength += 5
                                    time.sleep(3)
                             else:
-                                   print_with_delay(Colors.WHITE + "You gain 15 strength and 5 health.")
+                                   print_with_delay(Colors.WHITE + "You gain 5 strength and 15 health.")
                                    health += 5
                                    strength += 15
                                    time.sleep(3)
