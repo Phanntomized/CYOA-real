@@ -128,6 +128,7 @@ time.sleep(1)
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
+       skip = False
        cheat = False
        text_delay = .5
        print_with_delay('''
@@ -154,12 +155,18 @@ if x == "x":
                                                      
                                                       
        ''')
+elif x == "skip":
+       cheat = False
+       skip = True
+       start = True
 elif x == "z":
+       skip = False
        cheat = True
        start = True
        text_delay = 0.0
        print("debug mode on")
 else:
+       skip = False
        cheat = False
        intro()
 
@@ -606,12 +613,14 @@ def world1():
        print_with_delay(Colors.BLUE + "Why did you bring me here? I can't even make any money because it hasn't been invented yet?")
        time.sleep(3)
        print()
-       print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away to a different time period.")
+       print_with_delay(Colors.RED + "There must have been a mistake somewhere in between the present and now. But don't worry, with just a twist of my knob, you can be whisked away back to the present.")
        time.sleep(3)
        print()
        global time1 
-       time1 = input(Colors.MAGENTA + "Go to the present or the future? (present/future) ")
-       time.sleep(1)
+       print_with_delay(Colors.YELLOW + "Zroom!")
+       time.sleep(7)
+       print()
+       return
 
 def world2():
        global vip
@@ -835,7 +844,7 @@ def world2():
                                    if total > 21:
                                           if total > 21 and ace == 22:
                                                  print_with_delay("Your opponent accuses you of cheating and you get thrown in jail.")
-                                                 time.sleep(3)
+                                                 time.sleep(7)
                                                  print()
                                                  prison("past")
                                                  return
@@ -952,10 +961,28 @@ def world2():
                      rand_jail = random.randint(1,2)
                      if rand_jail == 1 and strength < 20 or health <= rand_jail*10:
                             print()
-                            print_with_delay(Colors.GREEN + "They catch you and get you thrown into jail.")
-                            print()
-                            prison("past")
-                            return
+                            print_with_delay(Colors.GREEN + "You get caught.")
+                            time.sleep(3)
+                            if necklace:
+                                   print()
+                                   world2ans70 = input(Colors.MAGENTA + f"Bribe the thugs with the {jewelry}? (yes/no) ")
+                                   necklace = False
+                                   time.sleep(1)
+                                   print()
+                                   if world2ans70 == "yes":
+                                          print_with_delay(Colors.GREEN + f"You bribe the thugs with the {jewelry} and escape with the toaster back to the present.")
+                                          time.sleep(3)
+                                          print()
+                                          print_with_delay(Colors.YELLOW + "Zroom!")
+                                          time.sleep(7)
+                                          print()
+                                          return
+                                   else:
+                                          print_with_delay(Colors.GREEN + "The thugs drag you away and throw you in jail.")
+                                          time.sleep(7)
+                                          prison("past")
+                                          print()
+                                          return
                      elif strength >= 20:
                             print_with_delay(Colors.GREEN + "Because of how strong you are, you beat them up.")
                             time.sleep(3)
@@ -1418,7 +1445,7 @@ def world2():
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(3)
+                                                 time.sleep(7)
                                                  print()
                                                  time1 = "present"
                                                  world2_meter = True
@@ -1858,7 +1885,7 @@ def world3(idol):
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(3)
+                                                 time.sleep(7)
                                                  print()
                                                  return
 def world4():
@@ -1895,7 +1922,7 @@ def world4():
                      time.sleep(3)
                      print()
                      print_with_delay(Colors.YELLOW + "Zroom!")
-                     time.sleep(3)
+                     time.sleep(7)
                      print()
                      return
               else:
@@ -1928,7 +1955,7 @@ def world4():
                                           time.sleep(3)
                                           print()
                                           print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(3)
+                                          time.sleep(7)
                                           print()
                                           return
                                    else:
@@ -1942,7 +1969,7 @@ def world4():
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.YELLOW + "Zroom!")
-                                   time.sleep(3)
+                                   time.sleep(7)
                                    print()
                                    return
 def world5():
@@ -1986,12 +2013,12 @@ def world5():
                             time.sleep(3)
                             print()
                             print_with_delay(Colors.YELLOW + "Zroom!")
-                            time.sleep(3)
+                            time.sleep(7)
                             print()
                             return
                      else:
                             print_with_delay(Colors.YELLOW + "Zroom!")
-                            time.sleep(3)
+                            time.sleep(7)
                             print()
                             return
               else:
@@ -2080,7 +2107,7 @@ def world5():
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(3)
+                                                 time.sleep(7)
                                                  return
                             else:
                                    if not known_lotto:
@@ -2148,11 +2175,12 @@ def world6():
                                    print()
                                    if world6ans3 == "yes":
                                           print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(3)
+                                          time.sleep(7)
                                           return
                                    else:
                                           print_with_delay(Colors.GREEN + "You get caught by the guards and sent to future jail.")
-                                          time.sleep(3)
+                                          time.sleep(7)
+                                          print()
                                           prison("future")
                                           return
                             else:
@@ -2260,6 +2288,10 @@ if start:
        if cheat:
               ans1 = "decline"
               money = 10000000
+       elif skip:
+              ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
+              time.sleep(1)
+              print()
        else:
               time.sleep(3)
               print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you try to make your character do something it doesn't want to do, your character may act on it's own. You have been warned...")
@@ -2309,9 +2341,9 @@ if start:
               time.sleep(3)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(3)
+              time.sleep(7)
               print()
-              world = 6#random.randint(1,6)
+              world = random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2323,7 +2355,7 @@ if start:
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(3)
+              time.sleep(7)
               print()
               if time1 == "past":
                      world = random.randint(1,4)
@@ -2439,8 +2471,9 @@ if start:
                                    if sus_lotto >= rand_sus_lotto:
                                           print()
                                           print_with_delay(Colors.GREEN + "You've won the lottery so many times, some people become suspicious you're cheating, and you get thrown in jail.")
-                                          time.sleep(3)
+                                          time.sleep(7)
                                           prison("present")
+                                          print()
                                           continue
                             else:
                                    print_with_delay(Colors.GREEN + "You didn't guess correctly. :(")
@@ -2553,7 +2586,7 @@ if start:
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(3)
+              time.sleep(7)
               print()
               if time1 == "past":
                      world = random.randint(1,4)#(1,4)
