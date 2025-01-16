@@ -392,6 +392,9 @@ def world1():
        global gold
        global fall
        global clay_statue
+       waterfall = False
+       water_dmg = random.randint(5, 10)
+       world1ans7 = ""
        if world == 1:
               print_with_delay(Colors.GREEN + "You find yourself in a cave with some fresh cave paintings.")
               time.sleep(3)
@@ -408,10 +411,16 @@ def world1():
               print_with_delay(Colors.GREEN + "You decide to explore the cave.")
               time.sleep(3)
               print()
-              print_with_delay(Colors.WHITE + "You find a small, clay statue.")
-              clay_statue = True
-              time.sleep(3)
-              print()
+              if clay_statue:
+                     print_with_delay(Colors.WHITE + "You find another small, clay statue.")
+                     clay_statue += 1
+                     time.sleep(3)
+                     print()
+              else:
+                     print_with_delay(Colors.WHITE + "You find a small, clay statue.")
+                     clay_statue += 1
+                     time.sleep(3)
+                     print()
               print_with_delay(Colors.GREEN + "As you investigate the cave you realize you must be somewhere in the stone age.")
               time.sleep(3)
        elif world1ans1 == "outside":
@@ -448,23 +457,22 @@ def world1():
              time.sleep(3)
              print()
        if world1ans2 == "jump":
+              time.sleep(3)
+              water_dmg = random.randint(5, 10)
               waterfall = True
        else:
              print_with_delay(Colors.GREEN + "You decide to stay and face the neanderthals.")
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
              time.sleep(3)
-             fall = True
              world1ans5 = "no"
              world1ans4 = "no"
              world1ans8 = "no"
-             if clay_statue:
+             if clay_statue >= 1:
                    print_with_delay("You remember you still have the clay statue you took from the cave.")
                    time.sleep(3)
                    print()
-                   print_with_delay(Colors.BLUE + "If I give them the statue, it may appease them...")
-                   time.sleep(3)
-                   print_with_delay("...but if I ever do get back to my time, I could probably sell it for a lot of money.")
+                   print_with_delay(Colors.BLUE + "If I give them the statue, it may appease them.")
                    time.sleep(3)
                    print()
                    world1ans4 = input(Colors.MAGENTA + "Give the statue or keep it? (give/keep) ")
@@ -473,28 +481,45 @@ def world1():
                    if world1ans4 == "give":
                          print_with_delay(Colors.GREEN + "You decide to give the neanderthals the clay statue.")
                          time.sleep(3)
+                         if clay_statue >= 1:
+                                clay_statue -= 1
                          print_with_delay("One of them takes the statue and looks at it, then walks away, satisfied.")
                          time.sleep(3)
                          print_with_delay("The other one doesn't walk away but makes it clear that they want a statue as well.")
                          time.sleep(3)
-                         print_with_delay("Now that there's only one, you might be able to take them in a fight.")
-                         time.sleep(3)
-                         print()
-                         world1ans5 = input(Colors.MAGENTA + "Fight the neanderthal or shrug apologetically? (fight/shrug) ")
-                         time.sleep(1)
-                         print()
+                         if clay_statue >= 1:
+                                print()
+                                world1ans4 = input(Colors.MAGENTA + "Give the second statue or keep it? (give/keep) ")
+                                time.sleep(1)
+                                print()
+                                if world1ans4 == "give":
+                                       clay_statue = 0
+                                       gold += 20
+                                       print_with_delay(Colors.GREEN + f"The neanderthal gives you 20 gold in exchange for the statue, then walks off. You now have {gold} gold.")
+                                       time.sleep(3)
+                                       print_with_delay("As you walk away, you slip and fall down a nearby waterfall")
+                                       time.sleep(3)
+                                       waterfall = True
+                         else:
+                               print_with_delay("You don't have anything to give them, but now that there's only one, you might be able to take them in a fight.")
+                               time.sleep(3)
+                               print()
+                               world1ans5 = input(Colors.MAGENTA + "Fight the neanderthal or shrug apologetically? (fight/shrug) ")
+                               time.sleep(1)
+                               print()
                          if world1ans5 == "shrug" or world1ans4 == "keep":
                                print_with_delay(Colors.GREEN + "You shrug apologetically.")
                                time.sleep(3)
                                print_with_delay("They aren't going to take it, and you get thrown off the waterfall.")
+                               time.sleep(3)
                                waterfall = True
                          else:
                             neanderthal_health = 100
                             while neanderthal_health > 0:
                                    print_with_delay(Colors.GREEN + "You throw a punch at the neanderthal.")
                                    time.sleep(3)
-                                   swing = random.randint(1,3)
-                                   if swing == 1:
+                                   swing = random.randint(1,10)
+                                   if swing == 1 or swing == 4 or swing == 5 or swing == 6 or swing == 8:
                                           print_with_delay(Colors.GREEN + "The blow dazes the neanderthal, but only for a second.")
                                           neanderthal_health = neanderthal_health - 10
                                           neanderthal_health = neanderthal_health - strength
@@ -503,7 +528,7 @@ def world1():
                                           print_with_delay(Colors.WHITE + f"The neanderthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                           print()
-                                   elif swing == 2:
+                                   elif swing == 2 or swing == 3 or swing == 7:
                                           print_with_delay(Colors.GREEN + "The blow knocks the neanderthal over.")
                                           neanderthal_health = neanderthal_health - 20
                                           neanderthal_health = neanderthal_health - strength
@@ -512,7 +537,8 @@ def world1():
                                           print_with_delay(Colors.WHITE + f"The neanderthal's health is now {neanderthal_health}.")
                                           time.sleep(3)
                                           print()
-                                          continue
+                                          if neanderthal_health > 0:
+                                                 continue
                                    else:
                                           print_with_delay(Colors.GREEN + "The neanderthal evades your blow.")
                                           time.sleep(3)
@@ -535,19 +561,20 @@ def world1():
                                                 gold = 5
                                                 strength = strength + 10
                                                 time.sleep(3)
-                                                print_with_delay(Colors.WHITE + "You gain 10 strength.")
+                                                print_with_delay(Colors.WHITE + f"You gain 10 strength. You now have {strength} strength.")
                                                 time.sleep(3)
                                                 print()
                                                 break
-                                   print_with_delay(Colors.WHITE + "Now its the neanderthal's turn to take a swing at you.")
+                                   print_with_delay(Colors.GREEN + "Now it's the neanderthal's turn to take a swing at you.")
                                    time.sleep(3)
-                                   print()
                                    print_with_delay("You must predict where the neanderthal is going to swing so you can dodge it.")
                                    time.sleep(3)
                                    swing = random.randint(1,2)
                                    print()
                                    world1ans6 = input(Colors.MAGENTA + "Will the neanderthal swing left or right? (left/right) ")
                                    time.sleep(1)
+                                   if world1ans6 != "left" and world1ans6 != "right":
+                                          world1ans6 = random.randint(1,2)
                                    print()
                                    if world1ans6 == "right" and swing == 1:
                                           print_with_delay(Colors.GREEN + "You evade the neanderthal's attack.")
@@ -557,7 +584,6 @@ def world1():
                                           time.sleep(3)
                                           global health
                                           health = health - 20
-                                          time.sleep(3)
                                           print()
                                           print_with_delay(Colors.WHITE + f"Your health is now {health}.")
                                           time.sleep(3)
@@ -586,31 +612,37 @@ def world1():
                                           if world1ans7 == "fight":
                                                  continue
                                           else:
-                                                 world1ans8 = "run"
                                                  break
+                            if world1ans7 == "run":
+                                   print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
+                                   time.sleep(3)
+                                   water_dmg = random.randint(5, 10)
+                                   waterfall = True
+                            else:
+                                   time.sleep(3)
+                                   waterfall = True
                    else:
                             print_with_delay(Colors.GREEN + "You decide to keep the statue.")
                             time.sleep(3)
                             print_with_delay("The neanderthals are not pleased, so they throw you off the waterfall.")
                             time.sleep(3)
+                            water_dmg = random.randint(15, 20)
+                            waterfall = True
 
              else:
-                     if fall:
-                            print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
-                            time.sleep(3)
-                            print_with_delay("The neanderthals are not pleased, so they pick you up and fling you down the nearby waterfall.")
-                            time.sleep(3)
-                            
-                            if world1ans5 == "shrug" or world1ans4 == "keep":
-                                   if world1ans8 == "run":
-                                          print_with_delay(Colors.GREEN + "You decide to flee the scene but then you accidentally slip and fall down a nearby waterfall.")
-                                          time.sleep(3)
-                                          waterfall = True
+                     print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
+                     time.sleep(3)
+                     print_with_delay("The neanderthals are not pleased, so they pick you up and fling you down the nearby waterfall.")
+                     time.sleep(3)
+                     water_dmg = random.randint(5,20)
+                     waterfall = True
        if waterfall:
-              print_with_delay(Colors.GREEN + "You fall down the waterfall and lose 5 health.")
-              health -= 5
+              health -= water_dmg
+              print()
+              print_with_delay(Colors.WHITE + f"You fall down the waterfall and lose {water_dmg} health. You now have {health} health.")
               time.sleep(3)
-              print_with_delay("After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
+              print()
+              print_with_delay(Colors.GREEN + "After walking a little ways away from the waterfall, you find the toaster. It still has a piece of toast in it.")
               time.sleep(3)
               print()
               print_with_delay(Colors.BLUE + "Why did you bring me here? I can't even make any money because it hasn't been invented yet?")
@@ -1699,7 +1731,7 @@ def world3(idol):
        global gold
        global anvil
        if cheat:
-              clay_statue = True
+              clay_statue = 1
        if world == 3:
               print_with_delay(Colors.GREEN + "You find yourself out in the desert with some pyramids in front of you.")
               time.sleep(3)
@@ -1720,13 +1752,14 @@ def world3(idol):
                             if not open_door:
                                    print_with_delay(Colors.GREEN + "There's a big chunk of sandstone blocking the path with an indent for a small clay statue.")
                                    time.sleep(3)
-                                   if idol:
+                                   if idol or clay_statue >= 1:
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Insert the clay statue into the slot? (yes/no) ")
                                           time.sleep(1)
                                           print()
                                           if world3ans2 == "yes":
                                                  open_door = True
+                                                 clay_statue -= 1
                                                  print_with_delay(Colors.GREEN + "You insert the statue and the sandstone block slides to the side.")
                                                  time.sleep(3)
                                                  gold += 200
@@ -2388,7 +2421,7 @@ if start:
               if health < 50:
                      print()
                      health += health/2
-                     print_with_delay(Colors.WHITE + f"You gain {health*2} health. You now have {health} health.")
+                     print_with_delay(Colors.WHITE + f"You gain {health/2} health. You now have {health} health.")
                      time.sleep(3)
               if known_bitcoin > 0:
                      buy_bitcoin = buy_bitcoin * 96000
@@ -2501,15 +2534,15 @@ if start:
                                    print()
                      else:
                             buy += 1
-                     if clay_statue:
+                     if clay_statue >= 1:
                             cash = input(Colors.MAGENTA + "Sell the clay statue? (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 50
-                                   print_with_delay(Colors.WHITE + "You gain $50.")
+                                   money = money + 300
+                                   print_with_delay(Colors.WHITE + "You gain $300.")
                                    time.sleep(3)
-                                   clay_statue = False
+                                   clay_statue -= 1
                                    print()
                      else:
                             buy +=1
