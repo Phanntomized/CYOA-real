@@ -1806,7 +1806,7 @@ def world3(idol):
                                                         time.sleep(5)
                                                         print()
                                                         the_end()
-                                   if clay_statue >= 1:# or idol:
+                                   if clay_statue or idol >= 1:
                                           print()
                                           world3ans2 = input(Colors.MAGENTA + "Insert the clay statue into the slot? (yes/no) ")
                                           time.sleep(1)
