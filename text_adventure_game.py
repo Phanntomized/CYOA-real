@@ -2312,6 +2312,7 @@ def world5():
        global strength
        global known_lotto
        global sick
+       global world5counter
        lottery = random.randint(10000, 99999)
        if world == 5:
               if world5counter > 0 or cheat:
@@ -2357,6 +2358,7 @@ def world5():
                             return
               else:
                      print()
+                     world5counter += 1
                      print_with_delay(Colors.GREEN + "You find yourself seemingly in the present.")
                      time.sleep(3)
                      print_with_delay("The toaster is nowhere to be seen.")
