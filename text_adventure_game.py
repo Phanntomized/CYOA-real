@@ -1786,7 +1786,7 @@ def world3(idol):
                                                  if end_game == "yes":
                                                         print_with_delay(Colors.GREEN + "You step into the portal.")
                                                         time.sleep(5)
-                                                        print_with_delay("And that's where your adventure really begins.")
+                                                        print_with_delay("And that's where your adventures really begins.")
                                                         time.sleep(5)
                                                         the_end()
                                                  else:
