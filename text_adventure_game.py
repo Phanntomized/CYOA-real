@@ -2286,7 +2286,6 @@ def world5():
                      print()
                      print_with_delay(Colors.GREEN + "You find yourself seemingly in the present.")
                      time.sleep(3)
-                     print()
                      print_with_delay("The toaster is nowhere to be seen.")
                      time.sleep(3)
                      search_apartment = 0
