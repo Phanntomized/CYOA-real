@@ -2381,9 +2381,9 @@ def world5():
                                           time.sleep(3)
                                           print()
                                    elif search_apartment == 2:
-                                          print_with_delay(Colors.WHITE + "You find $20 in coins stuffed between your sofa cushions.")
-                                          time.sleep(3)
                                           money += 20
+                                          print_with_delay(Colors.WHITE + f"You find $20 in coins stuffed between your sofa cushions. You now have ${money}.")
+                                          time.sleep(3)
                                           high_score()
                                    elif search_apartment == 3:
                                           print_with_delay(Colors.GREEN + "You find the fridge.")
