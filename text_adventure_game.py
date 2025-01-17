@@ -335,6 +335,7 @@ elif x == "cheat":
        start = True
        text_delay = 0.0
        print("debug mode on")
+       time.sleep(3)
 else:
        skip = False
        cheat = False
