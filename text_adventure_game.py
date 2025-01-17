@@ -119,17 +119,15 @@ def intro():
 
        print_with_delay(Colors.CYAN + '''
                                                  
-                                   Phann Boon's  
                                                  
                                                  
+                                   Phann Boon's              
        ___________.__                 ___________                      __    
        \__    ___/|__| _____   ____   \_   _____/______   ____ _____  |  | __
          |    |   |  |/     \_/ __ \   |    __) \_  __ \_/ __ \ \__ \ |  |/ /
          |    |   |  |  Y Y  \  ___/   |     \   |  | \/\  ___/ / __ \|    < 
          |____|   |__|__|_|__/\_____>  \_____/   |__|    \_____>______/__|_ \ 
-                                   
-                                   
-                                   
+                                                 
                                    ''')
 def cards_intro():
        print_with_delay(Colors.YELLOW + '''
@@ -2600,7 +2598,7 @@ if start:
               print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
               time.sleep(3)
               print()
-              time1 = input(Colors.MAGENTA + "Go to the past or the future (past/future) ")
+              time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
