@@ -653,12 +653,12 @@ def world1():
              print()
              world1ans2 = input(Colors.MAGENTA + "Jump down the waterfall or face the neanderthals? (jump/stay) ")
              time.sleep(3)
-             print()
        if world1ans2 == "jump":
               time.sleep(3)
               water_dmg = random.randint(5, 10)
               waterfall = True
        else:
+             print()
              print_with_delay(Colors.GREEN + "You decide to stay and face the neanderthals.")
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
