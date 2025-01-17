@@ -2794,7 +2794,8 @@ if start:
                             prison("present")
                             continue
                      else:
-                            print_with_delay(Colors.GREEN + f"You pay ${amount_bill} to cover the bills.")
+                            money -= amount_bill
+                            print_with_delay(Colors.GREEN + f"You pay ${amount_bill} to cover the bills. You now have ${money}.")
                             time.sleep(3)
                             if money < 0:
                                    print_with_delay(f"You are now ${money+money*2} in debt!")
@@ -2838,13 +2839,12 @@ if start:
               while cash == "cash":
                      if gold > 0:
                             print()
-                            cash = input(Colors.MAGENTA + "Cash in gold? (yes/no) ")
+                            cash = input(Colors.MAGENTA + f"Cash in {gold} gold, worth ${gold*2}? (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   gold = gold * 2
-                                   print_with_delay(Colors.WHITE + f"You gain ${gold}.")
-                                   money = money + gold
+                                   print_with_delay(Colors.WHITE + f"You gain ${gold*2}.")
+                                   money += gold*2
                                    time.sleep(3)
                                    gold = 0
                                    print()
