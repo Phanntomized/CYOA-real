@@ -23,10 +23,16 @@ def the_end():
        global health
        global strength
        global money
+       global health_high
+       global strength_high
+       global money_high
+       avg_money = money + money_high /2
+       avg_health = health + health_high / 2
+       avg_strength = strength + strength_high / 2
        print_with_delay(Colors.CYAN + "The end.")
        time.sleep(3)
        print()
-       print_with_delay(Colors.WHITE + f"Your Scores: \nMoney: ${money}\nStrength: {strength}\nFinal Score: {money+strength*100}")
+       print_with_delay(Colors.WHITE + f"Your Scores: \nCurrent Money: ${money}\nMost Money: ${money_high}\nMoney Points: {avg_money}\nCurrent Strength: {strength}\nMost Strength: {strength_high}\nStrength Points: {avg_strength}\nCurrent Health: {health}\nMost Health: {health}\nHealth Points: {avg_health}\nTotal Points: {avg_money+avg_health+avg_strength}")
        time.sleep(3)
        print()
        print_with_delay(Colors.CYAN + "Thanks for playing Time Freak by Phann Boon.")
@@ -338,7 +344,23 @@ else:
        skip = False
        cheat = False
        intro()
+def high_score():
+       global money
+       global health
+       global strength
+       global money_high
+       global health_high
+       global strength_high
+       if health > health_high:
+              health_high = health
+       if strength > strength_high:
+              strength_high = strength
+       if money > money_high:
+              money_high = money
 
+health_high = 0
+strength_high = 0
+money_high = 0
 money = 10
 health = 100
 strength = 0
@@ -449,16 +471,19 @@ def prison(time_period):
                             if time_period == "past":
                                    print_with_delay(Colors.WHITE + "You gain 15 strength and 5 health.")
                                    health += 15
+                                   high_score()
                                    strength += 5
                                    time.sleep(3)
                             elif time_period == "present":
                                    print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
                                    health += 15
+                                   high_score()
                                    strength += 5
                                    time.sleep(3)
                             else:
                                    print_with_delay(Colors.WHITE + "You gain 5 strength and 15 health.")
                                    health += 5
+                                   high_score()
                                    strength += 15
                                    time.sleep(3)
                      print_with_delay(Colors.GREEN + "You soon get let out.")
@@ -871,8 +896,10 @@ def world2():
                      print()
                      if rbet <= 0:
                             money += rbet
+                            high_score()
                      else:
                             money -= rbet
+                            high_score()
                      choice = random.randint(0,1)
                      if choice == 0:
                             choice = input("Bet on white or black? (white/black) ")
@@ -890,6 +917,7 @@ def world2():
                             print()
                             wins += 1
                             money += rbet*2
+                            high_score()
                      elif choice == "black" or choice == "evens" and wheel == 1:
                             if rbet < 0:
                                    rbet -= rbet*2
@@ -897,6 +925,7 @@ def world2():
                             time.sleep(3)
                             wins += 1
                             money += bet*2
+                            high_score()
                      else:
                             print()
                             print_with_delay(Colors.GREEN + "You don't win anything.")
@@ -1262,7 +1291,7 @@ def world2():
                                    money -= 50
                                    time.sleep(3)
                                    if money < 0:
-                                          print_with_delay(Colors.WHITE + f"You ${money+money*2} are in debt!")
+                                          print_with_delay(Colors.WHITE + f"You're ${money+money*2} are in debt!")
                                    break
                             elif blackjack() == "prison":
                                    prison("past")
@@ -1270,6 +1299,7 @@ def world2():
                             else:
                                    print_with_delay(Colors.WHITE + "The gambler gives you $50 for winning.")
                                    money += 50
+                                   high_score()
                                    time.sleep(3)
                                    print_with_delay(f"Your total money is now {money}.")
                                    time.sleep(3)
@@ -1441,10 +1471,12 @@ def world2():
                                                                                     print_with_delay(Colors.WHITE + f"You win the golden toaster and also ${pool}!")
                                                                                     time.sleep(3)
                                                                                     money += pool
+                                                                                    high_score()
                                                                                     print()
                                                                                     break
                                                                              else:
                                                                                     money += pool
+                                                                                    high_score()
                                                                                     pool = 0
                                                                                     won += 1
                                                                                     continue
@@ -1628,6 +1660,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.WHITE + f"You take the pool, worth ${pool}.")
                                                                       money += pool
+                                                                      high_score()
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -2034,7 +2067,6 @@ def world3(idol):
                                    if health <= dmg:
                                           print_with_delay(Colors.WHITE + "You Died: You have perished from falling into a pit of spikes.")
                                           time.sleep(3)
-                                          print_with_delay(f"You had ${money}.")
                                           the_end()
                                           quit()
                                    health -= dmg
@@ -2061,7 +2093,6 @@ def world3(idol):
                                           if health <= dmg:
                                                  print_with_delay(Colors.WHITE + "You Died: You have perished from a cave in.")
                                                  time.sleep(3)
-                                                 print_with_delay(f"You had ${money}.")
                                                  the_end()
                                                  quit()
                                           health -= dmg
@@ -2088,7 +2119,6 @@ def world3(idol):
                                                  if health <= dmg:
                                                         print_with_delay(Colors.WHITE + "You Died: You have perished from a falling anvil.")
                                                         time.sleep(3)
-                                                        print_with_delay(f"You had ${money}.")
                                                         the_end()
                                                         quit()
                                                  health -= dmg
@@ -2310,6 +2340,7 @@ def world5():
                                           print_with_delay(Colors.WHITE + "You find $20 in coins stuffed between your sofa cushions.")
                                           time.sleep(3)
                                           money += 20
+                                          high_score()
                                    elif search_apartment == 3:
                                           print_with_delay(Colors.GREEN + "You find the fridge.")
                                           time.sleep(3)
@@ -2320,6 +2351,7 @@ def world5():
                                           if world5ans2 == "yes":
                                                  food = random.randint(5,20)
                                                  health += food
+                                                 high_score()
                                                  print_with_delay(Colors.GREEN + f"The food tasted funky, but your health was restored by {food} and is now {health}.")
                                                  time.sleep(3)
                                                  sick = True
@@ -2626,6 +2658,7 @@ if start:
               amount_bill = random.randint(10,100)
               rand_sus_lotto = random.randint(2, 5)
               rand_coin = random.randint(2,5)
+              high_score()
               print_with_delay(Colors.GREEN + "You're back in your apartment. The toaster is sitting on your kitchen counter.")
               time.sleep(3)
               print_with_delay(f"You have ${money}.")
@@ -2778,7 +2811,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 300
+                                   money += 300
                                    print_with_delay(Colors.WHITE + "You gain $300.")
                                    time.sleep(3)
                                    clay_statue -= 1
@@ -2790,7 +2823,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 10000
+                                   money += 10000
                                    print_with_delay(Colors.WHITE + "You gain $10,000.")
                                    time.sleep(3)
                                    iphone = False
@@ -2802,7 +2835,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 1000000
+                                   money +=  1000000
                                    print_with_delay(Colors.WHITE + "You gain $1,000,000.")
                                    time.sleep(3)
                                    vr = False
@@ -2814,7 +2847,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 10
+                                   money += 10
                                    print_with_delay(Colors.WHITE + "You gain $10.")
                                    time.sleep(3)
                                    strength = strength - 10
@@ -2829,7 +2862,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 200
+                                   money += 200
                                    print_with_delay(Colors.WHITE + "You gain $200.")
                                    time.sleep(3)
                                    necklace = False
@@ -2841,7 +2874,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money = money + 20
+                                   money += 20
                                    print_with_delay(Colors.WHITE + "You gain $20 and lose 20 strength.")
                                    time.sleep(3)
                                    strength -= 20
@@ -2854,6 +2887,7 @@ if start:
                      else:
                             print_with_delay(Colors.GREEN + f"Your total money is ${money}.")
               print()
+              high_score()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
               print()
