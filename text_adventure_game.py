@@ -2831,6 +2831,9 @@ if start:
                             else:
                                    print_with_delay(Colors.GREEN + "You didn't guess correctly. :(")
                                    time.sleep(3)
+                     else:
+                            print_with_delay(Colors.GREEN + "You decide to save the lottery for another day.")
+                            time.sleep(3)
               known_lotto = False
               print()
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
