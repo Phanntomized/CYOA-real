@@ -1788,6 +1788,7 @@ def world3(idol):
                                                         time.sleep(5)
                                                         print_with_delay("And that's where your adventures really begins.")
                                                         time.sleep(5)
+                                                        print()
                                                         the_end()
                                                  else:
                                                         print_with_delay(Colors.GREEN + "You step away and try to go back the way you came, except the path now blocked by a slab of sandstone.")
