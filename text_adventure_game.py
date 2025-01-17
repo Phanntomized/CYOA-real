@@ -385,6 +385,7 @@ buy_bitcoin = 0
 vr = False
 iphone = False
 robot = False
+world5counter = 0
 jewelry = random.randint(1,3)
 if jewelry == 1:
        jewelry = "bracelet"
