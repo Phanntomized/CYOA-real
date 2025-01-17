@@ -28,6 +28,9 @@ def the_end():
        print()
        print_with_delay(Colors.WHITE + f"Your Scores: \nMoney: ${money}\nStrength: {strength}\nFinal Score: {money+strength*100}")
        time.sleep(3)
+       print()
+       print_with_delay(Colors.CYAN + "Thanks for playing Time Freak by Phann Boon.")
+       time.sleep(3)
        quit()
 start = False
 
@@ -116,7 +119,7 @@ def intro():
 
        print_with_delay(Colors.CYAN + '''
                                                  
-                                                 
+                                   Phann Boon's  
                                                  
                                                  
        ___________.__                 ___________                      __    
@@ -128,8 +131,90 @@ def intro():
                                    
                                    
                                    ''')
+def cards_intro():
+       print_with_delay(Colors.CYAN + '''
+                    _____
+                   |\ ~ /|
+                   |}}:{{|
+                   |}}:{{|  _____
+                   |}}:{{| |Joker|
+                   |/_~_\| |==%, |
+                           | \/>\|
+                           | _>^^|           _____
+                 _____     |/_\/_|    _____ |6    |
+                |2    | _____        |5    || ^ ^ | 
+                |  ^  ||3    | _____ | ^ ^ || ^ ^ | _____
+                |     || ^ ^ ||4    ||  ^  || ^ ^ ||7    |
+                |  ^  ||     || ^ ^ || ^ ^ ||____9|| ^ ^ | _____
+                |____Z||  ^  ||     ||____S|       |^ ^ ^||8    | _____
+                       |____E|| ^ ^ |              | ^ ^ ||^ ^ ^||9    |
+                              |____h|              |____L|| ^ ^ ||^ ^ ^|
+                                          _____           |^ ^ ^||^ ^ ^|
+                                  _____  |K  WW|          |____8||^ ^ ^|
+                          _____  |Q  ww| | ^ {)|                 |____6|
+                   _____ |J  ww| | ^ {(| |(.)%%| _____
+                  |10 ^ || ^ {)| |(.)%%| | |%%%||A .  |
+                  |^ ^ ^||(.)% | | |%%%| |_%%%>|| /.\ |
+                  |^ ^ ^|| | % | |_%%%O|        |(_._)|
+                  |^ ^ ^||__%%[|                |  |  |
+                  |___0I|                       |____V|
+                                             _____
+                 _____                _____ |6    |
+                |2    | _____        |5    || & & | 
+                |  &  ||3    | _____ | & & || & & | _____
+                |     || & & ||4    ||  &  || & & ||7    |
+                |  &  ||     || & & || & & ||____9|| & & | _____
+                |____Z||  &  ||     ||____S|       |& & &||8    | _____
+                       |____E|| & & |              | & & ||& & &||9    |
+                              |____h|              |____L|| & & ||& & &|
+                                          _____           |& & &||& & &|
+                                  _____  |K  WW|          |____8||& & &|
+                          _____  |Q  ww| | o {)|                 |____6|
+                   _____ |J  ww| | o {(| |o o%%| _____
+                  |10 & || o {)| |o o%%| | |%%%||A _  |
+                  |& & &||o o% | | |%%%| |_%%%>|| ( ) |
+                  |& & &|| | % | |_%%%O|        |(_'_)|
+                  |& & &||__%%[|                |  |  |
+                  |___0I|                       |____V|
+                                             _____
+                 _____                _____ |6    |
+                |2    | _____        |5    || v v | 
+                |  v  ||3    | _____ | v v || v v | _____
+                |     || v v ||4    ||  v  || v v ||7    |
+                |  v  ||     || v v || v v ||____9|| v v | _____
+                |____Z||  v  ||     ||____S|       |v v v||8    | _____
+                       |____E|| v v |              | v v ||v v v||9    |
+                              |____h|              |____L|| v v ||v v v|
+                                          _____           |v v v||v v v|
+                                  _____  |K  WW|          |____8||v v v|
+                          _____  |Q  ww| |   {)|                 |____6|
+                   _____ |J  ww| |   {(| |(v)%%| _____
+                  |10 v ||   {)| |(v)%%| | v%%%||A_ _ |
+                  |v v v||(v)% | | v%%%| |_%%%>||( v )|
+                  |v v v|| v % | |_%%%O|        | \ / |
+                  |v v v||__%%[|                |  .  |
+                  |___0I|                       |____V|
+                                             _____
+                 _____                _____ |6    |
+                |2    | _____        |5    || o o | 
+                |  o  ||3    | _____ | o o || o o | _____
+                |     || o o ||4    ||  o  || o o ||7    |
+                |  o  ||     || o o || o o ||____9|| o o | _____
+                |____Z||  o  ||     ||____S|       |o o o||8    | _____
+                       |____E|| o o |              | o o ||o o o||9    |
+                              |____h|              |____L|| o o ||o o o|
+                                          _____           |o o o||o o o|
+                                  _____  |K  WW|          |____8||o o o|
+                          _____  |Q  ww| | /\{)|                 |____6|
+                   _____ |J  ww| | /\{(| | \/%%| _____
+                  |10 o || /\{)| | \/%%| |  %%%||A ^  |
+                  |o o o|| \/% | |  %%%| |_%%%>|| / \ |
+                  |o o o||   % | |_%%%O|        | \ / |
+                  |o o o||__%%[|                |  .  |
+                  |___0I|                       |____V|
+              ''')
 
-#intro()
+intro()
 time.sleep(1)
 #print("center".center(20,"-"))
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
@@ -139,28 +224,84 @@ if x == "x":
        cheat = False
        text_delay = .5
        print_with_delay('''
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                      
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+       ''')
+       print_with_delay(
+       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you try to make your character do something it doesn't want to do, your character may act on it's own. You have been warned...")
+       time.sleep(7)
+       print_with_delay('''
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                                                                   
+       ''')
+       print_with_delay(Colors.MAGENTA + "When purple appears, this means you have to make a choice in the story. (like this/or this)")
+       print_with_delay(Colors.BLUE + "When blue text appears, this means you are speaking.")
+       print_with_delay(Colors.RED + "When red text appears, this means a different character is speaking.")
+       print_with_delay(Colors.WHITE + "When white text appears, this means that either your stats have changed or you gained an item.")
+       time.sleep(12)
+       print_with_delay('''
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
        ''')
 elif x == "skip":
        cheat = False
@@ -316,6 +457,7 @@ def prison(time_period):
                      print()
                      print_with_delay(Colors.YELLOW + "Zroom!.")
                      time.sleep(3)
+                     cards_intro()
                      print()
                      return
               else:
@@ -665,7 +807,8 @@ def world1():
               print()
               global time1
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(7)
+              time.sleep(3)
+              cards_intro()
               print()
               return
 
@@ -1022,7 +1165,8 @@ def world2():
                                           time.sleep(3)
                                           print()
                                           print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(7)
+                                          time.sleep(3)
+                                          cards_intro()
                                           print()
                                           return
                                    else:
@@ -1493,7 +1637,8 @@ def world2():
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(7)
+                                                 time.sleep(3)
+                                                 cards_intro()
                                                  print()
                                                  time1 = "present"
                                                  world2_meter = True
@@ -1974,7 +2119,8 @@ def world3(idol):
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(7)
+                                                 time.sleep(3)
+                                                 cards_intro()
                                                  print()
                                                  return
 def world4():
@@ -2011,7 +2157,8 @@ def world4():
                      time.sleep(3)
                      print()
                      print_with_delay(Colors.YELLOW + "Zroom!")
-                     time.sleep(7)
+                     time.sleep(3)
+                     cards_intro()
                      print()
                      return
               else:
@@ -2043,7 +2190,8 @@ def world4():
                                           time.sleep(3)
                                           print()
                                           print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(7)
+                                          time.sleep(3)
+                                          cards_intro()
                                           print()
                                           return
                                    else:
@@ -2057,7 +2205,8 @@ def world4():
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.YELLOW + "Zroom!")
-                                   time.sleep(7)
+                                   time.sleep(3)
+                                   cards_intro()
                                    print()
                                    return
 def world5():
@@ -2101,12 +2250,14 @@ def world5():
                             time.sleep(3)
                             print()
                             print_with_delay(Colors.YELLOW + "Zroom!")
-                            time.sleep(7)
+                            time.sleep(3)
+                            cards_intro()
                             print()
                             return
                      else:
                             print_with_delay(Colors.YELLOW + "Zroom!")
-                            time.sleep(7)
+                            time.sleep(3)
+                            cards_intro()
                             print()
                             return
               else:
@@ -2195,7 +2346,8 @@ def world5():
                                                  time.sleep(3)
                                                  print()
                                                  print_with_delay(Colors.YELLOW + "Zroom!")
-                                                 time.sleep(7)
+                                                 time.sleep(3)
+                                                 cards_intro()
                                                  return
                             else:
                                    if not known_lotto:
@@ -2263,7 +2415,8 @@ def world6():
                                    print()
                                    if world6ans3 == "yes":
                                           print_with_delay(Colors.YELLOW + "Zroom!")
-                                          time.sleep(7)
+                                          time.sleep(3)
+                                          cards_intro()
                                           return
                                    else:
                                           print_with_delay(Colors.GREEN + "You get caught by the guards and sent to future jail.")
@@ -2370,10 +2523,6 @@ if start:
               time.sleep(1)
               print()
        else:
-              time.sleep(3)
-              print_with_delay(Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you try to make your character do something it doesn't want to do, your character may act on it's own. You have been warned...")
-              time.sleep(10)
-              print()
               print_with_delay(Colors.GREEN + "You live in a run down apartment in the suburbs.")
               time.sleep(5)
               print()
@@ -2418,9 +2567,10 @@ if start:
               time.sleep(3)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(7)
+              time.sleep(3)
+              cards_intro()
               print()
-              world = 3#random.randint(1,6)
+              world = random.randint(1,6)
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2432,7 +2582,8 @@ if start:
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(7)
+              time.sleep(3)
+              cards_intro()
               print()
               if time1 == "past":
                      world = random.randint(1,4)
@@ -2690,7 +2841,8 @@ if start:
               time.sleep(1)
               print()
               print_with_delay(Colors.YELLOW + "Zroom!")
-              time.sleep(7)
+              time.sleep(3)
+              cards_intro()
               print()
               if time1 == "past":
                      world = random.randint(1,4)#(1,4)
