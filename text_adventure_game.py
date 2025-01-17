@@ -132,7 +132,7 @@ def intro():
                                    
                                    ''')
 def cards_intro():
-       print_with_delay(Colors.CYAN + '''
+       print_with_delay(Colors.YELLOW + '''
                     _____
                    |\ ~ /|
                    |}}:{{|
@@ -212,6 +212,28 @@ def cards_intro():
                   |o o o||   % | |_%%%O|        | \ / |
                   |o o o||__%%[|                |  .  |
                   |___0I|                       |____V|
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
               ''')
 
 intro()
@@ -278,7 +300,7 @@ if x == "x":
        print_with_delay(Colors.BLUE + "When blue text appears, this means you are speaking.")
        print_with_delay(Colors.RED + "When red text appears, this means a different character is speaking.")
        print_with_delay(Colors.WHITE + "When white text appears, this means that either your stats have changed or you gained an item.")
-       time.sleep(12)
+       time.sleep(14)
        print_with_delay('''
                                                         
                                                         
