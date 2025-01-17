@@ -2046,9 +2046,53 @@ def world3(idol):
                                    time.sleep(3)
                                    continue
                             else:
-                                   print_with_delay(Colors.GREEN + "The chamber is empty.")
-                                   time.sleep(3)
-                                   continue
+                                   if robot == "charged":
+                                          print_with_delay(Colors.GREEN + "There's a big slab of sandstone blocking the path with an indent for a small clay statue.")
+                                          time.sleep(3)
+                                          print()
+                                          world3ans2 = input(Colors.MAGENTA + "Insert the companion robot into the slot? (yes/no) ")
+                                          time.sleep(1)
+                                          robot = False
+                                          if world3ans2 == "yes":
+                                                 print()
+                                                 print_with_delay(Colors.GREEN + "You insert the robot into the slot.")
+                                                 time.sleep(5)
+                                                 print_with_delay("The door slides open, revealing a glowing white portal behind it.")
+                                                 time.sleep(5)
+                                                 print_with_delay("You hear whisperings from the portal, urging you to enter.")
+                                                 time.sleep(5)
+                                                 print()
+                                                 end_game = input(Colors.MAGENTA + "Go into the portal? (yes/no) ")
+                                                 time.sleep(2)
+                                                 print()
+                                                 if end_game == "yes":
+                                                        print_with_delay(Colors.GREEN + "You step into the portal.")
+                                                        time.sleep(5)
+                                                        print_with_delay("And that's where your adventures really begins.")
+                                                        time.sleep(5)
+                                                        print()
+                                                        the_end()
+                                                 else:
+                                                        print_with_delay(Colors.GREEN + "You step away and try to go back the way you came, except the path now blocked by a slab of sandstone.")
+                                                        time.sleep(5)
+                                                        print_with_delay("The portal flickers out as the ground starts to rumble.")
+                                                        time.sleep(5)
+                                                        print_with_delay("Parts of the ceiling start collapsing on top of you.")
+                                                        time.sleep(5)
+                                                        print_with_delay("Soon you are buried in rubble.")
+                                                        time.sleep(5)
+                                                        print()
+                                                        print_with_delay(Colors.WHITE + "You Died: You have perished from a mysterious cave in.")
+                                                        time.sleep(5)
+                                                        print()
+                                                        print_with_delay(Colors.GREEN + "In 4500 years, your skeleton will be discovered in one of the pyramids and scientists will wonder how you got there...")
+                                                        time.sleep(5)
+                                                        print()
+                                                        the_end()
+                                   else:
+                                          print_with_delay(Colors.GREEN + "The chamber is empty.")
+                                          time.sleep(3)
+                                          continue
                      else:
                             print_with_delay(Colors.GREEN + "You decide to go left.")
                             time.sleep(3)
