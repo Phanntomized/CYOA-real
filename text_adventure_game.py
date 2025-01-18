@@ -300,10 +300,10 @@ if x == "x":
                                                         
                                                                                                    
        ''')
-       print_with_delay(Colors.MAGENTA + "When purple appears, this means you have to make a choice in the story. (like this/or this)")
-       print_with_delay(Colors.BLUE + "When blue text appears, this means you are speaking.")
-       print_with_delay(Colors.RED + "When red text appears, this means a different character is speaking.")
-       print_with_delay(Colors.WHITE + "When white text appears, this means that either your stats have changed or you gained an item.")
+       print_with_delay(Colors.MAGENTA + "When purple appears, this usually means you have to make a choice in the story. (like this/or this)")
+       print_with_delay(Colors.BLUE + "When blue text appears, this usually means you are speaking.")
+       print_with_delay(Colors.RED + "When red text appears, this usually means a different character is speaking.")
+       print_with_delay(Colors.WHITE + "When white text appears, this usually means that either your stats have changed or you gained an item.")
        time.sleep(14)
        print_with_delay('''
                                                         
@@ -393,6 +393,12 @@ elif jewelry == 2:
        jewelry = "necklace"
 elif jewelry == 3:
        jewelry = "ring"
+known_world1 = "Undiscovered Location"
+known_world2 = "Undiscovered Location"
+known_world3 = "Undiscovered Location"
+known_world4 = "Undiscovered Location"
+known_world5 = "Undiscovered Location"
+known_world6 = "Undiscovered Location"
 
 vip = False
 necklace = False
@@ -588,6 +594,8 @@ def world1():
        global gold
        global fall
        global clay_statue
+       global known_world1
+       known_world1 = "Stone Age"
        waterfall = False
        world1ans4 = False
        if cheat:
@@ -869,6 +877,10 @@ def world2():
        global world
        global world2_meter
        global time1
+       global known_world2
+       global won_status
+       won_status = False
+       known_world2 = "Casino"
        def roulette():
               global money
               global vip
@@ -986,6 +998,8 @@ def world2():
                                                                       else:
                                                                              return "high card"
        def blackjack():
+              global won_status
+              won_status = False
               bj_won = False
               new_game = False
               round_over = False
@@ -1099,8 +1113,9 @@ def world2():
                                                  round_over = True            
                                                  break
                             else:
-                                   print_with_delay(Colors.GREEN + f"You stood with {total}.")
+                                   print_with_delay(Colors.WHITE + f"You stood with {total}.")
                                    time.sleep(3)
+                                   print()
                                    opdone = False
                             if ace > 11:
                                    print()
@@ -1123,10 +1138,10 @@ def world2():
                                           else:
                                                  opname = False
                                    if opname == "an ace":
-                                          print_with_delay(f"Your opponent draws {opname}")
+                                          print_with_delay(Colors.GREEN + f"Your opponent draws {opname}")
                                           time.sleep(3)
                                    else:
-                                          print_with_delay(f"Your opponent draws {opnum}.")
+                                          print_with_delay(Colors.GREEN + f"Your opponent draws {opnum}.")
                                           time.sleep(3)
                                    if opace > 0 and optotal > 21:
                                           optotal -= 10
@@ -1174,13 +1189,15 @@ def world2():
                             print_with_delay(Colors.WHITE + "You beat your opponent.")
                             time.sleep(3)
                             print()
-                            return "won"
+                            won_status = True
+                            return
                      elif lost == 3:
                             print()
                             print_with_delay(Colors.WHITE + "You lost and were sent back to the lobby.")
                             time.sleep(3)
                             print()
-                            return "lost"
+                            won_status = False
+                            return
                      else:
                             continue
        if world2_meter:
@@ -1264,7 +1281,11 @@ def world2():
                             jewelry = "ring"
                             vip = True
                             world2ans2 = "blackjack"
-                            bj_won = True
+                            bj_won = input("bj_won? (y/n) ")
+                            if bj_won == "y":
+                                   bj_won = True
+                            else:
+                                   bj_won = False
                      if world2ans2 == "blackjack" and bj_won:
                             print_with_delay(Colors.GREEN + "Nobody wants to play blackjack with you.")
                             time.sleep(3)
@@ -1287,16 +1308,14 @@ def world2():
                             print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
                             time.sleep(3)
                             print()
-                            if blackjack() != "won":
+                            blackjack()
+                            if not won_status:
                                    print_with_delay(Colors.GREEN + "You lose $50 for losing.")
                                    money -= 50
                                    time.sleep(3)
                                    if money < 0:
                                           print_with_delay(Colors.WHITE + f"You're ${money+money*2} are in debt!")
                                    break
-                            elif blackjack() == "prison":
-                                   prison("past")
-                                   return
                             else:
                                    print_with_delay(Colors.WHITE + "The gambler gives you $50 for winning.")
                                    money += 50
@@ -1944,6 +1963,8 @@ def world3(idol):
        global gold
        global anvil
        global robot
+       global known_world3
+       known_world3 = "Ancient Egypt"
        if cheat:
               clay_statue = 1
        if world == 3:
@@ -2225,6 +2246,8 @@ def world4():
        global strength
        global known_bitcoin
        global buy_bitcoin
+       global known_world4
+       known_world4 = "2010"
        if world == 4:
               print_with_delay(Colors.GREEN + "You yourself seemingly in the present.")
               time.sleep(3)
@@ -2314,6 +2337,8 @@ def world5():
        global known_lotto
        global sick
        global world5counter
+       global known_world5
+       known_world5 = "Tomorrow"
        lottery = random.randint(10000, 99999)
        if world == 5:
               if world5counter > 0 or cheat:
@@ -2475,6 +2500,8 @@ def world6():
        global iphone
        global vr
        global robot
+       global known_world6
+       known_world6 = "Far Future"
        if world == 6:
               print_with_delay(Colors.GREEN + "You find yourself in a sci-fi futuristic city. You must have gone far into the future.")
               time.sleep(3)
@@ -2945,19 +2972,13 @@ if start:
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
               print()
-              time1 = input(Colors.GREEN + "Go to the past or the future? (past/future) ")
+              world = int(input(Colors.MAGENTA + f"1. {known_world1}\n2. {known_world2}\n3. {known_world3}\n4. {known_world4}\n5. {known_world5}\n6. {known_world6}\nWhere do you want to go? (1-6) "))
               time.sleep(1)
               print()
               print_with_delay(Colors.CYAN + "Zroom!")
               time.sleep(3)
               cards_intro()
               print()
-              if time1 == "past":
-                     world = random.randint(1,4)#(1,4)
-              else:
-                     world = random.randint(5, 6)
-              if cheat:
-                     world = int(input("What world? "))
               if world == 1:
                      world1()
                      continue
