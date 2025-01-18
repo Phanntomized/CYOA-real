@@ -410,7 +410,7 @@ def prison(time_period):
        in_prison = True
        money -= money/2+wanted*5
        print()
-       print_with_delay(Colors.WHITE + f"You lose ${money/2+wanted*5} for going to jail. You now have {money}.")
+       print_with_delay(Colors.WHITE + f"You lose ${money/2+wanted*5} for going to jail. You now have ${money}.")
        time.sleep(3)
        print()
        print_with_delay(Colors.GREEN + "Jail is very boring.")
@@ -1240,8 +1240,8 @@ def world2():
                                    else:
                                           print_with_delay(Colors.GREEN + "The thugs drag you away and throw you in jail.")
                                           time.sleep(7)
-                                          prison("past")
                                           print()
+                                          prison("past")
                                           return
                      elif strength >= 20:
                             print_with_delay(Colors.GREEN + "Because of how strong you are, you beat them up.")
@@ -2821,10 +2821,12 @@ if start:
                             time.sleep(3)
                             print_with_delay(Colors.WHITE + f"You lose ${amount_bill/2}.")
                             money -= amount_bill/2
-                            time.sleep(3)
                             if money < 0:
-                                   print_with_delay(f"You are now ${money+money*2} in debt!")
                                    time.sleep(3)
+                                   print_with_delay(f"You are now ${money+money*2} in debt!")
+                                   time.sleep(7)
+                            else:
+                                   time.sleep(7)
                             prison("present")
                             continue
                      else:
