@@ -2953,31 +2953,30 @@ if start:
               cards_intro()
               print()
               if time1 == "past":
-                     if time1 == "past":
-                            world = random.randint(1,4)#(1,4)
+                     world = random.randint(1,4)#(1,4)
+              else:
+                     world = random.randint(5, 6)
+              if cheat:
+                     world = int(input("What world? "))
+              if world == 1:
+                     world1()
+                     continue
+              if world == 2:
+                     world2()
+                     continue
+              if world == 3:
+                     if clay_statue:
+                            idol = True
                      else:
-                            world = random.randint(5, 6)
-                     if cheat:
-                            world = int(input("What world? "))
-                     if world == 1:
-                            world1()
-                            continue
-                     if world == 2:
-                            world2()
-                            continue
-                     if world == 3:
-                            if clay_statue:
-                                   idol = True
-                            else:
-                                   idol = False
-                            world3(idol)
-                            continue
-                     if world == 4:
-                            world4()
-                            continue
-                     if world == 5:
-                            world5()
-                            continue
-                     if world == 6:
-                            world6()
-                            continue
+                            idol = False
+                     world3(idol)
+                     continue
+              if world == 4:
+                     world4()
+                     continue
+              if world == 5:
+                     world5()
+                     continue
+              if world == 6:
+                     world6()
+                     continue
