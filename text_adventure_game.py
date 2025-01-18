@@ -430,7 +430,7 @@ def prison(time_period):
                      quit()
               print()
               prisonans1 = input(Colors.MAGENTA + "Decide to be a good prisoner, or be a bad prisoner? (good/bad) ")
-              time.sleep(3)
+              time.sleep(1)
               if prisonans1 == "good":
                      print()
                      print_with_delay(Colors.GREEN + "You decide to be good.")
@@ -516,7 +516,7 @@ def prison(time_period):
               else:
                      print()
                      prisonans2 = input(Colors.MAGENTA + "Attempt to escape or start a riot? (escape/riot) ")
-                     time.sleep(3)
+                     time.sleep(1)
                      if prisonans2 == "escape":
                             if time_period == "past":
                                    escape = random.randint(1,3)
@@ -661,7 +661,7 @@ def world1():
              time.sleep(3)
              print()
              world1ans2 = input(Colors.MAGENTA + "Jump down the waterfall or face the neanderthals? (jump/stay) ")
-             time.sleep(3)
+             time.sleep(1)
        if world1ans2 == "jump":
               time.sleep(3)
               water_dmg = random.randint(5, 10)
@@ -762,7 +762,7 @@ def world1():
                                           time.sleep(3)
                                           print()
                                           world1ans8 = input(Colors.MAGENTA + "Stay a few more minutes to loot the neanderthal or run away? (loot/run) ")
-                                          time.sleep(3)
+                                          time.sleep(1)
                                           print()
                                           if world1ans8 == "loot":
                                                 print_with_delay(Colors.WHITE + "You take the neanderthal's club and you find a small chunk of gold.")
@@ -1505,6 +1505,7 @@ def world2():
                                                                       print_with_delay(Colors.GREEN + "You can't raise, you have to have more than the bet to raise.")
                                                                       time.sleep(3)
                                                                       world2ans7 = input(Colors.MAGENTA + "Match or fold? ")
+                                                                      time.sleep(1)
                                                                       if world2ans7 == "match":
                                                                              print_with_delay(Colors.GREEN + f"You match with ${opraise}.")
                                                                              time.sleep(3)
@@ -2286,7 +2287,7 @@ def world4():
                             if money > 0:
                                    print()
                                    buy_bitcoin = float(input(Colors.MAGENTA + "How many shares of Bitcoin do you want to buy? (1 share = $0.05) "))
-                                   time.sleep(3)
+                                   time.sleep(1)
                                    print()
                                    if buy_bitcoin*.05 > money:
                                           print_with_delay(Colors.GREEN + f"You can't buy that much Bitcoin, you don't have enough money. (max shares = {money/.05})")
@@ -2302,7 +2303,7 @@ def world4():
                                    if buy_bitcoin > 0:
                                           known_bitcoin += 1
                                    world4ans2 = input(Colors.MAGENTA + "Continue buying Bitcoin? (yes/no) ")
-                                   time.sleep(3)
+                                   time.sleep(1)
                                    if world4ans2 == "no":
                                           print()
                                           print_with_delay(Colors.RED + "Alright, lets go back and see how much money your bitcoin made.")
@@ -2576,7 +2577,7 @@ def world6():
                                           time.sleep(3)
                                           break
                                    world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $5000\n2. VR Contact Lenses - $500,000\n3. Robot Companion - $50,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3) "))
-                                   time.sleep(3)
+                                   time.sleep(1)
                                    if world6ans3 == 1:
                                           if money >= 100:
                                                  if iphone:
@@ -2839,7 +2840,7 @@ if start:
               if known_lotto:
                      print()
                      get_lotto = input(Colors.MAGENTA + "Go play the lottery? (yes/no) ")
-                     time.sleep(3)
+                     time.sleep(1)
                      print()
                      if get_lotto == "yes":
                             print_with_delay(Colors.GREEN + "You walk over to a nearby gas station to buy a ticket.")
