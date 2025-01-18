@@ -2670,6 +2670,8 @@ if start:
               cards_intro()
               print()
               world = random.randint(1,6)
+              if cheat:
+                     world = int(input("What world? (1-6) "))
        else:
               print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
               time.sleep(3)
@@ -2688,6 +2690,8 @@ if start:
                      world = random.randint(1,4)
               else:
                      world = random.randint(5,6)
+              if cheat:
+                     world = int(input("What world? "))
        if world == 1:
               world1()
        elif world == 2:
@@ -2949,7 +2953,12 @@ if start:
               cards_intro()
               print()
               if time1 == "past":
-                     world = random.randint(1,4)#(1,4)
+                     if time1 == "past":
+                            world = random.randint(1,4)#(1,4)
+                     else:
+                            world = random.randint(5, 6)
+                     if cheat:
+                            world = int(input("What world? "))
                      if world == 1:
                             world1()
                             continue
@@ -2966,8 +2975,6 @@ if start:
                      if world == 4:
                             world4()
                             continue
-              else:
-                     world = random.randint(5,6)
                      if world == 5:
                             world5()
                             continue
