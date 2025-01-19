@@ -2898,11 +2898,11 @@ if start:
                             rand_coin = random.randint(1,3)
                             if rand_coin == 1:
                                    money -= buy_bitcoin/10
-                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${buy_bitcoin/10}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${rand_coin*buy_bitcoin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             elif rand_coin == 2:
                                    rand_coin = random.randint(1,10)
-                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin*buy_bitcoin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             else:
                                    money += buy_bitcoin
@@ -2992,10 +2992,10 @@ if start:
               print()
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               time.sleep(1)
+              print()
               buy = 0
               if cash == "cash":
                      if gold > 0:
-                            print()
                             cash = input(Colors.MAGENTA + f"Cash in {gold} gold, worth ${gold*2}? (yes/no) ")
                             time.sleep(1)
                             print()
