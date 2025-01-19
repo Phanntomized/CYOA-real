@@ -732,7 +732,9 @@ def world1():
                                 pass
                          else:
                             neanderthal_health = 100
-                            while neanderthal_health > 0:
+                            neand_fight = 1
+                            waterfall = False
+                            while not waterfall:
                                    print_with_delay(Colors.GREEN + "You throw a punch at the neanderthal.")
                                    time.sleep(3)
                                    swing = random.randint(1,10)
@@ -768,20 +770,37 @@ def world1():
                                           time.sleep(3)
                                           print_with_delay("You could loot the neanderthal but you might get caught.")
                                           time.sleep(3)
-                                          print()
-                                          world1ans8 = input(Colors.MAGENTA + "Stay a few more minutes to loot the neanderthal or run away? (loot/run) ")
-                                          time.sleep(1)
-                                          print()
-                                          if world1ans8 == "loot":
-                                                print_with_delay(Colors.WHITE + "You take the neanderthal's club and you find a small chunk of gold.")
-                                                club = True
-                                                gold = 5
-                                                strength = strength + 10
-                                                time.sleep(3)
-                                                print_with_delay(Colors.WHITE + f"You gain 10 strength. You now have {strength} strength.")
-                                                time.sleep(3)
-                                                print()
-                                                break
+                                          if neand_fight == 1:
+                                                 print()
+                                                 world1ans8 = input(Colors.MAGENTA + "Stay a few more minutes to loot the neanderthal or run away? (loot/run) ")
+                                                 time.sleep(1)
+                                                 print()
+                                                 if world1ans8 == "loot":
+                                                        rand_fight = random.randint(1,3)
+                                                        if rand_fight == 1 or rand_fight == 3:
+                                                               print_with_delay(Colors.WHITE + "You take the neanderthal's club and you find a small chunk of gold.")
+                                                               club = True
+                                                               gold = 5
+                                                               strength = strength + 10
+                                                               time.sleep(3)
+                                                               print_with_delay(Colors.WHITE + f"You gain 10 strength. You now have {strength} strength.")
+                                                               time.sleep(3)
+                                                               print()
+                                                               break
+                                                        else:
+                                                               print_with_delay(Colors.GREEN + "As you go over to loot the fallen neanderthal, the other one comes back. Seeing his comrade on the ground he becomes enraged, and you have no choice but to fight him.")
+                                                               time.sleep(3)
+                                                               neand_fight += 1
+                                                               neanderthal_health = 100
+                                                               continue
+                                                 else:
+                                                        world1ans7 = "run"
+                                                        waterfall = True
+                                                        break
+                                          else:
+                                                 world1ans7 = "run"
+                                                 waterfall = True
+                                                 break
                                    print_with_delay(Colors.GREEN + "Now it's the neanderthal's turn to take a swing at you.")
                                    time.sleep(3)
                                    print_with_delay("You must predict where the neanderthal is going to swing so you can dodge it.")
