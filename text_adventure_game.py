@@ -2379,16 +2379,16 @@ def world5():
        global known_world5
        global save_food
        global food_type
-       food_type = random.randint(1,7)
-       if food_type == 1:
+       food_rand = random.randint(1,7)
+       if food_rand == 1:
               food_type = "a banana"
-       elif food_type == 2:
+       elif food_rand == 2:
               food_type = "a cucumber"
-       elif food_type == 3:
+       elif food_rand == 3:
               food_type = " some leftover spaghetti"
-       elif food_type == 4:
+       elif food_rand == 4:
               food_type = "a twinkie"
-       elif food_type == 5:
+       elif food_rand == 5:
               food_type = "half a pint of ice cream"
        else:
               food_type = " some tater tots"
@@ -2483,7 +2483,7 @@ def world5():
                                                  sick = True
                                                  continue
                                           else:
-                                                 if not food > 0:
+                                                 if save_food == 0:
                                                         save_food = input(Colors.MAGENTA + f"Put {food_type} in your pocket? (yes/no) ")
                                                         time.sleep(1)
                                                         print()
@@ -2784,9 +2784,17 @@ if start:
                      print()
                      print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
                      time.sleep(3)
-                     print()
-                     time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
-                     time.sleep(1)
+                     time_choice = True
+                     while time_choice:
+                            print()
+                            time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
+                            time.sleep(1)
+                            print()
+                            if time1 != "past" and time1 != "future":
+                                   print_with_delay(Colors.GREEN + "Invalid choice.")
+                                   time.sleep(3)
+                            else:
+                                   break
                      print()
                      print_with_delay(Colors.CYAN + "Zroom!")
                      time.sleep(3)
