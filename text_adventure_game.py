@@ -1291,7 +1291,7 @@ def world2():
 
        if world == 2:
               bj_won = False
-              print_with_delay(Colors.GREEN + "You're standing outside of a casino.")
+              print_with_delay(Colors.GREEN + "You're standing outside of an old fashioned casino.")
               time.sleep(3)
               print()
               print_with_delay(Colors.BLUE + "I want to find the toaster.")
