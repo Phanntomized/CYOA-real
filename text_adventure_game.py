@@ -2540,6 +2540,7 @@ def world6():
        global known_world6
        known_world6 = "Far Future"
        if world == 6:
+              taxi = 0
               print_with_delay(Colors.GREEN + "You find yourself in a sci-fi futuristic city. You must have gone far into the future.")
               time.sleep(3)
               print_with_delay("The toaster is nowhere to be seen.")
@@ -2549,9 +2550,17 @@ def world6():
                      world6ans1 = input(Colors.MAGENTA + "Go search in the museum or tech store? (museum/tech) ")
                      time.sleep(1)
                      print()
+                     if world6ans1 >= 5:
+                            print_with_delay(Colors.GREEN + "The taxi robot's mind short circuits because it can't figure out why your taking the taxi so much. You crash and die.")
+                            time.sleep(3)
+                            print_with_delay(Colors.WHITE + "You Died: Your taxi crashed because you rode it too much.")
+                            time.sleep(3)
+                            print()
+                            the_end()
                      if world6ans1 == "museum":
-                            money -= 5
-                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $5 to get to the museum. You now have ${money}.")
+                            taxi += 1
+                            money -= 2
+                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the museum. You now have ${money}.")
                             time.sleep(3)
                             print_with_delay("As you wander through the exhibits, you notice the toaster in one of the displays titled 'ancient kitchen artifacts'.")
                             time.sleep(3)
@@ -2592,8 +2601,9 @@ def world6():
                                    time.sleep(3)
                                    continue
                      else:
-                            money -= 5
-                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $5 to get to the tech shop. You now have ${money}.")
+                            taxi += 1
+                            money -= 2
+                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the tech shop. You now have ${money}.")
                             time.sleep(3)
                             #iphone80, vr contact lenses, robot companion
                             print_with_delay("You enter the tech shop and inspect some items for sale.")
