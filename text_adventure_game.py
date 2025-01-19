@@ -243,7 +243,7 @@ def cards_intro():
 intro()
 time.sleep(1)
 #print("center".center(20,"-"))
-x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
+x = input(Colors.BLUE + "                                this is updated Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
        skip = False
@@ -3074,8 +3074,10 @@ if start:
                             buy +=1
                      if buy == 7:
                             print_with_delay(Colors.GREEN + "Nothing to sell.")
+                            time.sleep(3)
                      else:
                             print_with_delay(Colors.GREEN + f"Your total money is ${money}.")
+                            time.sleep(3)
               print()
               high_score()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
