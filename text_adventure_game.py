@@ -338,7 +338,7 @@ elif x == "cheat":
        cheat = True
        start = True
        text_delay = 0.0
-       print("debug mode on")
+       print("god mode enabled")
        time.sleep(3)
 else:
        skip = False
@@ -675,7 +675,6 @@ def world1():
               water_dmg = random.randint(5, 10)
               waterfall = True
        else:
-             print()
              print_with_delay(Colors.GREEN + "You decide to stay and face the neanderthals.")
              time.sleep(3)
              print_with_delay("They approach you and make it clear they want you to give them something.")
@@ -693,7 +692,14 @@ def world1():
                    world1ans4 = input(Colors.MAGENTA + "Give the statue or keep it? (give/keep) ")
                    time.sleep(1)
                    print()
-                   if world1ans4 == "give":
+                   if world1ans4 == "keep":
+                          print_with_delay(Colors.GREEN + "You decide to keep the statue.")
+                          time.sleep(3)
+                          print_with_delay("The neanderthals are not pleased, so they throw you off the waterfall.")
+                          time.sleep(3)
+                          water_dmg = random.randint(15, 20)
+                          waterfall = True
+                   else:
                          print_with_delay(Colors.GREEN + "You decide to give the neanderthals the clay statue.")
                          time.sleep(3)
                          if clay_statue >= 1:
@@ -715,6 +721,13 @@ def world1():
                                        print_with_delay("As you walk away, you slip and fall down a nearby waterfall")
                                        time.sleep(3)
                                        waterfall = True
+                                else:
+                                       print_with_delay(Colors.GREEN + "Now that there's only one, you might be able to take them in a fight.")
+                                       time.sleep(3)
+                                       print()
+                                       world1ans5 = input(Colors.MAGENTA + "Fight the neanderthal or shrug apologetically? (fight/shrug) ")
+                                       time.sleep(1)
+                                       print()
                          else:
                                print_with_delay("You don't have anything to give them, but now that there's only one, you might be able to take them in a fight.")
                                time.sleep(3)
@@ -722,15 +735,13 @@ def world1():
                                world1ans5 = input(Colors.MAGENTA + "Fight the neanderthal or shrug apologetically? (fight/shrug) ")
                                time.sleep(1)
                                print()
-                         if world1ans5 == "shrug" or world1ans4 == "keep":
+                         if world1ans5 == "shrug":
                                print_with_delay(Colors.GREEN + "You shrug apologetically.")
                                time.sleep(3)
                                print_with_delay("They aren't going to take it, and you get thrown off the waterfall.")
                                time.sleep(3)
                                waterfall = True
-                         elif world1ans4 == "give":
-                                pass
-                         else:
+                         if world1ans5 == "fight":
                             neanderthal_health = 100
                             neand_fight = 1
                             waterfall = False
@@ -739,7 +750,7 @@ def world1():
                                    time.sleep(3)
                                    swing = random.randint(1,10)
                                    if swing == 1 or swing == 4 or swing == 5 or swing == 6 or swing == 8:
-                                          print_with_delay(Colors.GREEN + "The blow dazes the neanderthal, but only for a second.")
+                                          print_with_delay(Colors.GREEN + "The blow dazes the neanderthal.")
                                           neanderthal_health = neanderthal_health - 10
                                           neanderthal_health = neanderthal_health - strength
                                           time.sleep(3)
@@ -768,9 +779,9 @@ def world1():
                                           time.sleep(3)
                                           print_with_delay("All that fighting has probably attracted some unwanted attention...")
                                           time.sleep(3)
-                                          print_with_delay("You could loot the neanderthal but you might get caught.")
-                                          time.sleep(3)
                                           if neand_fight == 1:
+                                                 print_with_delay("You could loot the neanderthal but you might get caught.")
+                                                 time.sleep(3)
                                                  print()
                                                  world1ans8 = input(Colors.MAGENTA + "Stay a few more minutes to loot the neanderthal or run away? (loot/run) ")
                                                  time.sleep(1)
@@ -857,14 +868,6 @@ def world1():
                             else:
                                    time.sleep(3)
                                    waterfall = True
-                   else:
-                            print_with_delay(Colors.GREEN + "You decide to keep the statue.")
-                            time.sleep(3)
-                            print_with_delay("The neanderthals are not pleased, so they throw you off the waterfall.")
-                            time.sleep(3)
-                            water_dmg = random.randint(15, 20)
-                            waterfall = True
-
              else:
                      print_with_delay(Colors.GREEN + "You don't have anything to give them so you shrug apologetically.")
                      time.sleep(3)
