@@ -2646,7 +2646,6 @@ def world6():
 if start:
        present = True
        if cheat:
-              ans1 = "decline"
               money = 10000000
               robot = "charged"
        elif skip:
@@ -2689,41 +2688,42 @@ if start:
               ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
               time.sleep(1)
               print()
-
-       if ans1 == "decline":
-              print_with_delay(Colors.BLUE + "I must be going crazy, there's no such thing as a talking toaster, or time travel for that matter!")
-              time.sleep(3)
-              print()
-              print_with_delay(Colors.RED + "If you don't believe me, then I guess I'll have to show you.")
-              time.sleep(3)
-              print()
-              print_with_delay(Colors.CYAN + "Zroom!")
-              time.sleep(3)
-              cards_intro()
-              print()
-              world = random.randint(1,6)
-              if cheat:
-                     world = int(input("What world? (1-6) "))
-       else:
-              print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
-              time.sleep(3)
-              print()
-              print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
-              time.sleep(3)
-              print()
-              time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
+       if cheat:
+              world = int(input("What world? "))
               time.sleep(1)
-              print()
-              print_with_delay(Colors.CYAN + "Zroom!")
-              time.sleep(3)
-              cards_intro()
-              print()
-              if time1 == "past":
-                     world = random.randint(1,4)
+       else:
+              if ans1 == "decline":
+                     print_with_delay(Colors.BLUE + "I must be going crazy, there's no such thing as a talking toaster, or time travel for that matter!")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.RED + "If you don't believe me, then I guess I'll have to show you.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.CYAN + "Zroom!")
+                     time.sleep(3)
+                     cards_intro()
+                     print()
+                     world = random.randint(1,6)
+                     if cheat:
+                            world = int(input("What world? (1-6) "))
               else:
-                     world = random.randint(5,6)
-              if cheat:
-                     world = int(input("What world? "))
+                     print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
+                     time.sleep(3)
+                     print()
+                     print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
+                     time.sleep(3)
+                     print()
+                     time1 = input(Colors.MAGENTA + "Go to the past or the future? (past/future) ")
+                     time.sleep(1)
+                     print()
+                     print_with_delay(Colors.CYAN + "Zroom!")
+                     time.sleep(3)
+                     cards_intro()
+                     print()
+                     if time1 == "past":
+                            world = random.randint(1,4)
+                     else:
+                            world = random.randint(5,6)
        if world == 1:
               world1()
        elif world == 2:
