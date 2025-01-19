@@ -2398,7 +2398,10 @@ def world5():
        known_world5 = "Tomorrow"
        lottery = random.randint(10000, 99999)
        if world == 5:
-              if world5counter > 0 or cheat:
+              if cheat:
+                     world5counter = int(input("world5counter num? "))
+                     time.sleep(3)
+              if world5counter > 0:
                      if cheat:
                             print(lottery)
                             known_lotto = True
