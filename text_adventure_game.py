@@ -957,7 +957,7 @@ def world2():
                      time.sleep(1)
                      if choice == "white" or choice == "odds" and wheel == 0:
                             print()
-                            print_with_delay(Colors.WHITE + f"You win and earn ${bet*2}.")
+                            print_with_delay(Colors.WHITE + f"You win and earn ${rbet*2}.")
                             time.sleep(3)
                             print()
                             wins += 1
@@ -966,7 +966,7 @@ def world2():
                      elif choice == "black" or choice == "evens" and wheel == 1:
                             if rbet < 0:
                                    rbet -= rbet*2
-                            print_with_delay(Colors.GREEN + f"You win and earn ${bet * 2}.")
+                            print_with_delay(Colors.GREEN + f"You win and earn ${rbet * 2}.")
                             time.sleep(3)
                             wins += 1
                             money += bet*2
