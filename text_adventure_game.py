@@ -2440,7 +2440,7 @@ def world5():
                                           print_with_delay(Colors.GREEN + "As you look around you find your old computer.")
                                           time.sleep(3)
                                           print()
-                                          print_with_delay(Colors.BLUE + "According to the computer, I'm one day in the future.")
+                                          print_with_delay(Colors.BLUE + "According to the computer, I'm only one day in the future.")
                                           time.sleep(3)
                                           print_with_delay("I wonder why the toaster brought me here?")
                                           time.sleep(3)
