@@ -32,7 +32,7 @@ def the_end():
        print_with_delay(Colors.CYAN + "The end.")
        time.sleep(3)
        print()
-       print_with_delay(Colors.WHITE + f"Your Scores: \nCurrent Money: ${money}\nMost Money: ${money_high}\nMoney Points: {avg_money}\nCurrent Strength: {strength}\nMost Strength: {strength_high}\nStrength Points: {avg_strength}\nCurrent Health: {health}\nMost Health: {health}\nHealth Points: {avg_health}\nTotal Points: {avg_money+avg_health+avg_strength}")
+       print_with_delay(Colors.WHITE + f"Your Scores: \nCurrent Money: ${round(money,2)}\nMost Money: ${round(money_high,2)}\nMoney Points: {round(avg_money,0)}\nCurrent Strength: {round(strength,0)}\nMost Strength: {round(strength_high,0)}\nStrength Points: {round(avg_strength,0)}\nCurrent Health: {round(health,0)}\nMost Health: {round(health_high,0)}\nHealth Points: {round(avg_health,0)}\nTotal Points: {round(avg_money+avg_health+avg_strength,0)}")
        time.sleep(3)
        print()
        print_with_delay(Colors.CYAN + "Thanks for playing Time Freak by Phann Boon.")
@@ -423,6 +423,7 @@ def prison(time_period):
                      time.sleep(3)
                      print_with_delay("They lock you up, and you never see the light of day again.")
                      time.sleep(3)
+                     print()
                      print_with_delay(Colors.WHITE + "You Lose: You're stuck in jail for the rest of your days.")
                      time.sleep(3)
                      print()
@@ -442,17 +443,21 @@ def prison(time_period):
                                    print_with_delay(Colors.WHITE + f"You gain {wanted} strength and lose {wanted*2} health.")
                                    time.sleep(3)
                                    if health <= 0:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          time.sleep(3)
+                                          print()
+                                          the_end()
                                           quit()
                                    else:
-                                          print_with_delay(
-                                                 Colors.GREEN + f"You now have {health} health and {strength} strength.")
+                                          print_with_delay(Colors.GREEN + f"You now have {health} health and {strength} strength.")
                             elif time_period == "present":
                                    health -= wanted
                                    strength -= wanted
                                    print_with_delay(Colors.WHITE + f"You lose {wanted} strength and {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You died: you have perished in prison.")
                                           time.sleep(3)
                                           the_end()
@@ -465,6 +470,7 @@ def prison(time_period):
                                    print_with_delay(Colors.WHITE + f"You lose {wanted*2} strength and gain {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You died: you have perished in prison")
                                           time.sleep(3)
                                           print()
@@ -558,6 +564,7 @@ def prison(time_period):
                                    print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health. You now have {health} health.")
                                    time.sleep(3)
                                    if health <= 0:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
                                           time.sleep(3)
                                           print()
@@ -573,6 +580,7 @@ def prison(time_period):
                                    print_with_delay(f"You sustained injuries during the riot, and lost {riot*riot_damage} health. You now have {health} health.")
                                    time.sleep(3)
                                    if health <= 0:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
                                           time.sleep(3)
                                           print()
@@ -2132,6 +2140,7 @@ def world3(idol):
                                    time.sleep(3)
                                    dmg = random.randint(1,30)
                                    if health <= dmg:
+                                          print()
                                           print_with_delay(Colors.WHITE + "You Died: You have perished from falling into a pit of spikes.")
                                           time.sleep(3)
                                           print()
@@ -2159,6 +2168,7 @@ def world3(idol):
                                           time.sleep(3)
                                           dmg = random.randint(1, 30)
                                           if health <= dmg:
+                                                 print()
                                                  print_with_delay(Colors.WHITE + "You Died: You have perished from a cave in.")
                                                  time.sleep(3)
                                                  print()
@@ -2186,6 +2196,7 @@ def world3(idol):
                                                  time.sleep(3)
                                                  dmg = random.randint(1, 30)
                                                  if health <= dmg:
+                                                        print()
                                                         print_with_delay(Colors.WHITE + "You Died: You have perished from a falling anvil.")
                                                         time.sleep(3)
                                                         print()
@@ -2724,6 +2735,18 @@ if start:
                             world = random.randint(1,4)
                      else:
                             world = random.randint(5,6)
+       high_score()
+       if cheat:
+              die = input("die? (y/n) ")
+              if die == "y":
+                     health = random.randint(1,1000)
+                     strength = random.randint(1,1000)
+                     money = random.randint(1,1000)
+                     high_score()
+                     health = random.randint(1, 1000)
+                     strength = random.randint(1, 1000)
+                     money = random.randint(1, 1000)
+                     the_end()
        if world == 1:
               world1()
        elif world == 2:
