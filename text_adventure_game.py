@@ -243,7 +243,7 @@ def cards_intro():
 intro()
 time.sleep(1)
 #print("center".center(20,"-"))
-x = input(Colors.BLUE + "                                this is updated Press x to start: " + Colors.RESET)
+x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
 if x == "x":
        start = True
        skip = False
