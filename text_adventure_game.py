@@ -2840,7 +2840,11 @@ if start:
                             rand_food = random.randint(5,30)
                             print_with_delay(Colors.GREEN + f"You eat {food_type} from your pocket.")
                             time.sleep(3)
-                            health += rand_food
+                            if food_type == "some tater tots":
+                                   rand_food *= 10
+                                   health += rand_food
+                            else:
+                                   health += rand_food
                             print_with_delay(Colors.WHITE + f"You gain {rand_food} health. Your health is now {health}.")
                             time.sleep(3)
                             sick = True
