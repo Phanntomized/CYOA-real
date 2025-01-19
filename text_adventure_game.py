@@ -2709,7 +2709,7 @@ if start:
               #time.sleep(5)
               print_with_delay("You decide to buy it, since your other toaster is broken.")
               time.sleep(5)
-              print_with_delay("After you get home, you hear a strange voice start talking to you in your head.")
+              print_with_delay("After you get home, you hear a strange voice talking to you in your head.")
               time.sleep(5)
               print()
               print_with_delay(Colors.RED + "Hey kid, want to earn some sweet dough?")
