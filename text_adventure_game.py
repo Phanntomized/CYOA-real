@@ -240,7 +240,7 @@ def cards_intro():
                                                                       
               ''')
 
-intro()
+#intro()
 time.sleep(1)
 #print("center".center(20,"-"))
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
