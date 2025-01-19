@@ -408,9 +408,9 @@ def prison(time_period):
        global money
        global wanted
        in_prison = True
-       money -= money/2+wanted*5
+       money -= money/2+wanted*10
        print()
-       print_with_delay(Colors.WHITE + f"You lose ${money/2+wanted*5} for going to jail. You now have ${money}.")
+       print_with_delay(Colors.WHITE + f"You lose ${money/2+wanted*10} for going to jail. You now have ${money}.")
        time.sleep(3)
        print()
        print_with_delay(Colors.GREEN + "Jail is very boring.")
