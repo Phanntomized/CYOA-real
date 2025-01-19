@@ -2677,6 +2677,7 @@ if start:
        present = True
        if cheat:
               money = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+              strength = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
               robot = "charged"
        elif skip:
               ans1 = input(Colors.MAGENTA + "Accept or decline the toaster's offer? (accept/decline) ")
