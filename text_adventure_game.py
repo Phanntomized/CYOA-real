@@ -385,6 +385,8 @@ buy_bitcoin = 0
 vr = False
 iphone = False
 robot = False
+save_food = 0
+food_type = 1
 world5counter = 0
 jewelry = random.randint(1,3)
 if jewelry == 1:
@@ -2375,6 +2377,21 @@ def world5():
        global sick
        global world5counter
        global known_world5
+       global save_food
+       global food_type
+       food_type = random.randint(1,7)
+       if food_type == 1:
+              food_type = "a banana"
+       elif food_type == 2:
+              food_type = "a cucumber"
+       elif food_type == 3:
+              food_type = " some leftover spaghetti"
+       elif food_type == 4:
+              food_type = "a twinkie"
+       elif food_type == 5:
+              food_type = "half a pint of ice cream"
+       else:
+              food_type = " some tater tots"
        known_world5 = "Tomorrow"
        lottery = random.randint(10000, 99999)
        if world == 5:
@@ -2466,9 +2483,18 @@ def world5():
                                                  sick = True
                                                  continue
                                           else:
-                                                 print_with_delay(Colors.BLUE + "My fridge is broken, so I'll probably get sick if I eat anything.")
-                                                 time.sleep(3)
-                                                 continue
+                                                 if not food > 0:
+                                                        save_food = input(Colors.MAGENTA + f"Put {food_type} in your pocket? (yes/no) ")
+                                                        time.sleep(1)
+                                                        print()
+                                                        if save_food == "yes":
+                                                               save_food += 1
+                                                               print_with_delay(Colors.GREEN + f"You put {food_type} in your pocket.")
+                                                               time.sleep(3)
+                                                 else:
+                                                        print_with_delay(Colors.BLUE + "My fridge is broken, so I'll probably get sick if I eat anything.")
+                                                        time.sleep(3)
+                                                        continue
                                    else:
                                           print_with_delay(Colors.GREEN + "As you search, you start to realize your home is really dirty.")
                                           time.sleep(3)
@@ -2804,6 +2830,20 @@ if start:
               time.sleep(3)
               print_with_delay(f"You have ${money}.")
               time.sleep(3)
+              if save_food > 0:
+                     print()
+                     eat_food = input(Colors.MAGENTA + f"Eat {food_type} from your pocket? (yes/no) ")
+                     time.sleep(1)
+                     print()
+                     if eat_food == "yes":
+                            save_food -= 1
+                            rand_food = random.randint(5,30)
+                            print_with_delay(Colors.GREEN + f"You eat {food_type} from your pocket.")
+                            time.sleep(3)
+                            health += rand_food
+                            print_with_delay(Colors.WHITE + f"You gain {rand_food} health. Your health is now {health}.")
+                            time.sleep(3)
+                            sick = True
               if robot:
                      print_with_delay("The companion robot didn't come with batteries.")
                      time.sleep(3)
@@ -2938,7 +2978,7 @@ if start:
               cash = input(Colors.MAGENTA + "Cash out in some of your items or move on to your next adventure? (cash/adventure) ")
               time.sleep(1)
               buy = 0
-              while cash == "cash":
+              if cash == "cash":
                      if gold > 0:
                             print()
                             cash = input(Colors.MAGENTA + f"Cash in {gold} gold, worth ${gold*2}? (yes/no) ")
