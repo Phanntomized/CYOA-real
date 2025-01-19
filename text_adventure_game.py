@@ -418,7 +418,7 @@ def prison(time_period):
        print_with_delay("As time passes, you formulate a plan.")
        time.sleep(3)
        while in_prison:
-              if wanted > 10:
+              if wanted > 4:
                      print_with_delay("You've been such a bad criminal that they give you a life sentence.")
                      time.sleep(3)
                      print_with_delay("They lock you up, and you never see the light of day again.")
@@ -550,7 +550,7 @@ def prison(time_period):
                                    riot_damage = 4
                             else:
                                    riot_damage = 3
-                            if riot == 5:
+                            if riot == 1:
                                    print_with_delay(Colors.GREEN + "You successfully start a riot and escape.")
                                    time.sleep(3)
                                    wanted += 1
@@ -565,7 +565,7 @@ def prison(time_period):
                                           quit()
                                    else:
                                           return
-                            elif riot == 3 or riot == 4:
+                            elif riot == 2 or riot == 4:
                                    print_with_delay(Colors.GREEN + "You successfully start a riot, but it gets shut down.")
                                    time.sleep(3)
                                    wanted += 1
