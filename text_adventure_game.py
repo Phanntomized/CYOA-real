@@ -2487,10 +2487,10 @@ def world5():
                                                  continue
                                           else:
                                                  if save_food == 0:
-                                                        save_food = input(Colors.MAGENTA + f"Put {food_type} in your pocket? (yes/no) ")
+                                                        food = input(Colors.MAGENTA + f"Put {food_type} in your pocket? (yes/no) ")
                                                         time.sleep(1)
                                                         print()
-                                                        if save_food == "yes":
+                                                        if food == "yes":
                                                                save_food += 1
                                                                print_with_delay(Colors.GREEN + f"You put {food_type} in your pocket.")
                                                                time.sleep(3)
