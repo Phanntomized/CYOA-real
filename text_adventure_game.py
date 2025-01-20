@@ -942,7 +942,7 @@ def world2():
                      if cont == "no":
                             return
                      wheel = random.randint(0,1)
-                     rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? "))
+                     rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? (Up to ${money}) "))
                      time.sleep(1)
                      print()
                      if 1 > rbet > 10000:
