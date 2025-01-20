@@ -925,6 +925,7 @@ def world2():
                      if money <= 0:
                             print_with_delay(Colors.GREEN + "You can't play roulette, you don't have any money!")
                             time.sleep(3)
+                            print()
                             return
                      elif money < rand_roulette:
                             print_with_delay(Colors.GREEN + "You accumulate so much debt that you get sent to jail.")
@@ -950,14 +951,17 @@ def world2():
                             continue
                      else:
                             money -= rbet
+                            print_with_delay(Colors.WHITE + f"You bet ${rbet}. You now have ${money}.")
+                            time.sleep(3)
+                            print()
                             high_score()
                      choice = random.randint(0,1)
                      if choice == 0:
-                            choice = input("Bet on white or black? (white/black) ")
+                            choice = input(Colors.MAGENTA + "Bet on white or black? (white/black) ")
                             time.sleep(1)
                             print()
                      else:
-                            choice = input("Bet on odds or evens? (odds/evens) ")
+                            choice = input(Colors.MAGENTA + "Bet on odds or evens? (odds/evens) ")
                             time.sleep(1)
                             print()
                      time.sleep(1)
@@ -1375,13 +1379,14 @@ def world2():
                                           else:
                                                  print_with_delay(Colors.GREEN + "You go back to the lobby.")
                                                  time.sleep(3)
+                                                 print()
                                                  continue
                                    else:
                                           print_with_delay(Colors.GREEN + "You go back to the lobby.")
                                           time.sleep(3)
                                           continue
                             else:
-                                   print_with_delay(Colors.GREEN + "You decide to battle the gambler in Blackjack.")
+                                   print_with_delay(Colors.GREEN + "You decide to play Blackjack with the gambler..")
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
