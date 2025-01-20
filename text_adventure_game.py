@@ -1224,7 +1224,7 @@ def world2():
                             return
                      elif lost == 3:
                             print()
-                            print_with_delay(Colors.WHITE + "You lost and were sent back to the lobby.")
+                            print_with_delay(Colors.WHITE + "You lost too many times.")
                             time.sleep(3)
                             print()
                             won_status = False
@@ -1336,20 +1336,67 @@ def world2():
                             print_with_delay(Colors.RED + "I might have, and I might not have, if you beat me in blackjack, I'll tell you what I know.")
                             time.sleep(3)
                             print()
+                            world2ans21 = input(Colors.MAGENTA + "Play the gambler's game? (yes/no) ")
+                            time.sleep(1)
+                            print()
+                            if world2ans21 == "no":
+                                   if strength >= 10:
+                                          world2ans22 = input("Attempt to beat up the gambler? (yes/no) ")
+                                          time.sleep(1)
+                                          print()
+                                          if world2ans22 == "yes":
+                                                 rand_dmg = random.randint(30,50)
+                                                 if strength > rand_dmg:
+                                                        rand_dmg = 0
+                                                 else:
+                                                        rand_dmg -= strength
+                                                 health -= rand_dmg
+                                                 print_with_delay(Colors.GREEN + "You start brawling with the gambler.")
+                                                 time.sleep(3)
+                                                 print_with_delay(f"You win the fight, but lose {rand_dmg}.")
+                                                 time.sleep(3)
+                                                 print_with_delay("The beat up gambler tells you the boss gambler has the toaster.")
+                                                 time.sleep(3)
+                                                 bj_won = True
+                                                 if not vip:
+                                                        print_with_delay("You need a VIP pass to enter the boss gambler's room.")
+                                                        time.sleep(3)
+                                                        print_with_delay("You go off in search of a VIP pass.")
+                                                        time.sleep(3)
+                                                        world2ans1 = "restaurant"
+                                          else:
+                                                 print_with_delay(Colors.GREEN + "You go back to the lobby.")
+                                                 time.sleep(3)
+                                                 continue
+                                   else:
+                                          print_with_delay(Colors.GREEN + "You go back to the lobby.")
+                                          time.sleep(3)
+                                          continue
+                            print_with_delay(Colors.GREEN + "You decide to battle the gambler in Blackjack.")
+                            time.sleep(3)
+                            print()
                             print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
                             time.sleep(3)
                             print()
-                            print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you should probably take a quick break and look it up.")
+                            print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you should probably take a quick break and look it up. \nAlso in this version of Blackjack, if you hold five cards in your hand, you immediately win the round.")
                             time.sleep(3)
                             print()
                             blackjack()
-                            if not won_status:
+                            while not won_status:
                                    money -= 10
-                                   print_with_delay(Colors.GREEN + f"You lose $10 for losing. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You lose $10 for losing. You now have ${money}.")
                                    time.sleep(3)
                                    if money < 0:
                                           print_with_delay(Colors.WHITE + f"You're ${money+money*2} are in debt!")
-                                   break
+                                          time.sleep(3)
+                                   print()
+                                   play_bj = input(Colors.MAGENTA + "Play again or go back to the lobby? (play/lobby) ")
+                                   time.sleep(1)
+                                   if play_bj == "play":
+                                          blackjack()
+                                          continue
+                                   else:
+                                          break
                             else:
                                    money += 100
                                    print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${money}.")
