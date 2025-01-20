@@ -1367,7 +1367,7 @@ def world2():
                                                         health -= rand_dmg
                                                         print_with_delay(f"You win the fight, but lose {rand_dmg} health. You now have {health} health.")
                                                         time.sleep(3)
-                                                 print_with_delay("The beat up gambler tells you the boss gambler has the toaster.")
+                                                 print_with_delay("The defeated gambler tells you the boss gambler has the toaster.")
                                                  time.sleep(3)
                                                  bj_won = True
                                                  if not vip:
@@ -1394,7 +1394,7 @@ def world2():
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you should probably take a quick break and look it up. \nAlso in this version of Blackjack, if you hold five cards in your hand, you immediately win the round.")
-                                   time.sleep(3)
+                                   time.sleep(7)
                                    blackjack()
                                    while not won_status:
                                           money -= 10
@@ -1427,9 +1427,11 @@ def world2():
                                                  time.sleep(3)
                                                  world2ans1 = "restaurant"
                      if world2ans2 == "blackjack" and vip and bj_won:
-                                          print_with_delay(Colors.GREEN + "You use your VIP pass to go onto the boss gambler's room.")
+                                          print()
+                                          print_with_delay(Colors.WHITE + "You use your VIP pass to go onto the boss gambler's room.")
                                           time.sleep(3)
-                                          print_with_delay("The boss gambler smirks as you enter and beckons for you to sit down.")
+                                          print()
+                                          print_with_delay(Colors.GREEN + "The boss gambler smirks as you enter and beckons for you to sit down.")
                                           time.sleep(3)
                                           print()
                                           print_with_delay(Colors.RED + "You gotta pay to enter kid.")
@@ -1443,8 +1445,8 @@ def world2():
                                           pool = 0
                                           rand_rounds = random.randint(3,5)
                                           print()
-                                          print_with_delay(Colors.WHITE + "NOTE: This is a VERY simplified version of poker, all you need to know are the Poker hands. If you don't know them, you might want to take a break and look them up.")
-                                          time.sleep(3)
+                                          print_with_delay(Colors.WHITE + "NOTE: This is a VERY simplified version of poker, all you need to know are how good each Poker hand is. If you don't know them, you might want to take a break and look them up.")
+                                          time.sleep(7)
                                           while poker_game:
                                                  if not tie:
                                                         pool = 0
@@ -1461,8 +1463,9 @@ def world2():
                                                  print()
                                                  if world2ans6 == "yes":
                                                         money -= 5
-                                                        print_with_delay(Colors.GREEN + "You bet $5.")
+                                                        print_with_delay(Colors.WHITE + f"You bet $5 to start the round. You now have ${money}.")
                                                         time.sleep(3)
+                                                        print()
                                                         pool += 5
                                                         if won >= rand_rounds:
                                                                print_with_delay("The boss puts the toaster in the betting pool.")
@@ -1475,10 +1478,9 @@ def world2():
                                                         if money < 0:
                                                                print_with_delay("You are in debt!")
                                                                time.sleep(3)
-                                                        print_with_delay("The boss starts the game of poker.")
-                                                        time.sleep(3)
                                                         hand = poker()
-                                                        print_with_delay(f"Your hand type is a {hand}.")
+                                                        print()
+                                                        print_with_delay(Colors.WHITE + f"Your hand type is a {hand}.")
                                                         time.sleep(3)
                                                         print()
                                                         world2ans8 = input(Colors.MAGENTA + "Keep hand or redraw? (keep/draw) ")
@@ -1545,14 +1547,13 @@ def world2():
                                                                if money > 0 and money >= opraise:
                                                                       raise_func = True
                                                                       while raise_func:
-                                                                             print()
                                                                              raise_pool = float(input(Colors.MAGENTA + f"How much do you want to raise by? (up to ${money}) "))
                                                                              time.sleep(1)
                                                                              print()
                                                                              if opraise < raise_pool <= money:
                                                                                     money -= raise_pool
                                                                                     pool += raise_pool
-                                                                                    print_with_delay(Colors.GREEN + f"You raise by ${raise_pool}.")
+                                                                                    print_with_delay(Colors.GREEN + f"You raise by ${raise_pool}. You now have ${money}.")
                                                                                     time.sleep(3)
                                                                                     break
                                                                              else:
@@ -1560,29 +1561,29 @@ def world2():
                                                                                     time.sleep(3)
                                                                                     continue
                                                                       if ophand == "royal flush":
-                                                                             raise_cap = 100
+                                                                             raise_cap = 10000
                                                                       elif ophand == "straight flush":
-                                                                             raise_cap = 80
+                                                                             raise_cap = 1000
                                                                       elif ophand == "four of a kind":
-                                                                             raise_cap = 70
+                                                                             raise_cap = 100
                                                                       elif ophand == "full house":
-                                                                             raise_cap = 60
+                                                                             raise_cap = 90
                                                                       elif ophand == "flush":
-                                                                             raise_cap = 50
+                                                                             raise_cap = 80
                                                                       elif ophand == "straight":
-                                                                             raise_cap = 40
+                                                                             raise_cap = 70
                                                                       elif ophand == "three of a kind":
-                                                                             raise_cap = 30
+                                                                             raise_cap = 60
                                                                       else:
-                                                                             raise_cap = 20
-                                                                      if raise_pool < raise_cap: #and ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "full house" or ophand == "flush" or ophand == "straight" or ophand == "three of a kind" or ophand == "two pair":
+                                                                             raise_cap = 50
+                                                                      if raise_pool < raise_cap or ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "full house":
                                                                              print_with_delay(Colors.GREEN + f"The boss matches with ${raise_pool - opraise}.")
                                                                              time.sleep(3)
                                                                              pool += raise_pool
                                                                       else:
                                                                              print_with_delay(Colors.GREEN + "The boss folds.")
                                                                              time.sleep(3)
-                                                                             if won >= 5:
+                                                                             if toaster:
                                                                                     print()
                                                                                     print_with_delay(Colors.WHITE + f"You win the golden toaster and also ${pool}!")
                                                                                     time.sleep(3)
