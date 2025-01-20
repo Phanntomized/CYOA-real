@@ -1920,7 +1920,7 @@ def world2():
                                           meat = input("What is one main ingredient in spaghetti that starts with m? ")
                                           time.sleep(1)
                                           print()
-                                          if meat == "meat" or meat == "meatball" or meat == "meatballs":
+                                          if meat == "meat" or meat == "meatball" or meat == "meatballs" or meat == "mozzarella":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
