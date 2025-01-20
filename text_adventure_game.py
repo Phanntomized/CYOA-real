@@ -1344,15 +1344,15 @@ def world2():
                             print()
                             blackjack()
                             if not won_status:
-                                   print_with_delay(Colors.GREEN + "You lose $50 for losing.")
-                                   money -= 50
+                                   money -= 10
+                                   print_with_delay(Colors.GREEN + f"You lose $10 for losing. You now have ${money}.")
                                    time.sleep(3)
                                    if money < 0:
                                           print_with_delay(Colors.WHITE + f"You're ${money+money*2} are in debt!")
                                    break
                             else:
-                                   print_with_delay(Colors.WHITE + "The gambler gives you $50 for winning.")
-                                   money += 50
+                                   money += 100
+                                   print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${money}.")
                                    high_score()
                                    time.sleep(3)
                                    print_with_delay(f"Your total money is now {money}.")
