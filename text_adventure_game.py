@@ -1636,12 +1636,12 @@ def world2():
                                                                continue
                                                         if ophand == "royal flush":
                                                                if hand == "royal flush":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1649,12 +1649,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "straight flush" and hand != "royal flush":
                                                                if hand == "straight flush":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1662,12 +1662,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "four of a kind" and hand != "royal flush" and hand != "straight flush":
                                                                if hand == "four of a kind":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1675,12 +1675,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "full house" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind":
                                                                if hand == "full house":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1688,12 +1688,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "flush" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "flush":
                                                                if hand == "flush":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1701,12 +1701,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "straight" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "full house" and hand != "flush":
                                                                if hand == "straight":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1714,12 +1714,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "three of a kind" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "full house" and hand != "flush" and hand != "straight":
                                                                if hand == "three of a kind":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1727,12 +1727,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "two pair" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "full house" and hand != "flush" and hand != "straight" and hand != "three of a kind":
                                                                if hand == "two pair":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1740,12 +1740,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "pair" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "full house" and hand != "flush" and hand != "straight" and hand != "three of a kind" and hand != "two pair":
                                                                if hand == "pair":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1753,12 +1753,12 @@ def world2():
                                                                       continue
                                                         elif ophand == "high card" and hand != "royal flush" and hand != "straight flush" and hand != "four of a kind" and hand != "full house" and hand != "flush" and hand != "straight" and hand != "three of a kind" and hand != "two pair" and hand != "pair":
                                                                if hand == "high card":
-                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round")
+                                                                      print_with_delay(Colors.GREEN + "No one wins due to a tie, the pool stays for next round.")
                                                                       time.sleep(3)
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}")
+                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
