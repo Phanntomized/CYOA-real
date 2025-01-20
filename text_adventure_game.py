@@ -1335,7 +1335,7 @@ def world2():
                                    time.sleep(3)
                                    world2ans1 = "restaurant"
                      elif world2ans2 == "blackjack" and not bj_won:
-                            print_with_delay(Colors.GREEN + "You go into the blackjack room and confront an important looking gambler")
+                            print_with_delay(Colors.GREEN + "You go into the blackjack room and confront an important looking gambler.")
                             time.sleep(3)
                             print()
                             print_with_delay(Colors.BLUE + "Have you by chance seen a golden toaster?")
@@ -1358,14 +1358,14 @@ def world2():
                                                         rand_dmg = 0
                                                  else:
                                                         rand_dmg -= strength
-                                                 health -= rand_dmg
                                                  print_with_delay(Colors.GREEN + "You start brawling with the gambler.")
                                                  time.sleep(3)
                                                  if rand_dmg == 0:
                                                         print_with_delay(f"You win the fight without losing any health.")
                                                         time.sleep(3)
                                                  else:
-                                                        print_with_delay(f"You win the fight, but lose {rand_dmg}.")
+                                                        health -= rand_dmg
+                                                        print_with_delay(f"You win the fight, but lose {rand_dmg} health. You now have {health} health.")
                                                         time.sleep(3)
                                                  print_with_delay("The beat up gambler tells you the boss gambler has the toaster.")
                                                  time.sleep(3)
@@ -1376,6 +1376,7 @@ def world2():
                                                         print_with_delay("You go off in search of a VIP pass.")
                                                         time.sleep(3)
                                                         world2ans1 = "restaurant"
+                                                        break
                                           else:
                                                  print_with_delay(Colors.GREEN + "You go back to the lobby.")
                                                  time.sleep(3)
@@ -1386,7 +1387,7 @@ def world2():
                                           time.sleep(3)
                                           continue
                             else:
-                                   print_with_delay(Colors.GREEN + "You decide to play Blackjack with the gambler..")
+                                   print_with_delay(Colors.GREEN + "You decide to play Blackjack with the gambler.")
                                    time.sleep(3)
                                    print()
                                    print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
