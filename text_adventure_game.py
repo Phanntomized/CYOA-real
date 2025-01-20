@@ -918,14 +918,19 @@ def world2():
               global vip
               cont = True
               wins = 0
+              below_zero = False
               while cont:
+                     rand_roulette = random.randint(500,5000)
+                     rand_roulette *= -1
                      if money <= 0:
-                            print()
-                            print_with_delay(Colors.GREEN + f"Warning, you have ${money}!")
+                            print_with_delay(Colors.GREEN + "You can't play roulette, you don't have any money!")
                             time.sleep(3)
-                            print_with_delay("If you gain too much debt, you might get into trouble...")
+                            return
+                     elif money < rand_roulette:
+                            print_with_delay(Colors.GREEN + "You accumulate so much debt that you get sent to jail.")
                             time.sleep(3)
-                            print()
+                            prison("past")
+                            return
                      else:
                             print_with_delay(Colors.GREEN + f"You have ${money}.")
                             time.sleep(3)
@@ -939,9 +944,10 @@ def world2():
                      rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? "))
                      time.sleep(1)
                      print()
-                     if rbet <= 0:
-                            money += rbet
-                            high_score()
+                     if 1 > rbet > 10000:
+                            print_with_delay(Colors.GREEN + "You must bet between $1 and $10,000.")
+                            time.sleep(3)
+                            continue
                      else:
                             money -= rbet
                             high_score()
@@ -970,20 +976,19 @@ def world2():
                             money += rbet*2
                             high_score()
                      else:
-                            print()
                             print_with_delay(Colors.GREEN + "You don't win anything.")
                             time.sleep(3)
                             print()
                             wins -= 1
+                            if wins < 0:
+                                   wins = 0
                      if wins >= 3:
                             vip = True
-                            print()
                             print_with_delay(Colors.WHITE + "You gain a VIP pass for winning 3 times in a row.")
                             time.sleep(3)
                             print()
                             continue
                      else:
-                            print()
                             print_with_delay(f"You've won {wins} times in a row.")
                             time.sleep(3)
                             print()
