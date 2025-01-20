@@ -1313,6 +1313,7 @@ def world2():
                             vip = True
                             world2ans2 = "blackjack"
                             bj_won = input("bj_won? (y/n) ")
+                            time.sleep(1)
                             if bj_won == "y":
                                    bj_won = True
                             else:
@@ -1353,8 +1354,12 @@ def world2():
                                                  health -= rand_dmg
                                                  print_with_delay(Colors.GREEN + "You start brawling with the gambler.")
                                                  time.sleep(3)
-                                                 print_with_delay(f"You win the fight, but lose {rand_dmg}.")
-                                                 time.sleep(3)
+                                                 if rand_dmg == 0:
+                                                        print_with_delay(f"You win the fight without losing any health.")
+                                                        time.sleep(3)
+                                                 else:
+                                                        print_with_delay(f"You win the fight, but lose {rand_dmg}.")
+                                                        time.sleep(3)
                                                  print_with_delay("The beat up gambler tells you the boss gambler has the toaster.")
                                                  time.sleep(3)
                                                  bj_won = True
