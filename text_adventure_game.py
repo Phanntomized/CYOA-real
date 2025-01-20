@@ -1853,7 +1853,7 @@ def world2():
                                           print_with_delay(Colors.GREEN + f"You grab the {jewelry} and stuff it into your pocket.")
                                           necklace = True
                                           time.sleep(3)
-                                          print_with_delay("Someone sees you steal the necklace, and comes over to confront you.")
+                                          print_with_delay(f"Someone sees you steal the {jewelry}, and comes over to confront you.")
                                           time.sleep(3)
                                           print()
                                           world2ans3 = input(Colors.MAGENTA + "Attempt to start a food fight or wait for them to come to you. (food/wait) ")
@@ -2928,7 +2928,7 @@ if start:
                      print()
                      if buy_batteries == "yes":
                             money -= 5
-                            print_with_delay(Colors.GREEN + "You buy a pack of batteries for $5. You now have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You buy a pack of batteries for $5. You now have ${money}.")
                             time.sleep(3)
                             print_with_delay("You insert the batteries into the back of the robot.")
                             time.sleep(3)
@@ -3102,7 +3102,7 @@ if start:
                      else:
                             buy +=1
                      if club:
-                            cash = input(Colors.MAGENTA + "Sell club? (yes/no) ")
+                            cash = input(Colors.MAGENTA + "Sell club? You will lose 10 strength if you sell this. (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
@@ -3129,7 +3129,7 @@ if start:
                      else:
                             buy += 1
                      if anvil:
-                            cash = input(Colors.MAGENTA + f"Sell ancient egyptian anvil? (yes/no) ")
+                            cash = input(Colors.MAGENTA + f"Sell ancient egyptian anvil? You will lose 20 strength if you sell this. (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
@@ -3157,6 +3157,7 @@ if start:
                      time.sleep(1)
                      print()
               except ValueError:
+                     time.sleep(1)
                      print_with_delay(Colors.RED + "Hmm, I'm not sure if I like that answer. Welp, I guess I'll just have to choose myself.")
                      time.sleep(3)
                      print()
