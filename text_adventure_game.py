@@ -969,7 +969,7 @@ def world2():
                             print_with_delay(Colors.GREEN + f"You win and earn ${rbet * 2}.")
                             time.sleep(3)
                             wins += 1
-                            money += bet*2
+                            money += rbet*2
                             high_score()
                      else:
                             print()
@@ -3096,12 +3096,16 @@ if start:
               high_score()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
-              print()
-              world = int(input(Colors.MAGENTA + f"1. {known_world1}\n2. {known_world2}\n3. {known_world3}\n4. {known_world4}\n5. {known_world5}\n6. {known_world6}\nWhere do you want to go? (1/2/3/4/5/6) "))
-              time.sleep(1)
-              if world != 1 and world != 2 and world != 3 and world != 4 and world != 5 and world != 6:
+              try:
+                     print()
+                     world = int(input(Colors.MAGENTA + f"1. {known_world1}\n2. {known_world2}\n3. {known_world3}\n4. {known_world4}\n5. {known_world5}\n6. {known_world6}\nWhere do you want to go? (1/2/3/4/5/6) "))
+                     time.sleep(1)
+                     print()
+              except ValueError:
+                     print_with_delay(Colors.RED + "Hmm, I'm not sure if I like that answer. Welp, I guess I'll just have to choose myself.")
+                     time.sleep(3)
+                     print()
                      world = random.randint(1, 6)
-              print()
               print_with_delay(Colors.CYAN + "Zroom!")
               time.sleep(3)
               cards_intro()
