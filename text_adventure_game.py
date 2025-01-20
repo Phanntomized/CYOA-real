@@ -1308,7 +1308,6 @@ def world2():
                      time.sleep(1)
                      print()
                      if cheat:
-                            cheat_choice = input("activate casino cheats? (y/n) ")
                             necklace = True
                             jewelry = "ring"
                             vip = True
