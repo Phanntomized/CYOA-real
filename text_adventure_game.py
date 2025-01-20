@@ -1340,6 +1340,9 @@ def world2():
                             print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
                             time.sleep(3)
                             print()
+                            print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you should probably take a quick break and look it up.")
+                            time.sleep(3)
+                            print()
                             blackjack()
                             if not won_status:
                                    print_with_delay(Colors.GREEN + "You lose $50 for losing.")
@@ -1381,6 +1384,9 @@ def world2():
                                           tie = False
                                           pool = 0
                                           rand_rounds = random.randint(3,5)
+                                          print()
+                                          print_with_delay(Colors.WHITE + "NOTE: This is a VERY simplified version of poker, all you need to know are the Poker hands. If you don't know them, you might want to take a break and look them up.")
+                                          time.sleep(3)
                                           while poker_game:
                                                  if not tie:
                                                         pool = 0
