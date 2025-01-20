@@ -1140,7 +1140,6 @@ def world2():
                                                  print()
                                                  print_with_delay(Colors.WHITE + "You busted!")
                                                  time.sleep(3)
-                                                 print()
                                                  lost += 1
                                                  round_over = True            
                                                  break
