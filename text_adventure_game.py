@@ -2582,7 +2582,7 @@ def world6():
                      world6ans1 = input(Colors.MAGENTA + "Go search in the museum or tech store? (museum/tech) ")
                      time.sleep(1)
                      print()
-                     if world6ans1 >= 5:
+                     if taxi >= 5:
                             print_with_delay(Colors.GREEN + "The taxi robot's mind short circuits because it can't figure out why your taking the taxi so much. You crash and die.")
                             time.sleep(3)
                             print_with_delay(Colors.WHITE + "You Died: Your taxi crashed because you rode it too much.")
