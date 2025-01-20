@@ -1928,7 +1928,7 @@ def world2():
                                           cheese = input("What is one main ingredient in spaghetti that starts with c? ")
                                           time.sleep(1)
                                           print()
-                                          if cheese == "cheese":
+                                          if cheese == "cheese" or cheese == "chives":
                                                  goodbake = True
                                           else:
                                                  goodbake = False
