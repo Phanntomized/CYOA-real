@@ -2973,13 +2973,13 @@ if start:
                                    print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin*buy_bitcoin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             else:
-                                   money += buy_bitcoin
-                                   print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
+                                   money += buy_bitcoin/2
+                                   print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin/2}. You now have ${money}.")
                                    time.sleep(3)
                             known_bitcoin = 1
                      else:
                             money += buy_bitcoin
-                            print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin}. You now have ${money}.")
+                            print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${buy_bitcoin}. You now have ${money}.")
                             time.sleep(3)
                             known_bitcoin = 0
               if sick:
