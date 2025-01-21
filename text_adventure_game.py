@@ -240,7 +240,7 @@ def cards_intro():
                                                                       
               ''')
 
-#intro()
+intro()
 time.sleep(1)
 #print("center".center(20,"-"))
 x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
@@ -275,7 +275,7 @@ if x == "x":
        ''')
        print_with_delay(
        Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things in this game.\nYou have been warned...")
-       time.sleep(7)
+       time.sleep(12)
        print_with_delay('''
                                                                       
                                                                       
@@ -953,7 +953,11 @@ def world2():
                      rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? (Up to ${round(money,2)}) "))
                      time.sleep(1)
                      print()
-                     if 0 >= rbet > 10000:
+                     if rbet > money:
+                            print_with_delay(Colors.GREEN + "You don't have that much money.")
+                            time.sleep(3)
+                            continue
+                     elif 1 > rbet > 10000:
                             print_with_delay(Colors.GREEN + "You must bet between $1 and $10,000.")
                             time.sleep(3)
                             continue
@@ -1063,8 +1067,12 @@ def world2():
                      ace = 0
                      opace = 0
                      print()
-                     print_with_delay(Colors.WHITE + f"Round {game_round}")
-                     time.sleep(3)
+                     if game_round == 6:
+                            print_with_delay(Colors.RED + f"Round {game_round}, final round")
+                            time.sleep(3)
+                     else:
+                            print_with_delay(Colors.RED + f"Round {game_round}")
+                            time.sleep(3)
                      print()
                      game_round += 1
                      round_over = False
@@ -1398,7 +1406,7 @@ def world2():
                                    print_with_delay(Colors.WHITE + "You must beat the gambler 3 times to win, if you lose 3 times, he won't give you any information.")
                                    time.sleep(3)
                                    print()
-                                   print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you should probably take a quick break and look it up. \nAlso in this version of Blackjack, if you hold five cards in your hand, you immediately win the round.")
+                                   print_with_delay(Colors.WHITE + "NOTE: If you don't know how to play Blackjack, you might want to take a quick break and look it up. \nAlso in this version of Blackjack, if you hold five cards in your hand, you immediately win the round.")
                                    time.sleep(7)
                                    blackjack()
                                    while not won_status:
@@ -2404,8 +2412,11 @@ def world4():
                                    print()
                                    if buy_bitcoin > 0:
                                           known_bitcoin += 1
-                                   world4ans2 = input(Colors.MAGENTA + "Continue buying Bitcoin? (yes/no) ")
-                                   time.sleep(1)
+                                   if money > 0:
+                                          world4ans2 = input(Colors.MAGENTA + "Continue buying Bitcoin? (yes/no) ")
+                                          time.sleep(1)
+                                   else:
+                                          world4ans2 = "no"
                                    if world4ans2 == "no":
                                           print()
                                           print_with_delay(Colors.RED + "Alright, lets go back and see how much money your bitcoin made.")
@@ -2449,7 +2460,7 @@ def world5():
        elif food_rand == 2:
               food_type = "a cucumber"
        elif food_rand == 3:
-              food_type = " some leftover spaghetti"
+              food_type = "some leftover spaghetti"
        elif food_rand == 4:
               food_type = "a twinkie"
        elif food_rand == 5:
@@ -2550,7 +2561,7 @@ def world5():
                                                  continue
                                           else:
                                                  if save_food == 0:
-                                                        food_ans = input(Colors.MAGENTA + f"Put {food_type} in your pocket? (yes/no) ")
+                                                        food_ans = input(Colors.MAGENTA + f"Put {food_type} in your pocket for later? (yes/no) ")
                                                         time.sleep(1)
                                                         print()
                                                         if food_ans == "yes":
@@ -2700,8 +2711,8 @@ def world6():
                             #iphone80, vr contact lenses, robot companion
                             print_with_delay("You enter the tech shop and inspect some items for sale.")
                             time.sleep(3)
-                            if money < 5000:
-                                   print_with_delay("You can't afford anything in the shop. (minimum purchase = $5000)")
+                            if money < 50000:
+                                   print_with_delay("You can't afford anything in the shop. (minimum purchase = $50,000)")
                                    time.sleep(3)
                                    print_with_delay("You leave the store.")
                                    time.sleep(3)
@@ -2714,19 +2725,19 @@ def world6():
                                           print_with_delay(Colors.GREEN + "You bought everything that's for sale. You leave the store.")
                                           time.sleep(3)
                                           break
-                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $5000\n2. VR Contact Lenses - $500,000\n3. Robot Companion - $50,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3/4) "))
+                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $50,000\n2. VR Contact Lenses - $5,000,000\n3. Robot Companion - $500,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3/4) "))
                                    time.sleep(1)
                                    print()
                                    if world6ans3 == 1:
-                                          if money >= 5000:
+                                          if money >= 50000:
                                                  if iphone:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
                                                         time.sleep(3)
                                                         print()
                                                         continue
                                                  else:
-                                                        money -= 5000
-                                                        print_with_delay(Colors.WHITE + f"You bought the iPhone 96 for $5,000. You now have ${round(money,2)}.")
+                                                        money -= 50000
+                                                        print_with_delay(Colors.WHITE + f"You bought the iPhone 96 for $50,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         iphone = True
@@ -2736,15 +2747,15 @@ def world6():
                                                  time.sleep(3)
                                                  continue
                                    elif world6ans3 == 2:
-                                          if money >= 500000:
+                                          if money >= 5000000:
                                                  if vr:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
                                                         time.sleep(3)
                                                         print()
                                                         continue
                                                  else:
-                                                        money -= 500000
-                                                        print_with_delay(Colors.WHITE + f"You bought the VR Contact Lenses for $500,000. You now have ${round(money,2)}.")
+                                                        money -= 5000000
+                                                        print_with_delay(Colors.WHITE + f"You bought the VR Contact Lenses for $5,000,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         vr = True
@@ -2754,15 +2765,15 @@ def world6():
                                                  time.sleep(3)
                                                  continue
                                    elif world6ans3 == 3:
-                                          if money >= 500000000:
+                                          if money >= 5000000000:
                                                  if robot:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
                                                         time.sleep(3)
                                                         print()
                                                         continue
                                                  else:
-                                                        money -= 500000000
-                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $50,000,000. You now have ${round(money,2)}.")
+                                                        money -= 5000000000
+                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $500,000,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         robot = True
@@ -2988,6 +2999,8 @@ if start:
                             known_bitcoin = 0
               if sick:
                      rand_sick = random.randint(1,3)
+                     if cheat:
+                            rand_sick = 1
                      if rand_sick == 1:
                             print()
                             print_with_delay(Colors.BLUE + "Ugh, I feel sick. I think it was something I ate.")
@@ -2995,6 +3008,8 @@ if start:
                             print()
                             if health <= food:
                                    food = health-1
+                                   health -= food
+                            else:
                                    health -= food
                             print_with_delay(Colors.WHITE + f"You lose {food*2} health for being sick, your health is now {health}.")
                             time.sleep(3)
@@ -3087,8 +3102,8 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money += 10000
-                                   print_with_delay(Colors.WHITE + f"You gain $10,000. You now have ${round(money,2)}.")
+                                   money += 100000
+                                   print_with_delay(Colors.WHITE + f"You gain $100,000. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    iphone = False
                                    print()
@@ -3099,8 +3114,8 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   money +=  1000000
-                                   print_with_delay(Colors.WHITE + f"You gain $1,000,000. You now have ${round(money,2)}.")
+                                   money +=  10000000
+                                   print_with_delay(Colors.WHITE + f"You gain $10,000,000. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    vr = False
                                    print()
@@ -3151,10 +3166,11 @@ if start:
                      if buy == 7:
                             print_with_delay(Colors.GREEN + "Nothing to sell.")
                             time.sleep(3)
+                            print()
                      else:
                             print_with_delay(Colors.GREEN + f"Your total money is ${round(money,2)}.")
                             time.sleep(3)
-              print()
+                            print()
               high_score()
               print_with_delay(Colors.RED + "Alrighty kid, if your done dawdling, it's time for your next adventure. Turn my knob and go to the past or the future, there's not a minute to spare!")
               time.sleep(3)
