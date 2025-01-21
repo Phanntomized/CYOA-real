@@ -386,6 +386,7 @@ vr = False
 iphone = False
 robot = False
 gum = False
+rand_flavor = "classic taste"
 save_food = 0
 food_type = 1
 jewelry = random.randint(1,3)
@@ -2654,6 +2655,7 @@ def world6():
        global robot
        global gum
        global known_world6
+       global rand_flavor
        known_world6 = "Far Future"
        if world == 6:
               taxi = 0
@@ -2755,7 +2757,20 @@ def world6():
                                           print_with_delay(Colors.GREEN + "You bought everything that's for sale. You leave the store.")
                                           time.sleep(3)
                                           break
-                                   world6ans3 = int(input(Colors.MAGENTA + "1. Future Chewing Gum - $10\n2. iPhone 96 - $50,000\n3. VR Contact Lenses - $5,000,000\n4. Robot Companion - $50,000,000,000\n5. Nothing\nWhat do you want to buy? (1/2/3/4/5) "))
+                                   rand_flavor = random.randint(1,6)
+                                   if rand_flavor == 1:
+                                          rand_flavor = "apple flavored"
+                                   elif rand_flavor == 2:
+                                          rand_flavor = "grape flavored"
+                                   elif rand_flavor == 3:
+                                          rand_flavor = "watermelon flavored"
+                                   elif rand_flavor == 4:
+                                          rand_flavor = "cherry flavored"
+                                   elif rand_flavor == 5:
+                                          rand_flavor = "strawberry flavored"
+                                   else:
+                                          rand_flavor = "classic taste"
+                                   world6ans3 = int(input(Colors.MAGENTA + f"1. Chewing Gum or the Future ({rand_flavor}) - $10\n2. iPhone 96 - $50,000\n3. VR Contact Lenses - $5,000,000\n4. Robot Companion - $50,000,000,000\n5. Nothing\nWhat do you want to buy? (1/2/3/4/5) "))
                                    time.sleep(1)
                                    print()
                                    if world6ans3 == 1:
@@ -2767,7 +2782,7 @@ def world6():
                                                         continue
                                                  else:
                                                         money -= 10
-                                                        print_with_delay(Colors.WHITE + f"You bought the Future Chewing Gum for $10. You now have ${round(money,2)}.")
+                                                        print_with_delay(Colors.WHITE + f"You bought the Chewing Gum of the Future ({rand_flavor}) for $10. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         iphone = True
@@ -3144,7 +3159,7 @@ if start:
                      else:
                             buy +=1
                      if gum:
-                            cash = input(Colors.MAGENTA + "Sell the Future Chewing Gum? (yes/no) ")
+                            cash = input(Colors.MAGENTA + f"Sell the Future Chewing Gum ({rand_flavor})? (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
