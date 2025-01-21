@@ -274,7 +274,7 @@ if x == "x":
                                                                       
        ''')
        print_with_delay(
-       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things in this game!\nYou have been warned...")
+       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things in this game.\nYou have been warned...")
        time.sleep(7)
        print_with_delay('''
                                                                       
