@@ -385,6 +385,7 @@ buy_bitcoin = 0
 vr = False
 iphone = False
 robot = False
+gum = False
 save_food = 0
 food_type = 1
 jewelry = random.randint(1,3)
@@ -2651,6 +2652,7 @@ def world6():
        global iphone
        global vr
        global robot
+       global gum
        global known_world6
        known_world6 = "Far Future"
        if world == 6:
@@ -2721,8 +2723,26 @@ def world6():
                             #iphone80, vr contact lenses, robot companion
                             print_with_delay("You enter the tech shop and inspect some items for sale.")
                             time.sleep(3)
-                            if money < 50000:
+                            if money < 10 and not gum:
+                                   print_with_delay("You can't afford anything in the shop. (minimum purchase = $10)")
+                                   time.sleep(3)
+                                   print_with_delay("You leave the store.")
+                                   time.sleep(3)
+                                   continue
+                            elif money < 50000 and gum and not iphone:
                                    print_with_delay("You can't afford anything in the shop. (minimum purchase = $50,000)")
+                                   time.sleep(3)
+                                   print_with_delay("You leave the store.")
+                                   time.sleep(3)
+                                   continue
+                            elif money < 5000000 and gum and iphone and not vr:
+                                   print_with_delay("You can't afford anything in the shop. (minimum purchase = $5,000,000)")
+                                   time.sleep(3)
+                                   print_with_delay("You leave the store.")
+                                   time.sleep(3)
+                                   continue
+                            elif money < 50000000000 and gum and iphone and vr and not robot:
+                                   print_with_delay("You can't afford anything in the shop. (minimum purchase = $50,000,000,000)")
                                    time.sleep(3)
                                    print_with_delay("You leave the store.")
                                    time.sleep(3)
@@ -2731,14 +2751,28 @@ def world6():
                                    tech_shop = True
                                    print()
                             while tech_shop:
-                                   if iphone and vr and robot:
+                                   if iphone and vr and robot and gum:
                                           print_with_delay(Colors.GREEN + "You bought everything that's for sale. You leave the store.")
                                           time.sleep(3)
                                           break
-                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $50,000\n2. VR Contact Lenses - $5,000,000\n3. Robot Companion - $50,000,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3/4) "))
+                                   world6ans3 = int(input(Colors.MAGENTA + "1. Future Chewing Gum - $10\n2. iPhone 96 - $50,000\n3. VR Contact Lenses - $5,000,000\n4. Robot Companion - $50,000,000,000\n5. Nothing\nWhat do you want to buy? (1/2/3/4/5) "))
                                    time.sleep(1)
                                    print()
                                    if world6ans3 == 1:
+                                          if money >= 10:
+                                                 if gum:
+                                                        print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
+                                                        time.sleep(3)
+                                                        print()
+                                                        continue
+                                                 else:
+                                                        money -= 10
+                                                        print_with_delay(Colors.WHITE + f"You bought the Future Chewing Gum for $10. You now have ${round(money,2)}.")
+                                                        time.sleep(3)
+                                                        print()
+                                                        iphone = True
+                                                        continue
+                                   if world6ans3 == 2:
                                           if money >= 50000:
                                                  if iphone:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
@@ -2756,7 +2790,7 @@ def world6():
                                                  print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
-                                   elif world6ans3 == 2:
+                                   elif world6ans3 == 3:
                                           if money >= 5000000:
                                                  if vr:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
@@ -2774,7 +2808,7 @@ def world6():
                                                  print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
-                                   elif world6ans3 == 3:
+                                   elif world6ans3 == 4:
                                           if money >= 5000000000:
                                                  if robot:
                                                         print_with_delay(Colors.GREEN + "The shop is sold out of this item.")
@@ -2792,7 +2826,7 @@ def world6():
                                                  print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
-                                   elif world6ans3 == 4:
+                                   elif world6ans3 == 5:
                                           print_with_delay(Colors.GREEN + "You leave the shop.")
                                           time.sleep(3)
                                           break
@@ -3109,6 +3143,18 @@ if start:
                                    print()
                      else:
                             buy +=1
+                     if gum:
+                            cash = input(Colors.MAGENTA + "Sell the Future Chewing Gum? (yes/no) ")
+                            time.sleep(1)
+                            print()
+                            if cash == "yes":
+                                   money += 20
+                                   print_with_delay(Colors.WHITE + f"You gain $20. You now have ${round(money,2)}.")
+                                   time.sleep(3)
+                                   iphone = False
+                                   print()
+                     else:
+                            buy +=1
                      if iphone:
                             cash = input(Colors.MAGENTA + "Sell the iPhone 96? (yes/no) ")
                             time.sleep(1)
@@ -3175,7 +3221,7 @@ if start:
                                    print()
                      else:
                             buy +=1
-                     if buy == 7:
+                     if buy == 8:
                             print_with_delay(Colors.GREEN + "Nothing to sell.")
                             time.sleep(3)
                             print()
