@@ -243,13 +243,14 @@ def cards_intro():
 intro()
 time.sleep(1)
 #print("center".center(20,"-"))
-x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
-if x == "x":
-       start = True
-       skip = False
-       cheat = False
-       text_delay = .5
-       print_with_delay('''
+while not start:
+       x = input(Colors.BLUE + "                                Press x to start: " + Colors.RESET)
+       if x == "x":
+              start = True
+              skip = False
+              cheat = False
+              text_delay = .5
+              print_with_delay('''
                                                                       
                                                                       
                                                                       
@@ -272,11 +273,11 @@ if x == "x":
                                                                       
                                                                       
                                                                       
-       ''')
-       print_with_delay(
-       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things done in this game.\nYou have been warned...")
-       time.sleep(12)
-       print_with_delay('''
+              ''')
+              print_with_delay(
+              Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things done in this game.\nYou have been warned...")
+              time.sleep(12)
+              print_with_delay('''
                                                                       
                                                                       
                                                                       
@@ -299,13 +300,13 @@ if x == "x":
                                                         
                                                         
                                                                                                    
-       ''')
-       print_with_delay(Colors.MAGENTA + "When purple appears, this usually means you have to make a choice in the story. (like this/or this)")
-       print_with_delay(Colors.BLUE + "When blue text appears, this usually means you are speaking.")
-       print_with_delay(Colors.RED + "When red text appears, this usually means a different character is speaking.")
-       print_with_delay(Colors.WHITE + "When white text appears, this usually means that either your stats have changed or you gained an item.")
-       time.sleep(14)
-       print_with_delay('''
+              ''')
+              print_with_delay(Colors.MAGENTA + "When purple appears, this usually means you have to make a choice in the story. (like this/or this)")
+              print_with_delay(Colors.BLUE + "When blue text appears, this usually means you are speaking.")
+              print_with_delay(Colors.RED + "When red text appears, this usually means a different character is speaking.")
+              print_with_delay(Colors.WHITE + "When white text appears, this usually means that either your stats have changed or you gained an item.")
+              time.sleep(14)
+              print_with_delay('''
                                                         
                                                         
                                                         
@@ -328,22 +329,26 @@ if x == "x":
                                                         
                                                         
                                                         
-       ''')
-elif x == "skip":
-       cheat = False
-       skip = True
-       start = True
-elif x == "cheat":
-       skip = False
-       cheat = True
-       start = True
-       text_delay = 0.0
-       print("god mode enabled")
-       time.sleep(3)
-else:
-       skip = False
-       cheat = False
-       intro()
+              ''')
+              break
+       elif x == "skip":
+              cheat = False
+              skip = True
+              start = True
+              break
+       elif x == "cheat":
+              skip = False
+              cheat = True
+              start = True
+              text_delay = 0.0
+              print("god mode enabled")
+              time.sleep(3)
+              break
+       else:
+              skip = False
+              cheat = False
+              intro()
+              continue
 def high_score():
        global money
        global health
