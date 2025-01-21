@@ -2878,7 +2878,6 @@ if start:
                                    time.sleep(3)
                             else:
                                    break
-                     print()
                      print_with_delay(Colors.CYAN + "Zroom!")
                      time.sleep(3)
                      cards_intro()
