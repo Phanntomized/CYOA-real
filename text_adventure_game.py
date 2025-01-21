@@ -26,9 +26,9 @@ def the_end():
        global health_high
        global strength_high
        global money_high
-       avg_money = money + money_high /2
-       avg_health = health + health_high / 2
-       avg_strength = strength + strength_high / 2
+       avg_money = (money + money_high) / 2
+       avg_health = (health + health_high) / 2
+       avg_strength = (strength + strength_high) / 2
        print_with_delay(Colors.CYAN + "The end.")
        time.sleep(3)
        print()
