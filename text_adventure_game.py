@@ -2927,6 +2927,9 @@ if start:
                             print_with_delay(Colors.WHITE + f"You gain {rand_food} health. Your health is now {health}.")
                             time.sleep(3)
                             sick = True
+                     else:
+                            print_with_delay(Colors.GREEN + "You decide to save the food for another time.")
+                            time.sleep(3)
               if robot:
                      print_with_delay("The companion robot didn't come with batteries.")
                      time.sleep(3)
