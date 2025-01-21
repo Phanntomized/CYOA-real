@@ -441,6 +441,7 @@ def prison(time_period):
                             if time_period == "past":
                                    health -= wanted*2
                                    strength += wanted
+                                   print()
                                    print_with_delay(Colors.WHITE + f"You gain {wanted} strength and lose {wanted*2} health.")
                                    time.sleep(3)
                                    if health <= 0:
@@ -455,6 +456,7 @@ def prison(time_period):
                             elif time_period == "present":
                                    health -= wanted
                                    strength -= wanted
+                                   print()
                                    print_with_delay(Colors.WHITE + f"You lose {wanted} strength and {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
@@ -468,6 +470,7 @@ def prison(time_period):
                             else:
                                    health += wanted
                                    strength -= wanted
+                                   print()
                                    print_with_delay(Colors.WHITE + f"You lose {wanted*2} strength and gain {wanted} health.")
                                    time.sleep(3)
                                    if health <= 0:
@@ -481,23 +484,29 @@ def prison(time_period):
                                           print_with_delay(Colors.GREEN + f"You now have {health} health and {strength} strength.")
                      else:
                             if time_period == "past":
+                                   print()
                                    print_with_delay(Colors.WHITE + "You gain 15 strength and 5 health.")
                                    health += 15
                                    high_score()
                                    strength += 5
                                    time.sleep(3)
+                                   print()
                             elif time_period == "present":
+                                   print()
                                    print_with_delay(Colors.WHITE + "You gain 10 strength and 10 health.")
                                    health += 15
                                    high_score()
                                    strength += 5
                                    time.sleep(3)
+                                   print()
                             else:
+                                   print()
                                    print_with_delay(Colors.WHITE + "You gain 5 strength and 15 health.")
                                    health += 5
                                    high_score()
                                    strength += 15
                                    time.sleep(3)
+                                   print()
                      print_with_delay(Colors.GREEN + "You soon get let out.")
                      time.sleep(3)
                      print_with_delay("Somehow, the toaster bailed you out of jail.")
