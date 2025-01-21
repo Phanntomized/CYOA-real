@@ -387,7 +387,6 @@ iphone = False
 robot = False
 save_food = 0
 food_type = 1
-world5counter = 0
 jewelry = random.randint(1,3)
 if jewelry == 1:
        jewelry = "bracelet"
@@ -929,7 +928,7 @@ def world2():
                             return
                      elif money < rand_roulette:
                             print_with_delay(Colors.GREEN + "You accumulate so much debt that you get sent to jail.")
-                            time.sleep(3)
+                            time.sleep(7)
                             prison("past")
                             return
                      else:
@@ -1399,9 +1398,6 @@ def world2():
                                           money -= 10
                                           print_with_delay(Colors.WHITE + f"You lose $10 for losing. You now have ${money}.")
                                           time.sleep(3)
-                                          if money < 0:
-                                                 print_with_delay(Colors.WHITE + f"You're ${money+money*2} are in debt!")
-                                                 time.sleep(3)
                                           print()
                                           play_bj = input(Colors.MAGENTA + "Play again or go back to the lobby? (play/lobby) ")
                                           time.sleep(1)
@@ -2778,6 +2774,7 @@ def world6():
                             continue
 
 if start:
+       ans1 = "decline"
        present = True
        if cheat:
               money = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -3002,23 +2999,15 @@ if start:
                      if pay_bill == "no":
                             print_with_delay(Colors.GREEN + "You get sent to jail for not paying your bills.")
                             time.sleep(3)
-                            print_with_delay(Colors.WHITE + f"You lose ${amount_bill/2}.")
+                            print_with_delay(Colors.WHITE + f"You lose ${amount_bill/2}. You now have ${money}.")
                             money -= amount_bill/2
-                            if money < 0:
-                                   time.sleep(3)
-                                   print_with_delay(f"You are now ${money+money*2} in debt!")
-                                   time.sleep(7)
-                            else:
-                                   time.sleep(7)
+                            time.sleep(7)
                             prison("present")
                             continue
                      else:
                             money -= amount_bill
                             print_with_delay(Colors.GREEN + f"You pay ${amount_bill} to cover the bills. You now have ${money}.")
                             time.sleep(3)
-                            if money < 0:
-                                   print_with_delay(f"You are now ${money+money*2} in debt!")
-                                   time.sleep(3)
               if known_lotto:
                      print()
                      get_lotto = input(Colors.MAGENTA + "Go play the lottery? (yes/no) ")
