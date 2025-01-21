@@ -274,7 +274,7 @@ if x == "x":
                                                                       
        ''')
        print_with_delay(
-       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure. \nIf you try to make your character do something it doesn't want to do, your character may act on it's own. You have been warned...")
+       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things in this game!\nYou have been warned...")
        time.sleep(7)
        print_with_delay('''
                                                                       
@@ -411,7 +411,7 @@ def prison(time_period):
        in_prison = True
        money -= money/2+wanted*10
        print()
-       print_with_delay(Colors.WHITE + f"You lose ${money/2+wanted*10} for going to jail. You now have ${money}.")
+       print_with_delay(Colors.WHITE + f"You lose ${round(money/2+wanted*10,2)} for going to jail. You now have ${round(money,2)}.")
        time.sleep(3)
        print()
        print_with_delay(Colors.GREEN + "Jail is very boring.")
@@ -518,7 +518,7 @@ def prison(time_period):
                             due = money/10+wanted*5
                      else:
                             due = money/5+wanted*5
-                     print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${due} of your money to bail you out. Anyways, let's go.")
+                     print_with_delay(Colors.RED + f"Sorry kid, but I had to use ${round(due,2)} of your money to bail you out. Anyways, let's go.")
                      time.sleep(3)
                      money -= due
                      print()
@@ -941,7 +941,7 @@ def world2():
                             prison("past")
                             return
                      else:
-                            print_with_delay(Colors.GREEN + f"You have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You have ${round(money,2)}.")
                             time.sleep(3)
                      print()
                      cont = input(Colors.MAGENTA + "Play roulette? (yes/no) ")
@@ -950,7 +950,7 @@ def world2():
                      if cont == "no":
                             return
                      wheel = random.randint(0,1)
-                     rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? (Up to ${money}) "))
+                     rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? (Up to ${round(money,2)}) "))
                      time.sleep(1)
                      print()
                      if 0 >= rbet > 10000:
@@ -959,7 +959,7 @@ def world2():
                             continue
                      else:
                             money -= rbet
-                            print_with_delay(Colors.WHITE + f"You bet ${rbet}. You now have ${money}.")
+                            print_with_delay(Colors.WHITE + f"You bet ${round(rbet,2)}. You now have ${round(money,2)}.")
                             time.sleep(3)
                             print()
                             high_score()
@@ -973,7 +973,7 @@ def world2():
                             time.sleep(1)
                             print()
                      if choice == "white" and wheel == 0 or choice == "odds" and wheel == 0:
-                            print_with_delay(Colors.WHITE + f"You win and earn ${rbet*2}.")
+                            print_with_delay(Colors.WHITE + f"You win and earn ${round(rbet*2,2)}.")
                             time.sleep(3)
                             wins += 1
                             money += rbet*2
@@ -981,7 +981,7 @@ def world2():
                      elif choice == "black" and wheel == 1 or choice == "evens" and wheel == 1:
                             if rbet < 0:
                                    rbet -= rbet*2
-                            print_with_delay(Colors.GREEN + f"You win and earn ${rbet * 2}.")
+                            print_with_delay(Colors.GREEN + f"You win and earn ${round(rbet * 2,2)}.")
                             time.sleep(3)
                             wins += 1
                             money += rbet*2
@@ -1403,7 +1403,7 @@ def world2():
                                    blackjack()
                                    while not won_status:
                                           money -= 10
-                                          print_with_delay(Colors.WHITE + f"You lose $10 for losing. You now have ${money}.")
+                                          print_with_delay(Colors.WHITE + f"You lose $10 for losing. You now have ${round(money,2)}.")
                                           time.sleep(3)
                                           print()
                                           play_bj = input(Colors.MAGENTA + "Play again or go back to the lobby? (play/lobby) ")
@@ -1413,7 +1413,7 @@ def world2():
                                                  continue
                                    if won_status:
                                           money += 100
-                                          print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${money}.")
+                                          print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${round(money,2)}.")
                                           high_score()
                                           time.sleep(3)
                                           print()
@@ -1468,7 +1468,7 @@ def world2():
                                                  opraise = 0
                                                  raise_pool = 0
                                                  print()
-                                                 print_with_delay(Colors.WHITE + f"You have ${money}.")
+                                                 print_with_delay(Colors.WHITE + f"You have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  print()
                                                  world2ans6 = input(Colors.MAGENTA + "Pay $5 to start round? (yes/no) ")
@@ -1476,7 +1476,7 @@ def world2():
                                                  print()
                                                  if world2ans6 == "yes":
                                                         money -= 5
-                                                        print_with_delay(Colors.WHITE + f"You bet $5 to start the round. You now have ${money}.")
+                                                        print_with_delay(Colors.WHITE + f"You bet $5 to start the round. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         pool += 5
@@ -1511,7 +1511,7 @@ def world2():
                                                                print_with_delay("The manager redraws his hand.")
                                                                time.sleep(3)
                                                                ophand = poker()
-                                                        if ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "three of a kind":
+                                                        if ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "full house" or ophand == "flush" or ophand == "straight":
                                                                rand_pass = random.randint(1, 8)
                                                                if rand_pass == 1:
                                                                       print_with_delay("The manager checks.")
@@ -1522,16 +1522,16 @@ def world2():
                                                                       print()
                                                                else:
                                                                       if ophand == "royal flush":
-                                                                             opraise = random.randint(20, 50)
+                                                                             opraise = random.randint(500, 1000)
                                                                              pool += opraise
                                                                       elif ophand == "straight flush":
-                                                                             opraise = random.randint(15, 40)
+                                                                             opraise = random.randint(100, 500)
                                                                              pool += opraise
                                                                       elif ophand == "four of a kind":
-                                                                             opraise = random.randint(10, 30)
+                                                                             opraise = random.randint(50, 100)
                                                                              pool += opraise
                                                                       else:
-                                                                             opraise = random.randint(5, 20)
+                                                                             opraise = random.randint(10, 50)
                                                                              pool += opraise
                                                                       print_with_delay(Colors.GREEN + f"The manager raises by ${opraise}.")
                                                                       time.sleep(3)
@@ -1542,9 +1542,9 @@ def world2():
                                                                       time.sleep(1)
                                                                       print()
                                                         else:
-                                                               bet = random.randint(1, 5)
+                                                               bet = random.randint(1, 3)
                                                                if bet == 1:
-                                                                      opraise = random.randint(5, 25)
+                                                                      opraise = random.randint(5, 100)
                                                                       pool += opraise
                                                                       print_with_delay(Colors.GREEN + f"The manager raises by ${opraise}")
                                                                       time.sleep(3)
@@ -1560,37 +1560,38 @@ def world2():
                                                                if money > 0 and money >= opraise:
                                                                       raise_func = True
                                                                       while raise_func:
-                                                                             raise_pool = float(input(Colors.MAGENTA + f"How much do you want to raise by? (up to ${money}) "))
+                                                                             raise_pool = float(input(Colors.MAGENTA + f"How much do you want to raise by? (up to ${round(money,2)}) "))
                                                                              time.sleep(1)
                                                                              print()
                                                                              if opraise < raise_pool <= money:
                                                                                     money -= raise_pool
                                                                                     pool += raise_pool
-                                                                                    print_with_delay(Colors.GREEN + f"You raise by ${raise_pool}. You now have ${money}.")
+                                                                                    print_with_delay(Colors.GREEN + f"You raise by ${round(raise_pool,2)}. You now have ${round(money,2)}.")
                                                                                     time.sleep(3)
                                                                                     break
                                                                              else:
-                                                                                    print_with_delay(Colors.GREEN + f"You can't bet more money than ${money}!")
+                                                                                    print_with_delay(Colors.GREEN + f"You can't bet more money than ${round(money,2)}!")
                                                                                     time.sleep(3)
+                                                                                    print()
                                                                                     continue
                                                                       if ophand == "royal flush":
                                                                              raise_cap = 10000
                                                                       elif ophand == "straight flush":
                                                                              raise_cap = 1000
                                                                       elif ophand == "four of a kind":
-                                                                             raise_cap = 100
+                                                                             raise_cap = 5000
                                                                       elif ophand == "full house":
-                                                                             raise_cap = 90
+                                                                             raise_cap = 1000
                                                                       elif ophand == "flush":
-                                                                             raise_cap = 80
+                                                                             raise_cap = 90
                                                                       elif ophand == "straight":
-                                                                             raise_cap = 70
+                                                                             raise_cap = 80
                                                                       elif ophand == "three of a kind":
-                                                                             raise_cap = 60
+                                                                             raise_cap = 70
                                                                       else:
                                                                              raise_cap = 50
-                                                                      if raise_pool < raise_cap or ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "full house":
-                                                                             print_with_delay(Colors.GREEN + f"The manager matches with ${raise_pool - opraise}.")
+                                                                      if raise_pool < raise_cap or ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind":
+                                                                             print_with_delay(Colors.GREEN + f"The manager matches with ${round(raise_pool - opraise,2)}.")
                                                                              time.sleep(3)
                                                                              pool += raise_pool
                                                                       else:
@@ -1598,7 +1599,7 @@ def world2():
                                                                              time.sleep(3)
                                                                              if toaster:
                                                                                     print()
-                                                                                    print_with_delay(Colors.WHITE + f"You win the golden toaster and also ${pool}!")
+                                                                                    print_with_delay(Colors.WHITE + f"You win the golden toaster and also ${round(pool,2)}!")
                                                                                     time.sleep(3)
                                                                                     money += pool
                                                                                     high_score()
@@ -1617,14 +1618,15 @@ def world2():
                                                                       world2ans7 = input(Colors.MAGENTA + "Match or fold? ")
                                                                       time.sleep(1)
                                                                       if world2ans7 == "match":
-                                                                             print_with_delay(Colors.GREEN + f"You match with ${opraise}.")
+                                                                             print_with_delay(Colors.GREEN + f"You match with ${round(opraise,2)}.")
                                                                              time.sleep(3)
                                                                              pool += opraise
                                                                              money -= opraise
                                                                       else:
                                                                              print_with_delay(Colors.GREEN + "You folded!")
                                                                              time.sleep(3)
-                                                                             print_with_delay(f"The manager takes the prize pool, worth ${pool}.")
+                                                                             print()
+                                                                             print_with_delay(Colors.WHITE + f"The manager takes the prize pool, worth ${round(pool,2)}.")
                                                                              time.sleep(3)
                                                                              print()
                                                                              pool = 0
@@ -1635,7 +1637,7 @@ def world2():
                                                                       print_with_delay(Colors.GREEN + "You check.")
                                                                       time.sleep(3)
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"You match with ${opraise}.")
+                                                                      print_with_delay(Colors.GREEN + f"You match with ${round(opraise,2)}.")
                                                                       time.sleep(3)
                                                                       money -= opraise
                                                                       pool += opraise
@@ -1643,7 +1645,7 @@ def world2():
                                                                raise_pool = 0
                                                                print_with_delay(Colors.GREEN + "You folded!")
                                                                time.sleep(3)
-                                                               print_with_delay(f"The manager takes the prize pool, worth ${pool}.")
+                                                               print_with_delay(f"The manager takes the prize pool, worth ${round(pool,2)}.")
                                                                time.sleep(3)
                                                                pool = 0
                                                                continue
@@ -1656,7 +1658,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1669,7 +1671,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1682,7 +1684,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1695,7 +1697,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1708,7 +1710,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1721,7 +1723,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1734,7 +1736,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1747,7 +1749,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1760,7 +1762,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1773,7 +1775,7 @@ def world2():
                                                                else:
                                                                       print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
-                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.GREEN + f"He takes the pool, worth ${round(pool,2)}.")
                                                                       time.sleep(3)
                                                                       pool = 0
                                                                       continue
@@ -1789,7 +1791,7 @@ def world2():
                                                                       won = True
                                                                       break
                                                                else:
-                                                                      print_with_delay(Colors.WHITE + f"You take the pool, worth ${pool}.")
+                                                                      print_with_delay(Colors.WHITE + f"You take the pool, worth ${round(pool,2)}.")
                                                                       money += pool
                                                                       high_score()
                                                                       time.sleep(3)
@@ -1808,11 +1810,11 @@ def world2():
                                                  time.sleep(3)
                                                  print()
                                                  if money < 0:
-                                                        print_with_delay(Colors.RED + f"Well, I assumed you were going to make some money, but instead you somehow are in debt ${money-money*2}!")
+                                                        print_with_delay(Colors.RED + f"Well, I assumed you were going to make some money, but instead you somehow are in debt ${round(-money,2)}!")
                                                         time.sleep(3)
                                                         print()
                                                  else:
-                                                        print_with_delay(Colors.RED + f"Well, to make money of course, look: you made ${money}!")
+                                                        print_with_delay(Colors.RED + f"Well, to make money of course, look: you made ${round(money,2)}!")
                                                         time.sleep(3)
                                                         print()
                                                  print_with_delay(Colors.BLUE + "Can we leave now?")
@@ -2390,14 +2392,14 @@ def world4():
                                    time.sleep(1)
                                    print()
                                    if buy_bitcoin*.05 > money:
-                                          print_with_delay(Colors.GREEN + f"You can't buy that much Bitcoin, you don't have enough money. (max shares = {money/.05})")
+                                          print_with_delay(Colors.GREEN + f"You can't buy that much Bitcoin, you don't have enough money. (max shares = {round(money/.05,2)})")
                                           time.sleep(3)
                                    else:
                                           money -= buy_bitcoin*.05
-                                          print_with_delay(Colors.WHITE + f"You bought {buy_bitcoin} shares worth ${buy_bitcoin*.05}.")
+                                          print_with_delay(Colors.WHITE + f"You bought {buy_bitcoin} shares worth ${round(buy_bitcoin*.05,2)}.")
                                           time.sleep(3)
                                           print()
-                                          print_with_delay(Colors.GREEN + f"You have ${money} left.")
+                                          print_with_delay(Colors.GREEN + f"You have ${round(money,2)} left.")
                                           time.sleep(3)
                                    print()
                                    if buy_bitcoin > 0:
@@ -2528,7 +2530,7 @@ def world5():
                                           time.sleep(3)
                                    elif search_apartment == 2:
                                           money += 20
-                                          print_with_delay(Colors.WHITE + f"You find $20 in coins stuffed between your sofa cushions. You now have ${money}.")
+                                          print_with_delay(Colors.WHITE + f"You find $20 in coins stuffed between your sofa cushions. You now have ${round(money,2)}.")
                                           time.sleep(3)
                                           high_score()
                                    elif search_apartment == 3:
@@ -2651,7 +2653,7 @@ def world6():
                      if world6ans1 == "museum":
                             taxi += 1
                             money -= 2
-                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the museum. You now have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the museum. You now have ${round(money,2)}.")
                             time.sleep(3)
                             print_with_delay("As you wander through the exhibits, you notice the toaster in one of the displays titled 'ancient kitchen artifacts'.")
                             time.sleep(3)
@@ -2693,7 +2695,7 @@ def world6():
                      else:
                             taxi += 1
                             money -= 2
-                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the tech shop. You now have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You decide to take a flying taxi for $2 to get to the tech shop. You now have ${round(money,2)}.")
                             time.sleep(3)
                             #iphone80, vr contact lenses, robot companion
                             print_with_delay("You enter the tech shop and inspect some items for sale.")
@@ -2724,13 +2726,13 @@ def world6():
                                                         continue
                                                  else:
                                                         money -= 5000
-                                                        print_with_delay(Colors.WHITE + f"You bought the iPhone 96 for $5,000. You now have ${money}.")
+                                                        print_with_delay(Colors.WHITE + f"You bought the iPhone 96 for $5,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         iphone = True
                                                         continue
                                           else:
-                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${money}.")
+                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
                                    elif world6ans3 == 2:
@@ -2742,13 +2744,13 @@ def world6():
                                                         continue
                                                  else:
                                                         money -= 500000
-                                                        print_with_delay(Colors.WHITE + f"You bought the VR Contact Lenses for $500,000. You now have ${money}.")
+                                                        print_with_delay(Colors.WHITE + f"You bought the VR Contact Lenses for $500,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         vr = True
                                                         continue
                                           else:
-                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${money}.")
+                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
                                    elif world6ans3 == 3:
@@ -2760,13 +2762,13 @@ def world6():
                                                         continue
                                                  else:
                                                         money -= 500000000
-                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $50,000,000. You now have ${money}.")
+                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $50,000,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         robot = True
                                                         continue
                                           else:
-                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${money}.")
+                                                 print_with_delay(Colors.GREEN + f"You don't have enough money to buy this item. You only have ${round(money,2)}.")
                                                  time.sleep(3)
                                                  continue
                                    elif world6ans3 == 4:
@@ -2794,7 +2796,7 @@ if start:
               print_with_delay(Colors.GREEN + "You live in a run down apartment in the suburbs.")
               time.sleep(5)
               print()
-              print_with_delay(Colors.WHITE + f"You have {health} health, {strength} strength, and {money} dollars.")
+              print_with_delay(Colors.WHITE + f"You have {health} health, {strength} strength, and ${round(money,2)}.")
               time.sleep(5)
               print()
               print_with_delay(Colors.GREEN + "One day while wandering through a thrift store, you see something shining in the kitchen isle.")
@@ -2904,7 +2906,7 @@ if start:
               high_score()
               print_with_delay(Colors.GREEN + "You're back in your apartment. The toaster is sitting on your kitchen counter.")
               time.sleep(3)
-              print_with_delay(f"You have ${money}.")
+              print_with_delay(f"You have ${round(money,2)}.")
               time.sleep(3)
               if save_food > 0:
                      print()
@@ -2939,7 +2941,7 @@ if start:
                      print()
                      if buy_batteries == "yes":
                             money -= 5
-                            print_with_delay(Colors.GREEN + f"You buy a pack of batteries for $5. You now have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You buy a pack of batteries for $5. You now have ${round(money,2)}.")
                             time.sleep(3)
                             print_with_delay("You insert the batteries into the back of the robot.")
                             time.sleep(3)
@@ -2967,21 +2969,21 @@ if start:
                             if rand_coin == 1:
                                    rand_coin = random.randint(2, 8)
                                    money -= rand_coin*buy_bitcoin
-                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${rand_coin*buy_bitcoin}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${round(rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
                             elif rand_coin == 2:
                                    rand_coin = random.randint(3,9)
                                    money -= rand_coin*buy_bitcoin
-                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
+                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${round(rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
                             else:
                                    money += buy_bitcoin/2
-                                   print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn {buy_bitcoin/2}. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${round(buy_bitcoin/2,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
                             known_bitcoin = 1
                      else:
                             money += buy_bitcoin
-                            print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${buy_bitcoin}. You now have ${money}.")
+                            print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${round(buy_bitcoin,2)}. You now have ${round(money,2)}.")
                             time.sleep(3)
                             known_bitcoin = 0
               if sick:
@@ -2998,7 +3000,7 @@ if start:
                             time.sleep(3)
               if rand_bill == 1:
                      print()
-                     print_with_delay(Colors.GREEN + f"You have ${amount_bill} in miscellaneous bills to pay.")
+                     print_with_delay(Colors.GREEN + f"You have ${round(amount_bill,2)} in miscellaneous bills to pay.")
                      time.sleep(3)
                      print()
                      pay_bill = input(Colors.MAGENTA + "Pay the bills? (yes/no) ")
@@ -3007,14 +3009,14 @@ if start:
                      if pay_bill == "no":
                             print_with_delay(Colors.GREEN + "You get sent to jail for not paying your bills.")
                             time.sleep(3)
-                            print_with_delay(Colors.WHITE + f"You lose ${amount_bill/2}. You now have ${money}.")
+                            print_with_delay(Colors.WHITE + f"You lose ${round(amount_bill/2,2)}. You now have ${round(money,2)}.")
                             money -= amount_bill/2
                             time.sleep(5)
                             prison("present")
                             continue
                      else:
                             money -= amount_bill
-                            print_with_delay(Colors.GREEN + f"You pay ${amount_bill} to cover the bills. You now have ${money}.")
+                            print_with_delay(Colors.GREEN + f"You pay ${round(amount_bill,2)} to cover the bills. You now have ${round(money,2)}.")
                             time.sleep(3)
               if known_lotto:
                      print()
@@ -3025,7 +3027,7 @@ if start:
                             print_with_delay(Colors.GREEN + "You walk over to a nearby gas station to buy a ticket.")
                             time.sleep(3)
                             money -= 5
-                            print_with_delay(f"You spend $5 on a ticket, you now have ${money}.")
+                            print_with_delay(f"You spend $5 on a ticket, you now have ${round(money,2)}.")
                             time.sleep(3)
                             print()
                             guess_lotto = int(input(Colors.MAGENTA + "What lottery number do you want? (5-digits) "))
@@ -3034,7 +3036,7 @@ if start:
                             if lottery == guess_lotto:
                                    rand_lotto = random.randint(100,10000)
                                    money += rand_lotto
-                                   print_with_delay(Colors.WHITE + f"You won the lottery and gained ${rand_lotto}! You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You won the lottery and gained ${round(rand_lotto,2)}! You now have ${round(money,2)}.")
                                    sus_lotto += 1
                                    time.sleep(3)
                                    if sus_lotto >= rand_sus_lotto:
@@ -3057,11 +3059,11 @@ if start:
               buy = 0
               if cash == "cash":
                      if gold > 0:
-                            cash = input(Colors.MAGENTA + f"Cash in {gold} gold, worth ${gold*2}? (yes/no) ")
+                            cash = input(Colors.MAGENTA + f"Cash in {gold} gold, worth ${round(gold*2,2)}? (yes/no) ")
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   print_with_delay(Colors.WHITE + f"You gain ${gold*2}. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain ${round(gold*2,2)}. You now have ${round(money,2)}.")
                                    money += gold*2
                                    time.sleep(3)
                                    gold = 0
@@ -3074,7 +3076,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 300
-                                   print_with_delay(Colors.WHITE + f"You gain $300. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $300. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    clay_statue -= 1
                                    print()
@@ -3086,7 +3088,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 10000
-                                   print_with_delay(Colors.WHITE + f"You gain $10,000. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $10,000. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    iphone = False
                                    print()
@@ -3098,7 +3100,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money +=  1000000
-                                   print_with_delay(Colors.WHITE + f"You gain $1,000,000. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $1,000,000. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    vr = False
                                    print()
@@ -3110,7 +3112,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 10
-                                   print_with_delay(Colors.WHITE + f"You gain $10. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $10. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    strength = strength - 10
                                    print_with_delay(f"You lose 10 strength. You now have {strength} strength.")
@@ -3125,7 +3127,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 200
-                                   print_with_delay(Colors.WHITE + f"You gain $200. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $200. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    necklace = False
                                    print()
@@ -3137,7 +3139,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 20
-                                   print_with_delay(Colors.WHITE + f"You gain $20. You now have ${money}.")
+                                   print_with_delay(Colors.WHITE + f"You gain $20. You now have ${round(money,2)}.")
                                    time.sleep(3)
                                    strength -= 20
                                    print_with_delay(f"You lose 20 strength. You now have {strength} strength.")
@@ -3150,7 +3152,7 @@ if start:
                             print_with_delay(Colors.GREEN + "Nothing to sell.")
                             time.sleep(3)
                      else:
-                            print_with_delay(Colors.GREEN + f"Your total money is ${money}.")
+                            print_with_delay(Colors.GREEN + f"Your total money is ${round(money,2)}.")
                             time.sleep(3)
               print()
               high_score()
