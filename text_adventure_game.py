@@ -1256,10 +1256,10 @@ def world2():
               else:
                      print_with_delay(Colors.GREEN + "You decide to go play some games.")
                      time.sleep(3)
-                     print_with_delay(Colors.GREEN + "As you go into the building, you get spotted by some of the boss gambler's henchmen. They don't look too happy.")
+                     print_with_delay(Colors.GREEN + "As you go into the building, you get spotted by some of the manager's henchmen. They don't look too happy.")
                      time.sleep(3)
                      print()
-                     print_with_delay(Colors.RED + "Hey, you're the guy who cheated the boss out of his shiny new toaster.")
+                     print_with_delay(Colors.RED + "Hey, you're the guy who cheated the manager out of his shiny new toaster.")
                      time.sleep(3)
                      rand_jail = random.randint(1,2)
                      if rand_jail == 1 and strength < 20 or health <= rand_jail*10:
@@ -1292,11 +1292,11 @@ def world2():
                             health -= rand_jail*10
                             print_with_delay(f"You lose {rand_jail*10} health. Your health is now {health}.")
                             time.sleep(3)
-                            print_with_delay("The thugs run off and take the golden toaster with them and give it back to the boss.")
+                            print_with_delay("The thugs run off and take the golden toaster with them and give it back to the manager.")
                             time.sleep(3)
                             world = 2
                      else:
-                            print_with_delay(Colors.GREEN + "You escape the thugs, but they steal the golden toaster and bring it back to the boss.")
+                            print_with_delay(Colors.GREEN + "You escape the thugs, but they steal the golden toaster and bring it back to the manager.")
                             time.sleep(3)
                             world = 2
 
@@ -1334,7 +1334,7 @@ def world2():
                             print_with_delay(Colors.GREEN + "Nobody wants to play blackjack with you.")
                             time.sleep(3)
                             if not vip:
-                                   print_with_delay("You need a VIP pass to enter the boss gambler's room.")
+                                   print_with_delay("You need a VIP pass to enter the manager's room.")
                                    time.sleep(3)
                                    print_with_delay("You go off in search of a VIP pass.")
                                    time.sleep(3)
@@ -1372,11 +1372,11 @@ def world2():
                                                         health -= rand_dmg
                                                         print_with_delay(f"You win the fight, but lose {rand_dmg} health. You now have {health} health.")
                                                         time.sleep(3)
-                                                 print_with_delay("The defeated gambler tells you the boss gambler has the toaster.")
+                                                 print_with_delay("The defeated gambler tells you the manager has the toaster.")
                                                  time.sleep(3)
                                                  bj_won = True
                                                  if not vip:
-                                                        print_with_delay("You need a VIP pass to enter the boss gambler's room.")
+                                                        print_with_delay("You need a VIP pass to enter the manager's room.")
                                                         time.sleep(3)
                                                         print_with_delay("You go off in search of a VIP pass.")
                                                         time.sleep(3)
@@ -1416,14 +1416,12 @@ def world2():
                                           print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${money}.")
                                           high_score()
                                           time.sleep(3)
-                                          print_with_delay(f"Your total money is now {money}.")
-                                          time.sleep(3)
                                           print()
-                                          print_with_delay(Colors.GREEN + "The gambler tells you that the boss gambler is going to gamble away the golden toaster, \nand instructs you to the room he'll be in.")
+                                          print_with_delay(Colors.GREEN + "The defeated gambler tells you that the manager is probably going to gamble away the golden toaster, \nand instructs you to the room he'll be in.")
                                           time.sleep(3)
                                           bj_won = True
                                           if not vip:
-                                                 print_with_delay("You need a VIP pass to enter the boss gambler's room.")
+                                                 print_with_delay("You need a VIP pass to enter the manager's room.")
                                                  time.sleep(3)
                                                  print_with_delay("You go off in search of a VIP pass.")
                                                  time.sleep(3)
@@ -1443,15 +1441,15 @@ def world2():
                             continue
                      if world2ans2 == "blackjack" and vip and bj_won:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You use your VIP pass to go onto the boss gambler's room.")
+                                          print_with_delay(Colors.WHITE + "You use your VIP pass to go onto the manager's room.")
                                           time.sleep(3)
                                           print()
-                                          print_with_delay(Colors.GREEN + "The boss gambler smirks as you enter and beckons for you to sit down.")
+                                          print_with_delay(Colors.GREEN + "The manager smirks as you enter and beckons for you to sit down.")
                                           time.sleep(3)
                                           print()
-                                          print_with_delay(Colors.RED + "You gotta pay to enter kid.")
+                                          print_with_delay(Colors.RED + "Welcome to my casino, kid.")
                                           time.sleep(3)
-                                          print_with_delay(Colors.RED + "If you can beat me a few times, I may consider betting my cool new golden toaster...")
+                                          print_with_delay(Colors.RED + "If you can beat me a few times, I may consider betting my cool new golden toaster. And no funny business.")
                                           time.sleep(3)
                                           poker_game = True
                                           won = 0
@@ -1483,11 +1481,11 @@ def world2():
                                                         print()
                                                         pool += 5
                                                         if won >= rand_rounds:
-                                                               print_with_delay("The boss puts the toaster in the betting pool.")
+                                                               print_with_delay("The manager puts the toaster in the betting pool.")
                                                                time.sleep(3)
                                                                toaster = True
                                                         else:
-                                                               print_with_delay("The boss matches.")
+                                                               print_with_delay("The manager matches.")
                                                                time.sleep(3)
                                                                pool += 5
                                                         if money < 0:
@@ -1510,13 +1508,13 @@ def world2():
                                                                time.sleep(3)
                                                         ophand = poker()
                                                         if ophand == "high card" or ophand == "pair" or ophand == "two pair":
-                                                               print_with_delay("The boss redraws his hand.")
+                                                               print_with_delay("The manager redraws his hand.")
                                                                time.sleep(3)
                                                                ophand = poker()
                                                         if ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "three of a kind":
                                                                rand_pass = random.randint(1, 8)
                                                                if rand_pass == 1:
-                                                                      print_with_delay("The boss checks.")
+                                                                      print_with_delay("The manager checks.")
                                                                       time.sleep(3)
                                                                       print()
                                                                       world2ans7 = input(Colors.MAGENTA + "Match, raise, or fold? (match/raise/fold) ")
@@ -1535,7 +1533,7 @@ def world2():
                                                                       else:
                                                                              opraise = random.randint(5, 20)
                                                                              pool += opraise
-                                                                      print_with_delay(Colors.GREEN + f"The boss raises by ${opraise}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager raises by ${opraise}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(f"The current pool is worth ${pool}.")
                                                                       time.sleep(3)
@@ -1548,10 +1546,10 @@ def world2():
                                                                if bet == 1:
                                                                       opraise = random.randint(5, 25)
                                                                       pool += opraise
-                                                                      print_with_delay(Colors.GREEN + f"The boss raises by ${opraise}")
+                                                                      print_with_delay(Colors.GREEN + f"The manager raises by ${opraise}")
                                                                       time.sleep(3)
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + "The boss checks.")
+                                                                      print_with_delay(Colors.GREEN + "The manager checks.")
                                                                       opraise = 0
                                                                       time.sleep(3)
                                                                print()
@@ -1592,11 +1590,11 @@ def world2():
                                                                       else:
                                                                              raise_cap = 50
                                                                       if raise_pool < raise_cap or ophand == "royal flush" or ophand == "straight flush" or ophand == "four of a kind" or ophand == "full house":
-                                                                             print_with_delay(Colors.GREEN + f"The boss matches with ${raise_pool - opraise}.")
+                                                                             print_with_delay(Colors.GREEN + f"The manager matches with ${raise_pool - opraise}.")
                                                                              time.sleep(3)
                                                                              pool += raise_pool
                                                                       else:
-                                                                             print_with_delay(Colors.GREEN + "The boss folds.")
+                                                                             print_with_delay(Colors.GREEN + "The manager folds.")
                                                                              time.sleep(3)
                                                                              if toaster:
                                                                                     print()
@@ -1626,7 +1624,7 @@ def world2():
                                                                       else:
                                                                              print_with_delay(Colors.GREEN + "You folded!")
                                                                              time.sleep(3)
-                                                                             print_with_delay(f"The boss takes the prize pool, worth ${pool}.")
+                                                                             print_with_delay(f"The manager takes the prize pool, worth ${pool}.")
                                                                              time.sleep(3)
                                                                              print()
                                                                              pool = 0
@@ -1645,7 +1643,7 @@ def world2():
                                                                raise_pool = 0
                                                                print_with_delay(Colors.GREEN + "You folded!")
                                                                time.sleep(3)
-                                                               print_with_delay(f"The boss takes the prize pool, worth ${pool}.")
+                                                               print_with_delay(f"The manager takes the prize pool, worth ${pool}.")
                                                                time.sleep(3)
                                                                pool = 0
                                                                continue
@@ -1656,7 +1654,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1669,7 +1667,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1682,7 +1680,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1695,7 +1693,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1708,7 +1706,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1721,7 +1719,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1734,7 +1732,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1747,7 +1745,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1760,7 +1758,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -1773,7 +1771,7 @@ def world2():
                                                                       tie = True
                                                                       continue
                                                                else:
-                                                                      print_with_delay(Colors.GREEN + f"Your opponent wins the round, he had a {ophand}.")
+                                                                      print_with_delay(Colors.GREEN + f"The manager wins the round, he had a {ophand}.")
                                                                       time.sleep(3)
                                                                       print_with_delay(Colors.GREEN + f"He takes the pool, worth ${pool}.")
                                                                       time.sleep(3)
@@ -2033,7 +2031,6 @@ def world2():
                                    time.sleep(3)
                                    print()
                                    world2ans1 = "game"
-                                   time.sleep(3)
                                    world = False
                                    world2()
                                    continue
