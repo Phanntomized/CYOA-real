@@ -964,7 +964,6 @@ def world2():
                             choice = input(Colors.MAGENTA + "Bet on odds or evens? (odds/evens) ")
                             time.sleep(1)
                             print()
-                     time.sleep(1)
                      if choice == "white" and wheel == 0 or choice == "odds" and wheel == 0:
                             print_with_delay(Colors.WHITE + f"You win and earn ${rbet*2}.")
                             time.sleep(3)
