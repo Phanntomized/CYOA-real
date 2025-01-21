@@ -985,9 +985,9 @@ def world2():
                             wins -= 1
                             if wins < 0:
                                    wins = 0
-                     if wins >= 3:
+                     if wins >= random.randint(1,5):
                             vip = True
-                            print_with_delay(Colors.WHITE + "You gain a VIP pass for winning 3 times in a row.")
+                            print_with_delay(Colors.WHITE + f"You gain a VIP pass for winning {wins} times in a row.")
                             time.sleep(3)
                             print()
                             continue
