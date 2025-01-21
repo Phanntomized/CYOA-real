@@ -2959,12 +2959,12 @@ if start:
                      print()
                      if known_bitcoin > rand_coin:
                             if rand_coin == 1:
-                                   rand_coin = random.randint(2, 10)
+                                   rand_coin = random.randint(2, 8)
                                    money -= rand_coin*buy_bitcoin
                                    print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${rand_coin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
                             elif rand_coin == 2:
-                                   rand_coin = random.randint(3,12)
+                                   rand_coin = random.randint(3,9)
                                    money -= rand_coin*buy_bitcoin
                                    print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${rand_coin*buy_bitcoin}. You now have ${money}.")
                                    time.sleep(3)
