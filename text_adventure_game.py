@@ -3064,7 +3064,7 @@ if start:
                             time.sleep(1)
                             print()
                             if cash == "yes":
-                                   print_with_delay(Colors.WHITE + f"You gain ${gold*2}.")
+                                   print_with_delay(Colors.WHITE + f"You gain ${gold*2}. You now have ${money}.")
                                    money += gold*2
                                    time.sleep(3)
                                    gold = 0
@@ -3077,7 +3077,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 300
-                                   print_with_delay(Colors.WHITE + "You gain $300.")
+                                   print_with_delay(Colors.WHITE + f"You gain $300. You now have ${money}.")
                                    time.sleep(3)
                                    clay_statue -= 1
                                    print()
@@ -3089,7 +3089,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 10000
-                                   print_with_delay(Colors.WHITE + "You gain $10,000.")
+                                   print_with_delay(Colors.WHITE + f"You gain $10,000. You now have ${money}.")
                                    time.sleep(3)
                                    iphone = False
                                    print()
@@ -3101,7 +3101,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money +=  1000000
-                                   print_with_delay(Colors.WHITE + "You gain $1,000,000.")
+                                   print_with_delay(Colors.WHITE + f"You gain $1,000,000. You now have ${money}.")
                                    time.sleep(3)
                                    vr = False
                                    print()
@@ -3113,10 +3113,10 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 10
-                                   print_with_delay(Colors.WHITE + "You gain $10.")
+                                   print_with_delay(Colors.WHITE + f"You gain $10. You now have ${money}.")
                                    time.sleep(3)
                                    strength = strength - 10
-                                   print_with_delay("You lose 10 strength.")
+                                   print_with_delay(f"You lose 10 strength. You now have {strength} strength.")
                                    time.sleep(3)
                                    club = False
                                    print()
@@ -3128,7 +3128,7 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 200
-                                   print_with_delay(Colors.WHITE + "You gain $200.")
+                                   print_with_delay(Colors.WHITE + f"You gain $200. You now have ${money}.")
                                    time.sleep(3)
                                    necklace = False
                                    print()
@@ -3140,9 +3140,11 @@ if start:
                             print()
                             if cash == "yes":
                                    money += 20
-                                   print_with_delay(Colors.WHITE + "You gain $20 and lose 20 strength.")
+                                   print_with_delay(Colors.WHITE + f"You gain $20. You now have ${money}.")
                                    time.sleep(3)
                                    strength -= 20
+                                   print_with_delay(f"You lose 20 strength. You now have {strength} strength.")
+                                   time.sleep(3)
                                    anvil = False
                                    print()
                      else:
