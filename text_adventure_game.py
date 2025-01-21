@@ -1416,9 +1416,12 @@ def world2():
                                           print()
                                           play_bj = input(Colors.MAGENTA + "Play again or go back to the lobby? (play/lobby) ")
                                           time.sleep(1)
+                                          print()
                                           if play_bj == "play":
                                                  blackjack()
                                                  continue
+                                          else:
+                                                 break
                                    if won_status:
                                           money += 100
                                           print_with_delay(Colors.WHITE + f"The gambler gives you $100 for winning. You now have ${round(money,2)}.")
@@ -1434,6 +1437,11 @@ def world2():
                                                  print_with_delay("You go off in search of a VIP pass.")
                                                  time.sleep(3)
                                                  world2ans1 = "restaurant"
+                                   else:
+                                          print_with_delay(Colors.GREEN + "You go back to the lobby.")
+                                          time.sleep(3)
+                                          print()
+                                          continue
                      else:
                             print_with_delay(Colors.GREEN + "You go into the roulette room.")
                             time.sleep(3)
