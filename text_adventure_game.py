@@ -2670,7 +2670,7 @@ def world6():
                                    print_with_delay("Throughout the museum, alarms start blaring.")
                                    time.sleep(3)
                                    print()
-                                   print_with_delay(Colors.RED + "Thanks for rescuing me, now lets skedaddle out of here before we get caught.")
+                                   print_with_delay(Colors.RED + "Thanks for rescuing me, now let's skedaddle out of here before we get caught.")
                                    time.sleep(3)
                                    print()
                                    world6ans3 = input(Colors.MAGENTA + "Skedaddle back to the present? (yes/no) ")
