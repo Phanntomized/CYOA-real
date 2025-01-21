@@ -945,7 +945,7 @@ def world2():
                      rbet = int(input(Colors.MAGENTA + f"How much do you want to bet? (Up to ${money}) "))
                      time.sleep(1)
                      print()
-                     if 1 > rbet > 10000:
+                     if 0 >= rbet > 10000:
                             print_with_delay(Colors.GREEN + "You must bet between $1 and $10,000.")
                             time.sleep(3)
                             continue
@@ -1437,13 +1437,8 @@ def world2():
                             print_with_delay(Colors.BLUE + "Since I'm here anyways, I could play a few rounds of roulette.")
                             time.sleep(3)
                             print()
-                            world2ans5 = input(Colors.MAGENTA + "Stay and play roulette or go look for the toaster? (stay/leave) ")
-                            time.sleep(1)
-                            print()
-                            if world2ans5 == "stay":
-                                   roulette()
-                            else:
-                                   continue
+                            roulette()
+                            continue
                      if world2ans2 == "blackjack" and vip and bj_won:
                                           print()
                                           print_with_delay(Colors.WHITE + "You use your VIP pass to go onto the boss gambler's room.")
