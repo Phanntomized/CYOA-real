@@ -1426,6 +1426,24 @@ def world2():
                                                  print_with_delay("You go off in search of a VIP pass.")
                                                  time.sleep(3)
                                                  world2ans1 = "restaurant"
+                     else:
+                            print_with_delay(Colors.GREEN + "You go into the roulette room.")
+                            time.sleep(3)
+                            print_with_delay("There's no information about the golden toaster.")
+                            time.sleep(3)
+                            print_with_delay("You notice a VIP pass you could win.")
+                            time.sleep(3)
+                            print()
+                            print_with_delay(Colors.BLUE + "Since I'm here anyways, I could play a few rounds of roulette.")
+                            time.sleep(3)
+                            print()
+                            world2ans5 = input(Colors.MAGENTA + "Stay and play roulette or go look for the toaster? (stay/leave) ")
+                            time.sleep(1)
+                            print()
+                            if world2ans5 == "stay":
+                                   roulette()
+                            else:
+                                   continue
                      if world2ans2 == "blackjack" and vip and bj_won:
                                           print()
                                           print_with_delay(Colors.WHITE + "You use your VIP pass to go onto the boss gambler's room.")
@@ -1817,24 +1835,6 @@ def world2():
                                                  return
                                           else:
                                                  continue
-                     else:
-                            print_with_delay(Colors.GREEN + "You go into the roulette room.")
-                            time.sleep(3)
-                            print_with_delay("There's no information about the golden toaster.")
-                            time.sleep(3)
-                            print_with_delay("You notice a VIP pass you could win.")
-                            time.sleep(3)
-                            print()
-                            print_with_delay(Colors.BLUE + "Since I'm here anyways, I could play a few rounds of roulette.")
-                            time.sleep(3)
-                            print()
-                            world2ans5 = input(Colors.MAGENTA + "Stay and play roulette or go look for the toaster? (stay/leave) ")
-                            time.sleep(1)
-                            print()
-                            if world2ans5 == "stay":
-                                   roulette()
-                            else:
-                                   continue
               if world2ans1 == "restaurant":
                      print_with_delay(Colors.GREEN + "You decide to go to the restaurant.")
                      time.sleep(3)
