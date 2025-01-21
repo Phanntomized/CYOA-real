@@ -1814,7 +1814,7 @@ def world2():
                                                         time.sleep(3)
                                                         print()
                                                  else:
-                                                        print_with_delay(Colors.RED + f"Well, to make money of course, look: you made ${round(money,2)}!")
+                                                        print_with_delay(Colors.RED + f"Well, to make money of course, look: you now have ${round(money,2)}!")
                                                         time.sleep(3)
                                                         print()
                                                  print_with_delay(Colors.BLUE + "Can we leave now?")
