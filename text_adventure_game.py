@@ -427,7 +427,7 @@ def prison(time_period):
                      print_with_delay("They lock you up, and you never see the light of day again.")
                      time.sleep(3)
                      print()
-                     print_with_delay(Colors.WHITE + "You Lose: You're stuck in jail for the rest of your days.")
+                     print_with_delay(Colors.YELLOW + "You Lose: You're stuck in jail for the rest of your days.")
                      time.sleep(3)
                      print()
                      the_end()
@@ -448,7 +448,7 @@ def prison(time_period):
                                    time.sleep(3)
                                    if health <= 0:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          print_with_delay(Colors.YELLOW + "You died: you have perished in prison")
                                           time.sleep(3)
                                           print()
                                           the_end()
@@ -463,7 +463,7 @@ def prison(time_period):
                                    time.sleep(3)
                                    if health <= 0:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison.")
+                                          print_with_delay(Colors.YELLOW + "You died: you have perished in prison.")
                                           time.sleep(3)
                                           the_end()
                                           quit()
@@ -477,7 +477,7 @@ def prison(time_period):
                                    time.sleep(3)
                                    if health <= 0:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You died: you have perished in prison")
+                                          print_with_delay(Colors.YELLOW + "You died: you have perished in prison")
                                           time.sleep(3)
                                           print()
                                           the_end()
@@ -593,7 +593,7 @@ def prison(time_period):
                                    time.sleep(3)
                                    if health <= 0:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You died: you have perished in a prison riot")
+                                          print_with_delay(Colors.YELLOW + "You died: you have perished in a prison riot")
                                           time.sleep(3)
                                           print()
                                           the_end()
@@ -858,7 +858,7 @@ def world1():
                                           time.sleep(3)
                                    if health <= 0:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You died: you have perished from injuries due to a neanderthal attack.")
+                                          print_with_delay(Colors.YELLOW + "You died: you have perished from injuries due to a neanderthal attack.")
                                           print()
                                           time.sleep(3)
                                           the_end()
@@ -2205,7 +2205,8 @@ def world3(idol):
                                                         print_with_delay("And that's where your adventures really begins.")
                                                         time.sleep(5)
                                                         print()
-                                                        print_with_delay(Colors.WHITE + "You Win!")
+                                                        print_with_delay(Colors.YELLOW + "You Win!".center(20, "-"))
+                                                        #print_with_delay(Colors.WHITE + "You Win!")
                                                         time.sleep(5)
                                                         print()
                                                         the_end()
@@ -2247,7 +2248,7 @@ def world3(idol):
                                    dmg = random.randint(1,30)
                                    if health <= dmg:
                                           print()
-                                          print_with_delay(Colors.WHITE + "You Died: You have perished from falling into a pit of spikes.")
+                                          print_with_delay(Colors.YELLOW + "You Died: You have perished from falling into a pit of spikes.")
                                           time.sleep(3)
                                           print()
                                           the_end()
@@ -2303,7 +2304,7 @@ def world3(idol):
                                                  dmg = random.randint(1, 30)
                                                  if health <= dmg:
                                                         print()
-                                                        print_with_delay(Colors.WHITE + "You Died: You have perished from a falling anvil.")
+                                                        print_with_delay(Colors.YELLOW + "You Died: You have perished from a falling anvil.")
                                                         time.sleep(3)
                                                         print()
                                                         the_end()
@@ -2671,7 +2672,7 @@ def world6():
                      if taxi > 5:
                             print_with_delay(Colors.GREEN + "The taxi robot's mind short circuits because it can't figure out why your taking the taxi so much. You crash and die.")
                             time.sleep(3)
-                            print_with_delay(Colors.WHITE + "You Died: Your taxi crashed because you rode it too much.")
+                            print_with_delay(Colors.YELLOW + "You Died: Your taxi crashed because you rode it too much.")
                             time.sleep(3)
                             print()
                             the_end()
