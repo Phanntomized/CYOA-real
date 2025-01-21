@@ -274,7 +274,7 @@ if x == "x":
                                                                       
        ''')
        print_with_delay(
-       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things in this game.\nYou have been warned...")
+       Colors.YELLOW + "Warning, this is no ordinary story. Your choices will influence the outcome of this adventure.\nIf you try to make your character do something it doesn't want to do, your character may act on it's own.\nAlso note: this game is silly and is not meant to be taken seriously. Do not try to replicate any of the things done in this game.\nYou have been warned...")
        time.sleep(12)
        print_with_delay('''
                                                                       
@@ -2555,6 +2555,8 @@ def world5():
                                                  food = random.randint(5,20)
                                                  health += food
                                                  high_score()
+                                                 print_with_delay(Colors.GREEN + f"You decide to eat {food_type}.")
+                                                 time.sleep(3)
                                                  print_with_delay(Colors.GREEN + f"The food tasted funky, but your health was restored by {food} and is now {health}.")
                                                  time.sleep(3)
                                                  sick = True
@@ -2725,7 +2727,7 @@ def world6():
                                           print_with_delay(Colors.GREEN + "You bought everything that's for sale. You leave the store.")
                                           time.sleep(3)
                                           break
-                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $50,000\n2. VR Contact Lenses - $5,000,000\n3. Robot Companion - $500,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3/4) "))
+                                   world6ans3 = int(input(Colors.MAGENTA + "\n1. iPhone 96 - $50,000\n2. VR Contact Lenses - $5,000,000\n3. Robot Companion - $50,000,000,000\n4. Nothing\nWhat do you want to buy? (1/2/3/4) "))
                                    time.sleep(1)
                                    print()
                                    if world6ans3 == 1:
@@ -2772,8 +2774,8 @@ def world6():
                                                         print()
                                                         continue
                                                  else:
-                                                        money -= 5000000000
-                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $500,000,000. You now have ${round(money,2)}.")
+                                                        money -= 500000000000
+                                                        print_with_delay(Colors.WHITE + f"You bought the Robot Companion for $50,000,000,000. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
                                                         robot = True
@@ -2947,14 +2949,14 @@ if start:
                      print_with_delay("Luckily, you can go out and buy a pack of batteries for the robot.")
                      time.sleep(3)
                      print()
-                     buy_batteries = input(Colors.MAGENTA + "Buy batteries for $5? (yes/no) ")
+                     buy_batteries = input(Colors.MAGENTA + "Buy AAA batteries for $5? (yes/no) ")
                      time.sleep(1)
                      print()
                      if buy_batteries == "yes":
                             money -= 5
-                            print_with_delay(Colors.GREEN + f"You buy a pack of batteries for $5. You now have ${round(money,2)}.")
+                            print_with_delay(Colors.GREEN + f"You buy a pack of AAA batteries for $5. You now have ${round(money,2)}.")
                             time.sleep(3)
-                            print_with_delay("You insert the batteries into the back of the robot.")
+                            print_with_delay("You insert the AAA batteries into the back of the robot.")
                             time.sleep(3)
                             print_with_delay("Nothing happens.")
                             time.sleep(3)
@@ -2974,24 +2976,27 @@ if start:
                      print_with_delay(Colors.WHITE + f"You gain {health/2} health. You now have {health} health.")
                      time.sleep(3)
               if known_bitcoin > 0:
+                     rand_coin = random.randint(1,4)
                      buy_bitcoin = buy_bitcoin * 96000
                      print()
                      if known_bitcoin > rand_coin:
                             if rand_coin == 1:
-                                   rand_coin = random.randint(2, 8)
-                                   money -= rand_coin*buy_bitcoin
-                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${round(rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
+                                   rand_coin = random.randint(3, 9)
+                                   known_bitcoin += 1
+                                   money -= known_bitcoin*rand_coin*buy_bitcoin
+                                   print_with_delay(Colors.GREEN + f"Over the last 15 years, someone hacked into your crypto account and stole all your Bitcoin and an extra ${round(known_bitcoin*rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
                             elif rand_coin == 2:
-                                   rand_coin = random.randint(3,9)
-                                   money -= rand_coin*buy_bitcoin
-                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${round(rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
+                                   known_bitcoin += 1
+                                   rand_coin = random.randint(4,12)
+                                   money -= known_bitcoin*rand_coin*buy_bitcoin
+                                   print_with_delay(Colors.GREEN + f"Somehow, meddling with time caused the stock market to crash! You lost ${round(known_bitcoin*rand_coin*buy_bitcoin,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
                             else:
                                    money += buy_bitcoin/2
                                    print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${round(buy_bitcoin/2,2)}. You now have ${round(money,2)}.")
                                    time.sleep(3)
-                            known_bitcoin = 1
+                            known_bitcoin = 0
                      else:
                             money += buy_bitcoin
                             print_with_delay(Colors.WHITE + f"Your Bitcoin has matured and you earn ${round(buy_bitcoin,2)}. You now have ${round(money,2)}.")
