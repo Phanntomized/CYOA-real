@@ -2079,7 +2079,7 @@ def world3(idol):
                             print_with_delay(Colors.GREEN + "You decide to go right.")
                             time.sleep(3)
                             if not open_door:
-                                   print_with_delay(Colors.GREEN + "There's a big slab of sandstone blocking the path with an indent for a small clay statue.")
+                                   print_with_delay(Colors.GREEN + "There's a big slab of sandstone blocking the path with an indent for a small item.")
                                    time.sleep(3)
                                    if robot == "charged":
                                           print()
@@ -2930,7 +2930,7 @@ if start:
                      else:
                             print_with_delay(Colors.GREEN + "You decide to save the food for another time.")
                             time.sleep(3)
-              if robot:
+              if robot and robot != "charged":
                      print_with_delay(Colors.GREEN + "The companion robot didn't come with batteries.")
                      time.sleep(3)
                      print_with_delay("Luckily, you can go out and buy a pack of batteries for the robot.")
