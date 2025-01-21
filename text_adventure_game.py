@@ -2847,7 +2847,7 @@ if start:
                      print_with_delay(Colors.BLUE + "Sounds fun, I need money.")
                      time.sleep(3)
                      print()
-                     print_with_delay(Colors.RED + "Great, would you like to go to the past or the future?")
+                     print_with_delay(Colors.RED + "Great, now you just have to decide where to go.")
                      time.sleep(3)
                      time_choice = True
                      while time_choice:
