@@ -2785,7 +2785,7 @@ def world6():
                                                         print_with_delay(Colors.WHITE + f"You bought the Chewing Gum of the Future ({rand_flavor}) for $10. You now have ${round(money,2)}.")
                                                         time.sleep(3)
                                                         print()
-                                                        iphone = True
+                                                        gum = True
                                                         continue
                                    if world6ans3 == 2:
                                           if money >= 50000:
